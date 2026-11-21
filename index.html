@@ -1437,7 +1437,7 @@ function final(skip){
 function nextF(){
   if(q.k>=q.items.length){const pct=Math.round(q.ok/q.items.length*100);registrar(pct);
     pane().innerHTML=`<div class="card" style="text-align:center"><h2>🏁 Puntaje final: ${q.ok*2}/${q.items.length*2}</h2><p class="mut" style="margin-top:0">${q.ok} de ${q.items.length} respuestas correctas · ${pct}% · se aprueba con ${Math.ceil(q.items.length*0.7)*2} puntos</p>
-    <p>${pct>=70?"Excellent! Aprobaste el día "+(cur+1)+" 🎉 Tu avance quedó guardado.":"Repasa el vocabulario y la conversación, y vuelve a intentarlo."}</p>
+    <p>${pct>=70?"Excellent! Aprobaste el día "+(cur+1)+" 🎉":"Repasa el vocabulario y la conversación, y vuelve a intentarlo."}</p>${pct>=70?`<p><span class="hard" style="background:#e3f4ea;color:#0f5c3b">✅ Tu avance quedó guardado</span></p>`:""}
     <div class="row" style="justify-content:center"><button class="btn" onclick="final(true)">Repetir</button>${pct>=70&&cur<ND-1?`<button class="btn p" onclick="openDay(${cur+1})">Día ${cur+2} →</button>`:""}</div></div>`;return}
   const x=q.items[q.k],hd=`<div class="row" style="justify-content:space-between"><span class="mut">Pregunta ${q.k+1}/${q.items.length} · vale 2 puntos</span><span class="mut">Puntos: <b style="color:var(--ink)">${q.ok*2}</b>/${q.items.length*2}</span></div>${x.t==="hard"?`<p class="hard">⭐ Pregunta difícil</p>`:""}`;
   if(x.t==="ord"){window.__lock=false;window.__built=[];window.__pool=shuf(x.it.split(" "));
@@ -1502,18 +1502,33 @@ async function doLogin(){
     if(x&&x.ok){if(r)LS.set("en90tk",x.token);entrar(x,x.token)}else{m.textContent=x.msg||"Usuario o contraseña incorrectos";b.textContent="Ingresar";b.disabled=false}}
   catch(e){m.textContent="No hay conexión con el servidor. Intenta otra vez.";b.textContent="Ingresar";b.disabled=false}
 }
-function entrar(r,tk){USER={u:r.u,n:r.nombre};MAXD=GS?Math.max(1,Math.min(90,Number(r.maxDia)||1)):90;errLoad();TOKEN=tk;let loc={};try{loc=JSON.parse(LS.get("en90_"+r.u)||"{}")}catch(e){}done=r.avance||loc;save();if(!Object.keys(done).length&&!LS.get("en90intro_"+r.u))intro();else home()}
-function logout(){if(GS&&TOKEN)srv("logout",TOKEN).catch(()=>{});LS.del("en90tk");LS.del("en90user");USER=null;TOKEN=null;done={};showLogin()}
+function entrar(r,tk){USER={u:r.u,n:r.nombre};MAXD=GS?Math.max(1,Math.min(90,Number(r.maxDia)||1)):90;errLoad();TOKEN=tk;let loc={};try{loc=JSON.parse(LS.get("en90_"+r.u)||"{}")}catch(e){}done=loc;merge(r.avance);qLoad();setTimeout(sync,1500);if(!Object.keys(done).length&&!LS.get("en90intro_"+r.u))intro();else home()}
+function logout(){clearTimeout(SQT);SQ=[];if(GS&&TOKEN)srv("logout",TOKEN).catch(()=>{});LS.del("en90tk");LS.del("en90user");USER=null;TOKEN=null;done={};showLogin()}
 async function start(){
   const tk=LS.get("en90tk");
   if(GS&&tk){app.innerHTML=`<p class="mut" style="text-align:center;padding:60px">Cargando…</p>`;try{const r=await srv("sesion",tk);if(r&&r.ok){entrar(r,tk);return}}catch(e){}LS.del("en90tk")}
   if(!GS){const u=LS.get("en90user");if(u){entrar({u,nombre:u,avance:null},null);return}}
   showLogin();
 }
+let SQ=[],SQT=null,SQD=0,SQB=false;
+const qKey=()=>"en90q_"+(USER?USER.u:"");
+function qLoad(){try{SQ=JSON.parse(LS.get(qKey())||"[]")}catch(e){SQ=[]}}
+function qSave(){if(USER)LS.set(qKey(),JSON.stringify(SQ))}
+const merge=a=>{if(a)Object.keys(a).forEach(k=>{if(!done[k]||a[k]>done[k])done[k]=a[k]});save()};
 function registrar(pct){
   if(pct>=70&&(!done[cur]||pct>done[cur]))done[cur]=pct;save();
-  if(GS&&TOKEN)srv("guardarDia",TOKEN,cur+1,D[cur].t,q.ok,q.items.length).then(r=>{if(r&&r.ok&&r.avance){done=r.avance;save()}else if(r&&r.msg==="sesion"){toast("Tu sesión expiró. Ingresa de nuevo.");logout()}else if(r&&r.msg==="bloqueado"){toast("Este día no está habilitado. Comunícate con el administrador.")}}).catch(()=>toast("No se pudo guardar en el servidor. Revisa tu conexión."));
+  if(GS&&TOKEN){SQ.push([cur+1,D[cur].t,q.ok,q.items.length]);qSave();SQD=0;sync()}
 }
+async function sync(){clearTimeout(SQT);SQT=null;if(!GS||!TOKEN||!SQ.length||SQB)return;SQB=true;const tk=TOKEN;
+  try{while(SQ.length&&TOKEN===tk){const r=await srv("guardarDia",tk,...SQ[0]);
+      if(r&&r.ok){SQ.shift();qSave();merge(r.avance)}
+      else if(r&&r.msg==="bloqueado"){SQ.shift();qSave()}
+      else if(r&&r.msg==="sesion"){SQB=false;toast("Tu sesión expiró. Ingresa de nuevo para terminar de guardar tu avance.");logout();return}
+      else throw 0}
+    SQD=0}
+  catch(e){SQD=Math.min(SQD+1,6);SQT=setTimeout(sync,[5,30,60,120,300,600][SQD-1]*1000)}
+  SQB=false}
+window.addEventListener("online",()=>{SQD=0;sync()});
 
 // ---------- tips y trucos ----------
 const INTRO=[

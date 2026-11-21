@@ -6,7 +6,7 @@
 <title>Inglés en 90 días</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#fbf7f0;--card:#fff;--ink:#1f2421;--mut:#6b6f6a;--line:#e8e1d4;--verde:#0f7b4f;--rojo:#c8372d;--oro:#d99a1e;--b:#185FA5;--az:#185FA5;--i:#d99a1e;--a:#c8372d}
+:root{--bg:#E6F1FB;--card:#fff;--ink:#1f2421;--mut:#6b6f6a;--line:#cfe0f3;--verde:#0f7b4f;--rojo:#c8372d;--oro:#d99a1e;--b:#185FA5;--az:#185FA5;--i:#d99a1e;--a:#c8372d}
 *{box-sizing:border-box}
 body{margin:0;font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink)}
 header{background:linear-gradient(90deg,#185FA5 0 33.3%,#fff 33.3% 66.6%,var(--rojo) 66.6%);height:6px}
@@ -875,7 +875,7 @@ function micStart(){if(!MIC)return;micMsg("");
     r.onerror=e=>{if(["not-allowed","service-not-allowed","audio-capture"].includes(e.error)){done=true;REC=null;clearTimeout(timer);micSet("","🎤 Toca y habla");micDict("El micrófono está bloqueado aquí. Usa el 🎤 de tu teclado en el cuadro de abajo.")}};
     r.onend=finish;r.start()}catch(e){REC=null;micDict("El micrófono está bloqueado aquí. Usa el 🎤 de tu teclado en el cuadro de abajo.")}}
 function micEval(alts){if(!MIC)return;alts=alts.filter(a=>a&&a.trim()).map(numWords);if(!alts.length)return;
-  const best=alts.reduce((b,a)=>wscore(a,MIC.target)>wscore(b,MIC.target)?a:b),sc=wscore(best,MIC.target),ok=sc>=0.75;
+  const best=alts.reduce((b,a)=>wscore(a,MIC.target)>wscore(b,MIC.target)?a:b),sc=wscore(best,MIC.target),ok=sc>=(cur>=30?1:0.75);
   const wc=wordChips(best,MIC.target);micSet(ok?"ok":"bad",(ok?"✓ ":"✗ ")+wc.n+" de "+wc.t+" palabras bien");
   MIC.cb(ok,best,cmpHTML(best,MIC.target),sc)}
 // ---------- pronunciar ----------

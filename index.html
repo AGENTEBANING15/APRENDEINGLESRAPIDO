@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inglés en 90 días</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbf7f0;--card:#fff;--ink:#1f2421;--mut:#6b6f6a;--line:#e8e1d4;--verde:#0f7b4f;--rojo:#c8372d;--oro:#d99a1e;--b:#185FA5;--az:#185FA5;--i:#d99a1e;--a:#c8372d}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+header{background:linear-gradient(90deg,#185FA5 0 33.3%,#fff 33.3% 66.6%,var(--rojo) 66.6%);height:6px}
+.wrap{max-width:960px;margin:0 auto;padding:20px 16px 60px}
+h1{font-family:Fraunces,serif;font-size:2rem;margin:10px 0 4px}
+h2{font-family:Fraunces,serif;margin:0 0 6px}
+.sub{color:var(--mut);margin:0 0 16px}
+.bar{height:10px;background:var(--line);border-radius:6px;overflow:hidden}
+.bar>i{display:block;height:100%;background:var(--verde);transition:.4s}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.btn{border:1px solid var(--line);background:var(--card);padding:9px 14px;border-radius:10px;cursor:pointer;font:inherit;font-weight:500}
+.btn:hover{border-color:var(--ink)}
+.btn.p{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn.g{background:var(--verde);color:#fff;border-color:var(--verde)}
+.btn.sm{padding:5px 9px;font-size:.85rem}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0}
+.tab{padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);cursor:pointer;font:inherit}
+.tab.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.lvl{margin:22px 0 8px;display:flex;align-items:center;gap:8px;font-weight:600}
+.dot{width:12px;height:12px;border-radius:50%}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.day{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;cursor:pointer;position:relative;border-top:4px solid var(--c)}
+.day:hover{transform:translateY(-2px);box-shadow:0 4px 14px #0001}
+.day b{font-family:Fraunces,serif;font-size:1.3rem}
+.day small{display:block;color:var(--mut);margin-top:3px}
+.day .ok{position:absolute;top:8px;right:10px;color:var(--verde);font-weight:700}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin:12px 0}
+.vocab{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+.w{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+.w .it{font-weight:600}.w .es{color:var(--mut);font-size:.88rem}
+.spk{border:none;background:#f1ece2;border-radius:8px;cursor:pointer;padding:6px 8px;font-size:1rem}
+.spk:hover{background:#e6dfd0}
+.note{background:#fff8e6;border-left:4px solid var(--oro);padding:10px 12px;border-radius:8px;font-size:.95rem}
+table{width:100%;border-collapse:collapse}
+td{padding:8px;border-bottom:1px solid var(--line)}
+td:first-child{color:var(--mut);width:110px}
+.big{font-family:Fraunces,serif;font-size:2.2rem;text-align:center;margin:14px 0}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.opt{padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--card);cursor:pointer;font:inherit;text-align:left}
+.opt.ok{background:#e3f4ea;border-color:var(--verde)}.opt.bad{background:#fbe5e2;border-color:var(--rojo)}
+input[type=text]{width:100%;padding:12px;font:inherit;font-size:1.1rem;border:1px solid var(--line);border-radius:10px}
+.fb{margin-top:10px;font-weight:500;min-height:1.4em}
+.fb.ok{color:var(--verde)}.fb.bad{color:var(--rojo)}
+.mut{color:var(--mut)}
+.score{font-weight:600}
+.acc{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.acc button{width:36px}
+input[type=password]{width:100%;padding:12px;font:inherit;font-size:1.1rem;border:1px solid var(--line);border-radius:10px}
+.pr{font-family:ui-monospace,Menlo,monospace;font-size:.78rem;color:var(--az);font-weight:400}
+details.w summary::-webkit-details-marker{color:var(--mut)}
+.eyebrow{font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--az);font-weight:600;margin:16px 0 0}
+.jump{position:sticky;top:0;z-index:5;background:var(--bg);padding:8px 0;margin:10px 0 0}
+.blk{margin-top:30px;scroll-margin-top:60px}
+.blk>div,.blk{scroll-margin-top:60px}
+.sec{font-family:Fraunces,serif;font-weight:600;font-size:1.4rem;margin:0 0 8px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.sec i{color:var(--az)}.how{margin-top:10px;display:grid;gap:8px}.hw{border:1.5px solid #b9d3ee;background:#eef5fc;border-radius:12px;padding:10px 12px;text-align:left;line-height:1.5}
+.sec small{font-family:Inter,sans-serif;font-style:normal;font-size:.7rem;text-transform:uppercase;letter-spacing:.09em;color:var(--mut);margin-left:6px}
+.prose{line-height:1.65;max-width:70ch}.prose p{margin:0 0 10px}
+.tblgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0 14px}
+.cap{text-align:left;padding:10px 12px 4px;font-size:.74rem;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);font-weight:600}
+.th{text-align:left;padding:8px;color:var(--mut);font-size:.8rem;font-weight:600}
+.notes{line-height:1.6;max-width:70ch;padding-left:20px}.notes li{margin:4px 0}
+.fab{position:fixed;right:16px;bottom:calc(18px + env(safe-area-inset-bottom,0px));width:50px;height:50px;border-radius:50%;border:none;background:var(--ink);color:#fff;font-size:1.3rem;cursor:pointer;z-index:20;box-shadow:0 3px 10px #0003}
+.idx{position:fixed;right:16px;bottom:calc(78px + env(safe-area-inset-bottom,0px));width:200px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:6px;z-index:20;box-shadow:0 6px 20px #0002;display:flex;flex-direction:column}
+.idx[hidden]{display:none}
+.idx button{border:none;background:none;text-align:left;padding:9px 12px;border-radius:9px;font:inherit;font-size:.92rem;cursor:pointer;color:var(--ink)}
+.idx button.on{background:#e3f4ea;color:var(--verde);font-weight:600}
+.idx .up{border-top:1px solid var(--line);border-radius:0;color:var(--mut)}
+.rule{border-radius:10px;padding:10px 12px;margin:8px 0}
+.rule.v{background:#e3f4ea;color:#0f5c3b}.rule.a{background:#fff3d6;color:#7a5200}
+.rule small{display:block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+.rule div{font-size:1rem;margin-top:3px}
+.lbl{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);font-weight:600;margin:16px 0 6px}
+.sndt{border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.sr{display:grid;grid-template-columns:92px 1fr 44px;gap:6px;align-items:center;padding:8px 10px;border-top:1px solid var(--line)}
+.sr.hd{background:#f1ece2;color:var(--mut);font-size:.8rem;border-top:none}
+.clave{border-radius:10px;padding:10px 12px;margin:8px 0}
+.clave small{display:block;font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600}
+.clave div{margin-top:3px;line-height:1.5}.clave .cx{display:flex;align-items:center;gap:8px;font-style:italic;font-size:.92rem}
+.clave.v{background:#e3f4ea;color:#0f5c3b}.clave.b{background:#e6eef9;color:#1d4a80}.clave.a{background:#fff3d6;color:#7a5200}
+.hint{font-size:.85rem;color:var(--mut);margin:2px 0 10px}
+.ej{display:inline-block;border:1px dashed #9a958a;border-radius:6px;padding:1px 9px;color:var(--ink);background:#faf8f3;font-style:normal}
+body.typing .fab,body.typing .idx{display:none!important}
+.tbar{height:8px;border-radius:4px;background:#fff;margin:10px 0 8px;overflow:hidden}.tbar i{display:block;height:100%;width:0;background:var(--verde)}
+.ev{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}.ev button{padding:10px 6px;border-radius:10px;font:inherit;font-weight:600;cursor:pointer}
+.ev .ok{background:#e3f4ea;color:#0f5c3b;border:1px solid #9fd3b6}.ev .mid{background:#fff3d6;color:#7a5200;border:1px solid #f0cf86}.ev .bad{background:#fbe5e2;color:#9b2a22;border:1px solid #f0b3ac}
+.hard{display:inline-block;background:#fff3d6;color:#7a5200;border-radius:999px;padding:3px 12px;font-size:.8rem;font-weight:600;margin:6px 0 0}
+.micb{width:100%;height:52px;border:none;border-radius:26px;background:var(--rojo);color:#fff;font:inherit;font-size:1.05rem;font-weight:600;cursor:pointer}
+.micb.on{background:#7a1d16;animation:pul 1s infinite}@keyframes pul{50%{opacity:.7}}
+.er{display:grid;grid-template-columns:28px 1fr 44px;gap:6px;align-items:center;padding:8px 10px;border-top:1px solid var(--line)}.er:first-child{border-top:none}
+.er small.bad{color:var(--rojo)}
+.chat{display:flex;flex-direction:column;gap:8px;margin:6px 0}
+.bb{max-width:82%;padding:8px 12px;border-radius:14px;line-height:1.4}.bb small{display:block;font-size:.72rem;color:var(--mut);font-weight:600}
+.bb.other{align-self:flex-start;background:#f1ece2;border-bottom-left-radius:4px}
+.bb.me{align-self:flex-end;border-bottom-right-radius:4px}.bb.me.ok{background:#e3f4ea;color:#0f5c3b}.bb.me.bad{background:#fbe5e2;color:#9b2a22}
+.bb.turn{margin:6px 0 10px auto;border:1.5px dashed var(--verde);color:#0f5c3b;max-width:90%}
+.micb{transition:background .2s}.micb.on{background:#a32d2d!important;animation:pr 1.2s infinite}
+@keyframes pr{0%{box-shadow:0 0 0 0 rgba(226,75,74,.55)}100%{box-shadow:0 0 0 14px rgba(226,75,74,0)}}
+.micb.ok{background:var(--verde)!important}.micb.bad{background:#9b2a22!important}
+.wv{display:inline-flex;align-items:center;height:24px;margin-right:6px;vertical-align:middle}.wv i{display:inline-block;width:4px;margin:0 2px;border-radius:2px;background:#fff;animation:wv .9s ease-in-out infinite}
+.wv i:nth-child(2){animation-delay:.15s}.wv i:nth-child(3){animation-delay:.3s}.wv i:nth-child(4){animation-delay:.45s}@keyframes wv{0%,100%{height:6px}50%{height:22px}}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;text-align:left}
+.cbx{border-radius:12px;padding:8px 10px;line-height:1.45}.cbx small{display:flex;align-items:center;gap:6px;font-size:.72rem;font-weight:600;margin-bottom:2px}
+.cbx.bad{background:#fbe5e2;color:#9b2a22}.cbx.bad u{text-decoration-thickness:2px;font-weight:600}
+.cbx.ok{background:#e3f4ea;color:#0f5c3b}.cbx.ok b{text-decoration:underline;text-decoration-thickness:2px}
+.cbx .spk{padding:2px 5px;font-size:.85rem}
+.rd{font-size:1.35rem;font-weight:600;color:var(--ink);margin:4px 0}
+.day.locked{opacity:.55;background:#f4f1ea}
+.modal{position:fixed;inset:0;background:#0006;display:flex;align-items:center;justify-content:center;z-index:9}
+.modal .card{max-width:400px;text-align:center}
+@media(max-width:560px){.opts{grid-template-columns:1fr}h1{font-size:1.6rem}}
+</style>
+</head>
+<body>
+<header></header>
+<div class="wrap" id="app"></div>
+<script>
+const B=[
+{t:"Saludos · verbo to be",g:"Saludar, presentarte y decir cómo estás usando I am / you are.",
+w:[["hello","hola","jeló"],["hi","hola (informal)","jái"],["good morning","buenos días","gud mórnin"],["good afternoon","buenas tardes","gud áfternun"],["good evening","buenas noches (al llegar)","gud ívnin"],["good night","buenas noches (al despedirse)","gud náit"],["goodbye","adiós","gudbái"],["bye","chau","bái"],["thank you","gracias","zenk iú"],["please","por favor","plíis"],["sorry","perdón / lo siento","sóri"],["fine","bien","fáin"],["name","nombre","néim"],["nice to meet you","mucho gusto","náis tu mít iú"]],
+f:[["What is your name?","¿Cómo te llamas?"],["My name is Daniel.","Me llamo Daniel."],["How are you?","¿Cómo estás?"],["I am fine, thank you.","Estoy bien, gracias."],["And you?","¿Y tú?"],["See you tomorrow!","¡Hasta mañana!"]],
+v:["be","ser / estar","Presente (afirmativo)",["am","are","is","are","are","are"]],
+c:[["Hi! What is your name?","¡Hola! ¿Cómo te llamas?"],["Hello! My name is Daniel. And you?","¡Hola! Me llamo Daniel. ¿Y tú?"],["I am Sarah. Nice to meet you!","Soy Sarah. ¡Mucho gusto!"],["Nice to meet you too. How are you?","Igualmente. ¿Cómo estás?"],["I am fine, thank you. Goodbye!","Estoy bien, gracias. ¡Adiós!"],["Bye! See you tomorrow!","¡Chau! ¡Hasta mañana!"]],
+n:"En inglés el pronombre SIEMPRE va: «I am», nunca solo «am». Y «I» (yo) siempre va con mayúscula.",
+s:{i:"El inglés NO se lee como se escribe. Por eso cada palabra trae su [así se lee].",r:[["Regla clave","La <b>H</b> suena como una j suave, solo aire: hello = [jeló]","v"],["La TH","En «thank you» la lengua va entre los dientes: [zenk iú]","a"]],f:[["h","hello"],["h","hi"],["th","thank you"],["oo","good morning"],["ea","please"],["i","nice to meet you"]]},
+gt:"El verbo to be (ser / estar)",gi:"<p><b>Paso 1.</b> En español «ser» y «estar» son dos verbos. En inglés <b>los dos son uno solo: to be</b>. <i>I am Daniel</i> (soy Daniel) · <i>I am fine</i> (estoy bien).</p><p><b>Paso 2.</b> En inglés <b>siempre</b> se dice la persona: no existe «soy» solo, siempre <i>I am</i>.</p><p><b>Paso 3.</b> Al hablar se usan formas cortas (contracciones): <i>I am → I'm</i>, <i>you are → you're</i>, <i>he is → he's</i>.</p>",
+tb:[{c:"To be · presente",h:["Forma","Corta","Español"],r:[["I am","I'm","yo soy / estoy"],["you are","you're","tú eres / estás"],["he is","he's","él es / está"],["she is","she's","ella es / está"],["it is","it's","es / está (cosa o animal)"],["we are","we're","nosotros somos"],["you are","you're","ustedes son"],["they are","they're","ellos son"]],k:[0,1]}],
+gn:["<b>It:</b> se usa para cosas y animales. No existe en español: <i>It is cold.</i> = Hace frío.","<b>You:</b> sirve para «tú», «usted» y «ustedes». El inglés no tiene forma formal.","<b>I:</b> siempre en mayúscula, aunque esté en medio de la frase: <i>Today I am happy.</i>"],
+oj:"✗ I have 30 years → ✓ <i>I am 30 years old</i>: la edad va con to be.",
+ej:[["I am Daniel.","Soy Daniel."],["She is my friend.","Ella es mi amiga."],["We are from Peru.","Somos de Perú."]],
+p:[["Completa: I ___ Daniel.","am"],["Completa: They ___ from Lima.","are"],["Forma corta de «he is».","he's"],["Di: «Mucho gusto».","Nice to meet you."],["¿Cómo dices «Tengo 30 años»?","I am 30 years old."]],
+tk:"Preséntate en voz alta 30 segundos: saluda, di tu nombre, de dónde eres, cómo estás y despídete. Usa I am al menos 3 veces."},
+
+{t:"El alfabeto y números 0-20",g:"Deletrear tu nombre, decir números del 0 al 20 y usar have (tener).",
+w:[["zero","cero","zírou"],["one","uno","uán"],["two","dos","tu"],["three","tres","zrí"],["four","cuatro","fór"],["five","cinco","fáiv"],["six","seis","siks"],["seven","siete","séven"],["eight","ocho","éit"],["nine","nueve","náin"],["ten","diez","ten"],["eleven","once","iléven"],["twelve","doce","tuélv"],["thirteen","trece","zertín"],["fifteen","quince","fiftín"],["twenty","veinte","tuéni"]],
+f:[["How do you spell your name?","¿Cómo se escribe tu nombre?"],["D-A-N-I-E-L.","D-A-N-I-E-L."],["What is your phone number?","¿Cuál es tu número de teléfono?"],["Can you repeat, please?","¿Puedes repetir, por favor?"],["I have two brothers.","Tengo dos hermanos."],["She has a dog.","Ella tiene un perro."]],
+v:["have","tener","Presente",["have","have","has","have","have","have"]],
+c:[["How do you spell your name?","¿Cómo se escribe tu nombre?"],["D-A-N-I-E-L.","D-A-N-I-E-L."],["Thank you. What is your phone number?","Gracias. ¿Cuál es tu número de teléfono?"],["It is nine, eight, seven, two, one, five.","Es nueve, ocho, siete, dos, uno, cinco."],["Can you repeat, please?","¿Puedes repetir, por favor?"],["Sure. Nine, eight, seven, two, one, five.","Claro. Nueve, ocho, siete, dos, uno, cinco."]],
+n:"Las letras que más confunden: E se dice [i], I se dice [ái], A se dice [éi], G [yi] y J [yéi].",
+s:{i:"Hoy: el alfabeto. Varias letras se dicen muy distinto al español.",r:[["Vocales","A [éi] · E [i] · I [ái] · O [óu] · U [iú]","v"],["Ojo","G [yi] y J [yéi] se confunden; H se dice [éich]","a"]],f:[["a = [éi]","day"],["e = [i]","we"],["i = [ái]","I"],["g = [yi]","G"],["j = [yéi]","J"],["th","three"]]},
+gt:"El alfabeto, los números y el verbo have",gi:"<p><b>Paso 1.</b> Para deletrear se dice cada letra en inglés: <i>D-A-N-I-E-L</i> = [di-éi-en-ái-i-el].</p><p><b>Paso 2.</b> <b>Have</b> significa «tener». Con he, she, it cambia a <b>has</b>: <i>I have</i>, pero <i>she has</i>.</p><p><b>Paso 3.</b> Del 13 al 19 terminan en <b>-teen</b> [tín] y las decenas en <b>-ty</b> [ti]: <i>fifteen</i> (15) ≠ <i>fifty</i> (50).</p>",
+tb:[{c:"El alfabeto",h:["Letras","Se dicen"],r:[["A · B · C · D","éi · bi · si · di"],["E · F · G · H","i · ef · yi · éich"],["I · J · K · L","ái · yéi · kéi · el"],["M · N · O · P","em · en · óu · pi"],["Q · R · S · T","kiú · ar · es · ti"],["U · V · W · X","iú · vi · dábliu · eks"],["Y · Z","uái · zi"]],k:[0]},{c:"Have (tener)",h:["Forma","Español"],r:[["I have","yo tengo"],["you have","tú tienes"],["he has","él tiene"],["she has","ella tiene"],["we have","tenemos"],["they have","ellos tienen"]],k:[0]}],
+gn:["<b>Teléfonos:</b> se dicen número por número; el 0 se suele decir [óu] como la letra O: <i>nine, eight, oh…</i>","<b>Acento:</b> <i>thirteen</i> [zertín] lleva la fuerza al final; <i>thirty</i> [zéri] al inicio."],
+oj:"✗ She have a car → ✓ <i>She has a car</i>: con he/she/it, have cambia a has.",
+ej:[["I have a car.","Tengo un carro."],["She has two sisters.","Ella tiene dos hermanas."],["How do you spell it?","¿Cómo se escribe?"]],
+p:[["Deletrea en inglés: «PERU».","~pi · i · ar · iú"],["¿Cómo se dice 15?","fifteen"],["¿Cómo se dice 20?","twenty"],["Completa: He ___ a dog.","has"],["Di: «¿Puedes repetir, por favor?»","Can you repeat, please?"]],
+tk:"Deletrea en voz alta tu nombre, tu apellido y tu ciudad. Luego di tu número de teléfono cifra por cifra en inglés."},
+
+{t:"To be: negativo y preguntas",g:"Negar y preguntar con to be, y responder corto: Yes, I am / No, I'm not.",
+w:[["yes","sí","iés"],["no","no","nóu"],["not","no (para negar)","not"],["happy","feliz","jápi"],["tired","cansado","táierd"],["hungry","con hambre","jángri"],["busy","ocupado","bísi"],["ready","listo","rédi"],["here","aquí","jíer"],["there","allí","dér"],["teacher","profesor","tícher"],["student","estudiante","stiúdent"],["married","casado","márid"],["single","soltero","síngol"]],
+f:[["Are you tired?","¿Estás cansado?"],["Yes, I am.","Sí, lo estoy."],["No, I am not.","No, no lo estoy."],["Is she a teacher?","¿Ella es profesora?"],["He is not here.","Él no está aquí."],["Are you ready?","¿Estás listo?"]],
+v:["be","ser / estar","Presente (negativo)",["am not","are not","is not","are not","are not","are not"]],
+c:[["Are you a student?","¿Eres estudiante?"],["No, I am not. I am an economist.","No. Soy economista."],["Are you busy today?","¿Estás ocupado hoy?"],["Yes, I am. I am very busy.","Sí. Estoy muy ocupado."],["Is your boss here?","¿Tu jefe está aquí?"],["No, he is not. He is in Lima.","No, no está. Está en Lima."]],
+n:"No basta con decir «Yes». Lo natural es responder corto: «Yes, I am» o «No, I'm not».",
+s:{i:"Cómo suenan las preguntas y respuestas cortas.",r:[["Respuestas cortas","Yes, I am · No, I'm not: la última palabra va con fuerza","v"],["Une las palabras","«Are you…?» se dice junto: [ár iu]","a"]],f:[["are","Are you ready?"],["y","yes"],["h","happy"],["h","hungry"],["t","tired"],["st","student"]]},
+gt:"To be: negativo y preguntas",gi:"<p><b>Paso 1 · Negar:</b> pon <b>not</b> después del verbo: <i>I am not tired</i>. Formas cortas: <i>I'm not, isn't, aren't</i>.</p><p><b>Paso 2 · Preguntar:</b> el verbo <b>va primero</b>, antes de la persona: <i>You are ready</i> → <i>Are you ready?</i> En español solo cambias el tono; en inglés cambias el orden.</p><p><b>Paso 3 · Responder corto:</b> <i>Yes, I am. / No, I'm not.</i> Nunca termines con contracción: «Yes, I'm» ✗.</p>",
+tb:[{c:"Negativo",h:["Completo","Corto"],r:[["I am not","I'm not"],["you are not","you aren't"],["he is not","he isn't"],["we are not","we aren't"],["they are not","they aren't"]],k:[0,1]},{c:"Preguntas y respuestas",h:["Pregunta","Respuesta corta"],r:[["Am I late?","Yes, you are."],["Are you tired?","No, I'm not."],["Is she here?","Yes, she is."],["Are they ready?","No, they aren't."]],k:[0,1]}],
+gn:["<b>Orden:</b> afirmación = persona + verbo; pregunta = verbo + persona.","<b>No existe «amn't»:</b> la forma corta de I am not es <i>I'm not</i>."],
+oj:"✗ You are tired? (solo con tono) → ✓ <i>Are you tired?</i>: hay que cambiar el orden.",
+ej:[["I am not hungry.","No tengo hambre."],["Is he married?","¿Él está casado?"],["They aren't here.","Ellos no están aquí."]],
+p:[["Niega: She is happy.","She is not happy."],["Pregunta: You are a student.","Are you a student?"],["Responde corto que sí: Are you ready?","Yes, I am."],["Forma corta de «they are not».","they aren't"],["Di: «Él no está aquí».","He is not here."]],
+tk:"Hazte 5 preguntas con Are you…? / Is he…? sobre ti y tu familia y respóndelas en voz alta con respuestas cortas."},
+
+{t:"Pronombres y posesivos",g:"Decir de quién es algo: my, your, his, her, our, their.",
+w:[["my","mi","mái"],["your","tu / su","iór"],["his","su (de él)","jis"],["her","su (de ella)","jer"],["its","su (de una cosa)","its"],["our","nuestro","áuer"],["their","su (de ellos)","dér"],["friend","amigo","frend"],["phone","teléfono","fóun"],["car","carro","kar"],["house","casa","jáus"],["job","trabajo","yob"],["email","correo","ímeil"],["address","dirección","ádres"]],
+f:[["This is my friend.","Este es mi amigo."],["What is his name?","¿Cómo se llama él?"],["Her name is Ana.","Ella se llama Ana."],["Our house is small.","Nuestra casa es pequeña."],["What is your email?","¿Cuál es tu correo?"],["Their car is red.","Su carro (de ellos) es rojo."]],
+v:["do","hacer","Presente",["do","do","does","do","do","do"]],
+c:[["Who is that?","¿Quién es esa persona?"],["That is my friend Ana.","Es mi amiga Ana."],["What is her job?","¿En qué trabaja ella?"],["She is a nurse.","Es enfermera."],["And what is your job?","¿Y cuál es tu trabajo?"],["I am an economist. My office is in Chimbote.","Soy economista. Mi oficina está en Chimbote."]],
+n:"«His» es de él y «her» es de ella: depende del DUEÑO, no de la cosa. Ana y su carro = her car.",
+s:{i:"Sonidos de los posesivos.",r:[["TH con voz","their, the: lengua entre los dientes y con voz: [dér]","v"],["H aspirada","his, her, house: un poco de aire: [jis]","a"]],f:[["th","their"],["h","his"],["h","her"],["y","your"],["ou","house"],["j","job"]]},
+gt:"Pronombres y adjetivos posesivos",gi:"<p><b>Paso 1.</b> Los pronombres (I, you, he…) hacen la acción. Los posesivos (my, your, his…) dicen <b>de quién es</b> algo.</p><p><b>Paso 2.</b> El posesivo <b>no cambia</b> si la cosa es plural: <i>my car, my cars</i> (en español: mi carro, mis carros).</p><p><b>Paso 3.</b> En español «su» puede ser de él, de ella, de usted o de ellos. En inglés cada uno tiene su palabra: <i>his, her, your, their</i>.</p>",
+tb:[{c:"Pronombre → posesivo",h:["Pronombre","Posesivo","Ejemplo"],r:[["I","my","my name"],["you","your","your phone"],["he","his","his car"],["she","her","her job"],["it","its","its color"],["we","our","our house"],["they","their","their friends"]],k:[0,1,2]}],
+gn:["<b>Its ≠ it's:</b> <i>its</i> = su (de una cosa); <i>it's</i> = it is.","<b>Do / does:</b> el verbo del día significa «hacer». Con he/she/it es <i>does</i>."],
+oj:"✗ Ana and his car → ✓ <i>Ana and her car</i>: el posesivo va según el dueño.",
+ej:[["My name is Daniel.","Me llamo Daniel."],["Her email is long.","Su correo (de ella) es largo."],["Their house is big.","Su casa (de ellos) es grande."]],
+p:[["Completa: Ana and ___ husband.","her"],["Completa: Pedro and ___ wife.","his"],["Completa: We love ___ city.","our"],["¿Qué diferencia hay entre its e it's?","~its = su (de una cosa); it's = it is."],["Di: «¿Cuál es tu dirección?»","What is your address?"]],
+tk:"Habla de 4 personas que conoces: su nombre, su trabajo y una cosa suya. Ejemplo: «This is my sister. Her name is…»."},
+
+{t:"Países y nacionalidades · repaso",g:"Decir de dónde eres, tu nacionalidad y qué idiomas hablas. Repaso de los días 1-4.",
+w:[["Peru","Perú","perú"],["Peruvian","peruano","perúvian"],["country","país","kántri"],["city","ciudad","síri"],["from","de (origen)","from"],["Spain","España","spéin"],["Spanish","español","spánish"],["the United States","Estados Unidos","de iunáired stéits"],["American","estadounidense","amérikan"],["Mexico","México","méksikou"],["Mexican","mexicano","méksikan"],["Brazil","Brasil","brasíl"],["English","inglés","ínglish"],["language","idioma","lángüich"]],
+f:[["Where are you from?","¿De dónde eres?"],["I am from Peru.","Soy de Perú."],["I am Peruvian.","Soy peruano."],["What languages do you speak?","¿Qué idiomas hablas?"],["I speak Spanish and a little English.","Hablo español y un poco de inglés."],["Where do you live?","¿Dónde vives?"]],
+v:["go","ir","Presente",["go","go","goes","go","go","go"]],
+c:[["Where are you from?","¿De dónde eres?"],["I am from Peru. I live in Chimbote.","Soy de Perú. Vivo en Chimbote."],["Oh, nice! Is Chimbote a big city?","¡Qué bien! ¿Chimbote es una ciudad grande?"],["Yes, it is. It is a port city.","Sí. Es una ciudad puerto."],["Do you speak English?","¿Hablas inglés?"],["A little. I am a student.","Un poco. Soy estudiante."]],
+n:"Países, nacionalidades e idiomas van SIEMPRE con mayúscula en inglés: Peru, Peruvian, English, Spanish.",
+s:{i:"La S inicial y la SH.",r:[["S sin «e»","Spanish, Spain: no digas «espánish», empieza directo con la s","v"],["SH","English, Spanish: [sh] como pidiendo silencio","a"]],f:[["sp","Spanish"],["sp","Spain"],["ou","country"],["c","city"],["sh","English"],["u","language"]]},
+gt:"Repaso: to be y posesivos · países",gi:"<p><b>Paso 1.</b> Para el origen usamos <b>be + from</b>: <i>I am from Peru</i>. Para la nacionalidad, <b>be + adjetivo</b>: <i>I am Peruvian</i>.</p><p><b>Paso 2 · Repaso:</b> afirmación <i>She is from Lima</i> · negación <i>She isn't from Lima</i> · pregunta <i>Is she from Lima?</i></p><p><b>Paso 3.</b> <b>Go</b> (ir) es el verbo del día: con he/she/it lleva -es: <i>he goes</i>.</p>",
+tb:[{c:"País → nacionalidad",h:["País","Nacionalidad","Idioma"],r:[["Peru","Peruvian","Spanish"],["Mexico","Mexican","Spanish"],["Spain","Spanish","Spanish"],["the United States","American","English"],["Brazil","Brazilian","Portuguese"],["England","English","English"]],k:[0,1]}],
+gn:["<b>The United States</b> va con <i>the</i>, pero <i>Peru</i> no lleva artículo.","<b>Idiomas:</b> sin artículo: <i>I speak English</i> (no «the English»)."],
+oj:"✗ I am peruvian → ✓ <i>I am Peruvian</i>: con mayúscula.",
+ej:[["She is from Mexico.","Ella es de México."],["We are Peruvian.","Somos peruanos."],["He goes to Lima every week.","Él va a Lima cada semana."]],
+p:[["Nacionalidad de Peru.","Peruvian"],["Di: «¿De dónde eres?»","Where are you from?"],["Pregunta: She is from Spain.","Is she from Spain?"],["Completa: He ___ to work by bus. (go)","goes"],["¿Lleva mayúscula «english»?","~Sí: English, siempre con mayúscula."]],
+tk:"Repaso: preséntate completo (nombre, edad, país, ciudad, trabajo e idiomas) durante 1 minuto. Grábate y escúchate."},
+
+{t:"Artículos a / an / the",g:"Usar bien a, an y the, también con profesiones.",
+w:[["a","un / una","a"],["an","un / una (antes de vocal)","an"],["the","el / la / los / las","da"],["apple","manzana","ápol"],["orange","naranja","óranch"],["egg","huevo","eg"],["book","libro","buk"],["umbrella","paraguas","ambréla"],["hour","hora","áuer"],["university","universidad","iunivérsiti"],["office","oficina","ófis"],["bank","banco","bank"],["sun","sol","san"],["moon","luna","mun"]],
+f:[["I have an apple.","Tengo una manzana."],["She is an engineer.","Ella es ingeniera."],["The office is closed.","La oficina está cerrada."],["I get a lot of emails.","Recibo muchos correos."],["Wait an hour.","Espera una hora."],["He is a doctor.","Él es doctor."]],
+v:["get","conseguir / recibir","Presente",["get","get","gets","get","get","get"]],
+c:[["Excuse me, is there a bank near here?","Disculpe, ¿hay un banco cerca?"],["Yes, the bank is on Pardo Avenue.","Sí, el banco está en la avenida Pardo."],["Thank you. And an ATM?","Gracias. ¿Y un cajero?"],["The ATM is inside the bank.","El cajero está dentro del banco."],["Great. Is it open now?","Genial. ¿Está abierto ahora?"],["Yes, it is open for an hour.","Sí, está abierto una hora más."]],
+n:"«a» o «an» depende del SONIDO, no de la letra: an hour (la h no suena), a university (suena «iu»).",
+s:{i:"El artículo «the» tiene dos sonidos.",r:[["The","Antes de consonante [da]; antes de vocal [di]: the apple [di ápol]","v"],["A / an","«a» es corta y débil: [a]; no digas [éi]","a"]],f:[["the","the"],["an","an apple"],["an","an hour"],["a","a book"],["u","umbrella"],["oo","moon"]]},
+gt:"Artículos: a, an, the",gi:"<p><b>Paso 1.</b> <b>a / an</b> = un, una (algo nuevo, uno cualquiera). <b>the</b> = el, la, los, las (algo específico o ya conocido).</p><p><b>Paso 2.</b> Usa <b>an</b> antes de un SONIDO vocal: <i>an apple, an hour</i>. Usa <b>a</b> antes de sonido consonante: <i>a car, a university</i>.</p><p><b>Paso 3.</b> Con profesiones en inglés SÍ se pone artículo: <i>I am a teacher</i> (en español: soy profesor).</p>",
+tb:[{c:"¿A, an o the?",h:["Caso","Ejemplo","Español"],r:[["Uno cualquiera","a car","un carro"],["Antes de sonido vocal","an egg","un huevo"],["H que no suena","an hour","una hora"],["Sonido «iu»","a university","una universidad"],["Algo específico","the car","el carro"],["Cosas únicas","the sun","el sol"]],k:[1]}],
+gn:["<b>The</b> es igual para singular y plural: <i>the book, the books</i>.","<b>Profesiones:</b> <i>She is an engineer</i>, <i>He is a doctor</i>."],
+oj:"✗ I am teacher → ✓ <i>I am a teacher</i>: con profesiones va a / an.",
+ej:[["I need an umbrella.","Necesito un paraguas."],["The bank is closed.","El banco está cerrado."],["He is a driver.","Él es chofer."]],
+p:[["Completa: ___ orange (a / an)","an orange"],["Completa: ___ university (a / an)","a university"],["Completa: ___ hour (a / an)","an hour"],["Di: «Soy economista».","I am an economist."],["¿Cómo suena «the» antes de vocal?","~[di]: the apple [di ápol]."]],
+tk:"Nombra 10 objetos de tu casa con a / an (a chair, an orange…) y luego di 3 frases con the."},
+
+{t:"Plurales · this / that",g:"Formar plurales y señalar cosas cerca y lejos: this, that, these, those.",
+w:[["this","este / esta","dis"],["that","ese / aquel","dat"],["these","estos","díis"],["those","esos","dóus"],["chair","silla","chér"],["table","mesa","téibol"],["window","ventana","uíndou"],["door","puerta","dor"],["child","niño","cháild"],["children","niños","chíldren"],["man","hombre","man"],["men","hombres","men"],["woman","mujer","úman"],["people","gente / personas","pípol"]],
+f:[["This is my phone.","Este es mi celular."],["That car is new.","Ese carro es nuevo."],["These are my children.","Estos son mis hijos."],["Those people are tourists.","Esas personas son turistas."],["What is this?","¿Qué es esto?"],["I make breakfast every day.","Preparo el desayuno todos los días."]],
+v:["make","hacer / preparar","Presente",["make","make","makes","make","make","make"]],
+c:[["What is this?","¿Qué es esto?"],["This is a gift for you.","Es un regalo para ti."],["Thank you! And what are those?","¡Gracias! ¿Y qué son esos?"],["Those are cookies. My mother makes them.","Son galletas. Mi mamá las hace."],["These cookies are delicious!","¡Estas galletas están deliciosas!"],["I know! Take two.","¡Lo sé! Toma dos."]],
+n:"This / these = cerca de ti. That / those = lejos. Y «people» ya es plural: people ARE.",
+s:{i:"Vocal corta y vocal larga: cambian la palabra.",r:[["Corta vs larga","this [dis] (corta) ≠ these [díis] (larga): alarga la i","v"],["Ojo","woman [úman] ≠ women [uímin]","a"]],f:[["i","this"],["ee","these"],["a","that"],["o","those"],["ch","children"],["w","woman"]]},
+gt:"Plurales y demostrativos",gi:"<p><b>Paso 1 · Plural:</b> casi siempre se agrega <b>-s</b>: <i>car → cars</i>. Después de s, sh, ch, x se agrega <b>-es</b>: <i>bus → buses, watch → watches</i>.</p><p><b>Paso 2 · Irregulares:</b> algunos cambian completo: <i>man → men, woman → women, child → children, person → people</i>.</p><p><b>Paso 3 · Demostrativos:</b> cerca = <b>this</b> (uno) / <b>these</b> (varios). Lejos = <b>that</b> / <b>those</b>.</p>",
+tb:[{c:"This, that, these, those",h:["","Uno","Varios"],r:[["Cerca","this book","these books"],["Lejos","that book","those books"]],k:[1,2]},{c:"Plurales irregulares",h:["Singular","Plural"],r:[["man","men"],["woman","women"],["child","children"],["person","people"],["foot","feet"],["tooth","teeth"]],k:[0,1]}],
+gn:["<b>Adjetivos sin plural:</b> <i>red cars</i> (no «reds cars»).","<b>People</b> es plural: <i>People are nice</i>."],
+oj:"✗ The people is nice → ✓ <i>The people are nice</i>.",
+ej:[["These shoes are new.","Estos zapatos son nuevos."],["That woman is my boss.","Esa mujer es mi jefa."],["Children love games.","A los niños les encantan los juegos."]],
+p:[["Plural de «child».","children"],["Plural de «bus».","buses"],["Completa: ___ are my keys. (cerca)","These"],["Corrige: The people is happy.","The people are happy."],["Di: «¿Qué es eso?»","What is that?"]],
+tk:"Señala objetos cerca y lejos de ti y di 8 frases: 4 con this / these y 4 con that / those."},
+
+{t:"La familia · el posesivo 's",g:"Hablar de tu familia y decir «el … de …» con 's.",
+w:[["family","familia","fámili"],["mother","mamá","máder"],["father","papá","fáder"],["parents","padres","pérents"],["brother","hermano","bráder"],["sister","hermana","síster"],["son","hijo","san"],["daughter","hija","dóter"],["husband","esposo","jásband"],["wife","esposa","uáif"],["grandmother","abuela","grándmader"],["grandfather","abuelo","grándfader"],["uncle","tío","ánkol"],["aunt","tía","ant"],["cousin","primo","kásin"]],
+f:[["This is my family.","Esta es mi familia."],["My sister's name is Rosa.","Mi hermana se llama Rosa."],["Do you have children?","¿Tienes hijos?"],["I have one son and one daughter.","Tengo un hijo y una hija."],["My parents live in Lima.","Mis padres viven en Lima."],["My mother says hello.","Mi mamá te manda saludos."]],
+v:["say","decir","Presente",["say","say","says","say","say","say"]],
+c:[["Do you have a big family?","¿Tienes una familia grande?"],["Yes! I have two brothers and a sister.","¡Sí! Tengo dos hermanos y una hermana."],["Are you married?","¿Estás casado?"],["Yes, I am. My wife's name is Carla.","Sí. Mi esposa se llama Carla."],["Do you have children?","¿Tienes hijos?"],["Yes, one daughter. She is six.","Sí, una hija. Tiene seis años."]],
+n:"Parents = padres (papá y mamá). Parientes se dice «relatives». No los confundas.",
+s:{i:"La TH de la familia.",r:[["TH con voz","mother, father, brother: lengua entre los dientes, suena casi [d]","v"],["GH muda","daughter: la «gh» no suena: [dóter]","a"]],f:[["th","mother"],["th","father"],["th","brother"],["gh","daughter"],["s","sister"],["h","husband"]]},
+gt:"El posesivo 's (de alguien)",gi:"<p><b>Paso 1.</b> Para decir «el carro de Ana», en inglés se pone el dueño primero + <b>'s</b>: <i>Ana's car</i>.</p><p><b>Paso 2.</b> Se lee al revés que en español: <i>my mother's house</i> = la casa de mi mamá.</p><p><b>Paso 3.</b> Si el dueño ya es plural con s, solo se agrega el apóstrofo: <i>my parents' house</i> = la casa de mis padres.</p>",
+tb:[{c:"Cómo se forma",h:["Inglés","Español"],r:[["Ana's car","el carro de Ana"],["my sister's name","el nombre de mi hermana"],["Peru's capital","la capital del Perú"],["my parents' house","la casa de mis padres"],["the children's room","el cuarto de los niños"]],k:[0]}],
+gn:["<b>He's o 's:</b> <i>he's</i> = he is; <i>Ana's</i> = de Ana. El contexto lo dice.","<b>Says</b> se pronuncia [ses], no [séis]."],
+oj:"✗ The car of my brother → ✓ <i>My brother's car</i>.",
+ej:[["This is my father's car.","Este es el carro de mi papá."],["Rosa is my cousin's wife.","Rosa es la esposa de mi primo."],["What's your mother's name?","¿Cómo se llama tu mamá?"]],
+p:[["Di con 's: el celular de Pedro.","Pedro's phone"],["Di: la casa de mis padres.","my parents' house"],["¿Qué significa «parents»?","~Padres (papá y mamá)."],["Completa: She ___ hello. (say)","says"],["Di: «Tengo dos hermanos».","I have two brothers."]],
+tk:"Describe tu familia en 1 minuto: nombres, edades y una frase con 's (My sister's name is…)."},
+
+{t:"Números hasta 1000 · precios en soles",g:"Decir números grandes, tu edad y preguntar precios en soles.",
+w:[["thirty","treinta","zéri"],["forty","cuarenta","fóri"],["fifty","cincuenta","fífti"],["sixty","sesenta","síksti"],["seventy","setenta","séventi"],["eighty","ochenta","éiri"],["ninety","noventa","náinri"],["one hundred","cien","uán jándred"],["one thousand","mil","uán záusand"],["price","precio","práis"],["cheap","barato","chíip"],["expensive","caro","ekspénsiv"],["money","dinero","máni"],["soles","soles","sóles"]],
+f:[["How much is it?","¿Cuánto cuesta?"],["It is twenty-five soles.","Cuesta veinticinco soles."],["That is expensive!","¡Qué caro!"],["Do you know the price?","¿Sabes el precio?"],["I have fifty soles.","Tengo cincuenta soles."],["How old are you?","¿Cuántos años tienes?"]],
+v:["know","saber / conocer","Presente",["know","know","knows","know","know","know"]],
+c:[["Excuse me, how much is this shirt?","Disculpe, ¿cuánto cuesta esta camisa?"],["It is sixty soles.","Cuesta sesenta soles."],["Sixty? That is expensive.","¿Sesenta? Está cara."],["This one is cheap. It is thirty-five soles.","Esta es barata. Cuesta treinta y cinco soles."],["OK, I'll take that one.","Bueno, me llevo esa."],["Great. Cash or card?","Perfecto. ¿Efectivo o tarjeta?"]],
+n:"Los números compuestos van con guion: twenty-five, forty-two. Y «hundred» no lleva -s: two hundred.",
+s:{i:"Ojo con -teen y -ty.",r:[["-teen vs -ty","fifteen [fiftín] (fuerza al final) ≠ fifty [fífti] (fuerza al inicio)","v"],["T suave","En inglés americano la t entre vocales suena casi «r»: thirty [zéri]","a"]],f:[["-ty","thirty"],["-ty","forty"],["-teen","fifteen"],["-ty","fifty"],["th","one thousand"],["ch","cheap"]]},
+gt:"Números grandes y precios",gi:"<p><b>Paso 1.</b> Decenas: <i>twenty, thirty, forty, fifty…</i> Para 21-99 se une con guion: <i>twenty-one, forty-five</i>.</p><p><b>Paso 2.</b> Centenas: <i>one hundred</i>, <i>two hundred fifty</i> (250). En inglés americano el «and» del medio es opcional.</p><p><b>Paso 3.</b> Para precios: <i>How much is it?</i> (una cosa) / <i>How much are they?</i> (varias). Respuesta: <i>It's 20 soles</i>.</p>",
+tb:[{c:"Números",h:["Número","Inglés"],r:[["21","twenty-one"],["45","forty-five"],["99","ninety-nine"],["100","one hundred"],["250","two hundred fifty"],["1000","one thousand"],["2026","two thousand twenty-six"]],k:[1]}],
+gn:["<b>La edad:</b> <i>I am 35</i> o <i>I am 35 years old</i>.","<b>Años:</b> a veces se dicen de dos en dos: 1990 = <i>nineteen ninety</i>."],
+oj:"✗ Two hundreds soles → ✓ <i>Two hundred soles</i>: hundred no lleva -s.",
+ej:[["It costs forty soles.","Cuesta cuarenta soles."],["I am thirty-five years old.","Tengo treinta y cinco años."],["She knows the price.","Ella sabe el precio."]],
+p:[["Escribe en letras: 48","forty-eight"],["Escribe en letras: 300","three hundred"],["Di: «¿Cuánto cuesta?»","How much is it?"],["Completa: He ___ my name. (know)","knows"],["¿En qué se diferencian fifteen y fifty?","~15 y 50: fifteen lleva la fuerza al final."]],
+tk:"Di en voz alta el precio de 6 cosas que compraste esta semana (en soles) y tu edad."},
+
+{t:"Preguntas Wh- · repaso",g:"Hacer preguntas con what, where, when, who, why y how. Repaso de los días 6-9.",
+w:[["what","qué / cuál","uát"],["where","dónde","uér"],["when","cuándo","uén"],["who","quién","ju"],["why","por qué","uái"],["how","cómo","jáu"],["which","cuál (entre opciones)","uích"],["how old","qué edad","jáu óuld"],["how much","cuánto (precio)","jáu mach"],["how many","cuántos","jáu méni"],["because","porque","bikós"],["question","pregunta","kuéschon"],["answer","respuesta","ánser"],["idea","idea","aidía"]],
+f:[["What is your job?","¿En qué trabajas?"],["Where do you live?","¿Dónde vives?"],["When is your birthday?","¿Cuándo es tu cumpleaños?"],["Who is your teacher?","¿Quién es tu profesor?"],["Why are you happy?","¿Por qué estás feliz?"],["I think it is a good idea.","Creo que es una buena idea."]],
+v:["think","pensar / creer","Presente",["think","think","thinks","think","think","think"]],
+c:[["Who is that man?","¿Quién es ese hombre?"],["He is my new boss.","Es mi nuevo jefe."],["Where is he from?","¿De dónde es?"],["He is from Trujillo.","Es de Trujillo."],["How old is he?","¿Cuántos años tiene?"],["I think he is forty.","Creo que tiene cuarenta."]],
+n:"Who [ju] = quién (aquí la w no suena). How [jáu] = cómo. No los confundas.",
+s:{i:"Las palabras para preguntar empiezan casi todas con WH.",r:[["WH","Suena «u»: what [uát], where [uér], when [uén]","v"],["Excepción","who [ju]: aquí suena la h y no la w","a"]],f:[["wh","what"],["wh","where"],["wh","when"],["wh","who"],["wh","why"],["h","how"]]},
+gt:"Preguntas con Wh-",gi:"<p><b>Paso 1.</b> La palabra de pregunta va <b>al inicio</b>, y después el orden de pregunta: <i>Where <b>are you</b> from?</i></p><p><b>Paso 2.</b> Con to be: <b>Wh- + be + persona</b>: <i>What is your name?</i> · <i>How old are you?</i></p><p><b>Paso 3.</b> «Por qué» se pregunta con <b>why</b>; «porque» se responde con <b>because</b>.</p>",
+tb:[{c:"Palabras para preguntar",h:["Inglés","Español","Ejemplo"],r:[["what","qué / cuál","What is this?"],["where","dónde","Where is the bank?"],["when","cuándo","When is the meeting?"],["who","quién","Who is she?"],["why","por qué","Why are you late?"],["how","cómo","How are you?"],["how old","qué edad","How old is he?"],["how much","cuánto","How much is it?"]],k:[0,2]}],
+gn:["<b>¿Cuál es tu nombre?</b> se dice con <i>what</i>, no con which: <i>What is your name?</i>","<b>Think</b> lleva TH sin voz: [zink]."],
+oj:"✗ Where you are from? → ✓ <i>Where are you from?</i>: el verbo va antes de la persona.",
+ej:[["Where is the bathroom?","¿Dónde está el baño?"],["Why is he tired?","¿Por qué está cansado?"],["What do you think?","¿Qué opinas?"]],
+p:[["Ordena: from / are / where / you ?","Where are you from?"],["¿Qué significa «why»?","~Por qué."],["Di: «¿Cuándo es la reunión?»","When is the meeting?"],["Completa: She ___ it is OK. (think)","thinks"],["Di: «¿Cuántos años tienes?»","How old are you?"]],
+tk:"Repaso: hazte 8 preguntas con what, where, when, who, why, how, how old y how much, y respóndelas en voz alta."}
+];
+
+B.push(
+{t:"Presente simple (I, you, we, they)",g:"Hablar de tus hábitos y lo que haces siempre con el presente simple.",
+w:[["live","vivir","liv"],["work","trabajar","uérk"],["study","estudiar","stádi"],["speak","hablar","spíik"],["like","gustar","láik"],["drink","beber","drink"],["eat","comer","íit"],["coffee","café","kófi"],["tea","té","tíi"],["bus","bus","bas"],["every day","todos los días","évri déi"],["weekend","fin de semana","uíkend"],["morning","mañana","mórnin"],["night","noche","náit"]],
+f:[["I live in Chimbote.","Vivo en Chimbote."],["We work in an office.","Trabajamos en una oficina."],["They study English.","Ellos estudian inglés."],["I drink coffee every morning.","Tomo café todas las mañanas."],["You speak Spanish.","Hablas español."],["I take the bus to work.","Tomo el bus al trabajo."]],
+v:["take","tomar / llevar","Presente",["take","take","takes","take","take","take"]],
+c:[["Where do you work?","¿Dónde trabajas?"],["I work in an office downtown.","Trabajo en una oficina en el centro."],["Do you take the bus?","¿Tomas el bus?"],["Yes, I take the bus every day.","Sí, tomo el bus todos los días."],["Do you study English at night?","¿Estudias inglés en la noche?"],["Yes, I study every night.","Sí, estudio todas las noches."]],
+n:"El presente simple es para HÁBITOS y cosas que siempre son verdad: I work every day.",
+s:{i:"La W y las vocales largas.",r:[["W","Suena «u» rápida: work [uérk], weekend [uíkend]","v"],["EA / EE","Vocal larga: speak [spíik], eat [íit]","a"]],f:[["w","work"],["w","weekend"],["ea","speak"],["ea","eat"],["st","study"],["ee","coffee"]]},
+gt:"Presente simple (I, you, we, they)",gi:"<p><b>Paso 1.</b> El presente simple se usa para <b>rutinas, hábitos y verdades</b>: <i>I work in Chimbote</i>.</p><p><b>Paso 2.</b> Con I, you, we, they el verbo <b>no cambia</b>: <i>I work, you work, we work, they work</i>. ¡Mucho más fácil que en español!</p><p><b>Paso 3.</b> Siempre va la persona: <i>I live</i>, nunca solo «live».</p>",
+tb:[{c:"Work (trabajar)",h:["Inglés","Español"],r:[["I work","yo trabajo"],["you work","tú trabajas"],["we work","trabajamos"],["they work","ellos trabajan"]],k:[0]}],
+gn:["<b>Frecuencia:</b> lo acompañan <i>every day, every week, on weekends</i>.","<b>Take</b> = tomar un transporte o llevar algo: <i>take the bus, take a photo</i>."],
+oj:"✗ I am work in a bank → ✓ <i>I work in a bank</i>: no mezcles am con otro verbo.",
+ej:[["We study at night.","Estudiamos en la noche."],["They live in Lima.","Ellos viven en Lima."],["I eat fish every Friday.","Como pescado todos los viernes."]],
+p:[["Completa: We ___ English. (study)","study"],["Corrige: I am live in Peru.","I live in Peru."],["Di: «Tomo el bus».","I take the bus."],["Completa: They ___ coffee. (drink)","drink"],["¿Para qué se usa el presente simple?","~Para rutinas, hábitos y verdades."]],
+tk:"Describe 6 cosas que haces todos los días con I + verbo (I wake up…, I work…)."},
+
+{t:"Presente simple con he, she, it",g:"Hablar de otras personas en presente con la -s: she works, he goes.",
+w:[["watch","mirar / ver","uách"],["read","leer","ríid"],["write","escribir","ráit"],["cook","cocinar","kuk"],["play","jugar / tocar","pléi"],["wash","lavar","uásh"],["teach","enseñar","tíich"],["go","ir","góu"],["do","hacer","du"],["have","tener","jav"],["newspaper","periódico","niúspeiper"],["TV","televisión","tiví"],["dinner","cena","díner"],["soccer","fútbol","sóker"]],
+f:[["She works in a bank.","Ella trabaja en un banco."],["He watches TV at night.","Él ve televisión en la noche."],["My father reads the newspaper.","Mi papá lee el periódico."],["She goes to the gym.","Ella va al gimnasio."],["He has a car.","Él tiene un carro."],["My son plays soccer.","Mi hijo juega fútbol."]],
+v:["see","ver","Presente",["see","see","sees","see","see","see"]],
+c:[["What does your wife do?","¿A qué se dedica tu esposa?"],["She teaches math at a school.","Enseña matemáticas en un colegio."],["Does she like it?","¿Le gusta?"],["Yes, she loves it. And she cooks very well.","Sí, le encanta. Y cocina muy bien."],["What does she cook?","¿Qué cocina?"],["She makes the best ceviche in Chimbote!","¡Hace el mejor ceviche de Chimbote!"]],
+n:"La -s de he/she/it es el error más común. Repite: he works, she works, it works.",
+s:{i:"Cómo suena la -s final.",r:[["-s / -es","works [uérks] · watches [uáchis]: después de ch, sh, s, x suena «is»","v"],["Irregulares","has [jas], goes [góus], does [das]","a"]],f:[["-s","works"],["-es","watches"],["-es","washes"],["-s","reads"],["-es","goes"],["-es","does"]]},
+gt:"Presente simple con he, she, it",gi:"<p><b>Paso 1.</b> Con <b>he, she, it</b> el verbo lleva <b>-s</b> al final: <i>I work → she works</i>.</p><p><b>Paso 2.</b> Si el verbo termina en <b>s, sh, ch, x, o</b> se agrega <b>-es</b>: <i>watch → watches, go → goes</i>.</p><p><b>Paso 3.</b> Si termina en consonante + <b>y</b>, cambia a <b>-ies</b>: <i>study → studies</i>. Irregulares: <i>have → has, do → does</i>.</p>",
+tb:[{c:"Cómo se agrega la -s",h:["Regla","Ejemplo"],r:[["+s","work → works"],["+es (s, sh, ch, x, o)","watch → watches"],["y → ies","study → studies"],["irregular","have → has"],["irregular","do → does"]],k:[1]}],
+gn:["<b>Solo con una persona</b> (he/she/it). Con <i>they</i> no cambia: <i>they work</i>.","<b>My mother</b> = she → <i>My mother works</i>."],
+oj:"✗ She work in a bank → ✓ <i>She works in a bank</i>: no olvides la -s.",
+ej:[["She studies English.","Ella estudia inglés."],["He goes to work by car.","Él va al trabajo en carro."],["My dog sees the cat.","Mi perro ve al gato."]],
+p:[["Completa: She ___ (watch) TV.","watches"],["Completa: He ___ (study) at night.","studies"],["Completa: My father ___ (have) a car.","has"],["Corrige: She work here.","She works here."],["Completa: They ___ (play) soccer.","play"]],
+tk:"Describe la rutina de una persona de tu familia con 6 frases en he/she + verbo con -s."},
+
+{t:"Do / does: negativo y preguntas",g:"Negar y preguntar en presente simple con do, does, don't y doesn't.",
+w:[["don't","no (auxiliar)","dóunt"],["doesn't","no (he/she/it)","dásent"],["meat","carne","míit"],["fish","pescado","fish"],["smoke","fumar","smóuk"],["drive","manejar","dráiv"],["understand","entender","anderstánd"],["remember","recordar","rimémber"],["need","necesitar","níid"],["want","querer","uánt"],["often","a menudo","ófen"],["really","de verdad","ríli"],["early","temprano","érli"],["late","tarde","léit"]],
+f:[["I don't understand.","No entiendo."],["She doesn't eat meat.","Ella no come carne."],["Do you speak English?","¿Hablas inglés?"],["Does he drive?","¿Él maneja?"],["Yes, I do.","Sí."],["No, she doesn't.","No."]],
+v:["come","venir","Presente",["come","come","comes","come","come","come"]],
+c:[["Do you want coffee?","¿Quieres café?"],["No, thanks. I don't drink coffee.","No, gracias. No tomo café."],["Does your wife drink coffee?","¿Tu esposa toma café?"],["Yes, she does. She loves it.","Sí. Le encanta."],["Does she come to the party?","¿Ella viene a la fiesta?"],["No, she doesn't. She works late.","No. Trabaja hasta tarde."]],
+n:"Con does / doesn't el verbo vuelve a su forma base: She doesn't works ✗ → She doesn't work ✓.",
+s:{i:"Las formas cortas negativas.",r:[["don't / doesn't","Se dicen rápido y la t casi no suena: [dóun], [dásen]","v"],["Une las palabras","«Do you» se dice junto: [du iu]","a"]],f:[["don't","I don't understand."],["doesn't","She doesn't eat meat."],["do you","Do you speak English?"],["does","Does he drive?"],["sm","smoke"],["ea","really"]]},
+gt:"Do / does: negativo y preguntas",gi:"<p><b>Paso 1 · El ayudante:</b> en presente simple, para negar y preguntar se usa un ayudante: <b>do</b> (I, you, we, they) o <b>does</b> (he, she, it). En español no existe: es la gran diferencia.</p><p><b>Paso 2 · Negar:</b> persona + <b>don't / doesn't</b> + verbo base: <i>I don't smoke · She doesn't smoke</i>.</p><p><b>Paso 3 · Preguntar:</b> <b>Do / Does</b> + persona + verbo base: <i>Do you smoke? · Does she smoke?</i> Responde: <i>Yes, I do / No, she doesn't</i>.</p>",
+tb:[{c:"Negativo",h:["Persona","Negativo"],r:[["I / you / we / they","don't work"],["he / she / it","doesn't work"]],k:[1]},{c:"Preguntas",h:["Pregunta","Respuesta corta"],r:[["Do you work here?","Yes, I do."],["Does he work here?","No, he doesn't."],["Do they work here?","Yes, they do."]],k:[0,1]}],
+gn:["<b>La -s pasa al ayudante:</b> <i>she works</i> → <i>does she work?</i> (no «does she works»).","<b>Con to be NO se usa do:</b> <i>Are you tired?</i> (no «Do you are…»)."],
+oj:"✗ She don't like fish → ✓ <i>She doesn't like fish</i>.",
+ej:[["I don't remember.","No me acuerdo."],["Does she need help?","¿Ella necesita ayuda?"],["We don't come early.","No venimos temprano."]],
+p:[["Niega: He drives.","He doesn't drive."],["Pregunta: You eat fish.","Do you eat fish?"],["Corrige: She doesn't works.","She doesn't work."],["Responde corto que no: Does she smoke?","No, she doesn't."],["Di: «No entiendo».","I don't understand."]],
+tk:"Di 4 cosas que NO haces y pregunta 4 cosas a alguien imaginario con Do you…? Responde tú mismo."},
+
+{t:"La rutina · adverbios de frecuencia",g:"Contar tu rutina y decir cada cuánto haces algo: always, usually, sometimes, never.",
+w:[["wake up","despertarse","uéik ap"],["get up","levantarse","get ap"],["take a shower","ducharse","téik a sháuer"],["have breakfast","desayunar","jav brékfast"],["have lunch","almorzar","jav lanch"],["go to bed","ir a dormir","góu tu bed"],["always","siempre","ólueis"],["usually","normalmente","iúshuali"],["often","a menudo","ófen"],["sometimes","a veces","sámtaims"],["never","nunca","néver"],["after","después","áfter"],["before","antes","bifór"],["then","luego","den"]],
+f:[["I always wake up at six.","Siempre me despierto a las seis."],["I usually have breakfast at home.","Normalmente desayuno en casa."],["She never drinks coffee.","Ella nunca toma café."],["We sometimes eat out.","A veces comemos fuera."],["Then I take the bus.","Luego tomo el bus."],["I want to sleep!","¡Quiero dormir!"]],
+v:["want","querer","Presente",["want","want","wants","want","want","want"]],
+c:[["What time do you wake up?","¿A qué hora te despiertas?"],["I usually wake up at six.","Normalmente a las seis."],["Do you have breakfast at home?","¿Desayunas en casa?"],["Yes, I always have breakfast with my family.","Sí, siempre desayuno con mi familia."],["Do you exercise?","¿Haces ejercicio?"],["Sometimes. I never go to the gym!","A veces. ¡Nunca voy al gimnasio!"]],
+n:"Los adverbios de frecuencia van ANTES del verbo (I always eat) pero DESPUÉS de to be (I am always late).",
+s:{i:"Frases que se dicen como una sola palabra.",r:[["Une las palabras","wake up [uéikap], get up [géirap]: la consonante se une a la vocal","v"],["SH","shower, usually: como pidiendo silencio «shh»","a"]],f:[["wake up","wake up"],["get up","get up"],["sh","take a shower"],["s","usually"],["al","always"],["n","never"]]},
+gt:"Rutina y adverbios de frecuencia",gi:"<p><b>Paso 1.</b> Los adverbios de frecuencia dicen cada cuánto haces algo: <i>always</i> (100 %) → <i>usually → often → sometimes → never</i> (0 %).</p><p><b>Paso 2.</b> Van <b>antes del verbo</b> principal: <i>I <b>always</b> wake up early</i>.</p><p><b>Paso 3.</b> Pero van <b>después de to be</b>: <i>I am <b>always</b> tired</i>.</p>",
+tb:[{c:"¿Cada cuánto?",h:["Adverbio","%","Ejemplo"],r:[["always","100 %","I always work."],["usually","80 %","I usually walk."],["often","60 %","I often cook."],["sometimes","40 %","I sometimes run."],["never","0 %","I never smoke."]],k:[0,2]}],
+gn:["<b>Never ya es negativo:</b> <i>I never smoke</i> (no «I don't never»).","<b>Want</b> + to + verbo: <i>I want to sleep</i>."],
+oj:"✗ I go always to work by bus → ✓ <i>I always go to work by bus</i>.",
+ej:[["She usually gets up at seven.","Ella normalmente se levanta a las siete."],["I am never late.","Nunca llego tarde."],["He wants to go home.","Él quiere ir a casa."]],
+p:[["Ordena: always / I / early / wake up","I always wake up early."],["Ordena: is / she / late / never","She is never late."],["Di: «A veces cocino».","I sometimes cook."],["Completa: He ___ to rest. (want)","wants"],["Corrige: I don't never drink.","I never drink."]],
+tk:"Cuenta tu rutina completa de un día con 8 frases usando always, usually, sometimes y never."},
+
+{t:"La hora y los días · in, on, at",g:"Decir la hora, los días de la semana y usar in / on / at para el tiempo. Repaso de los días 11-14.",
+w:[["Monday","lunes","mándei"],["Tuesday","martes","tiúsdei"],["Wednesday","miércoles","uénsdei"],["Thursday","jueves","zérsdei"],["Friday","viernes","fráidei"],["Saturday","sábado","sárerdei"],["Sunday","domingo","sándei"],["o'clock","en punto","oklók"],["half past","y media","jaf past"],["quarter","cuarto","kuórer"],["today","hoy","tudéi"],["tomorrow","mañana","tumórou"],["yesterday","ayer","iésterdei"],["week","semana","uíik"]],
+f:[["What time is it?","¿Qué hora es?"],["It is seven o'clock.","Son las siete en punto."],["It is half past eight.","Son las ocho y media."],["The meeting is on Monday.","La reunión es el lunes."],["I work in the morning.","Trabajo en la mañana."],["See you at five.","Nos vemos a las cinco."]],
+v:["use","usar","Presente",["use","use","uses","use","use","use"]],
+c:[["What time is it?","¿Qué hora es?"],["It is a quarter to nine.","Son las nueve menos cuarto."],["Oh no! The meeting is at nine.","¡Oh no! La reunión es a las nueve."],["Is the meeting today?","¿La reunión es hoy?"],["Yes, it is on Thursday. Today!","Sí, es el jueves. ¡Hoy!"],["Then go! See you on Friday.","¡Entonces ve! Nos vemos el viernes."]],
+n:"Días y meses van con MAYÚSCULA en inglés: Monday, January.",
+s:{i:"Los días de la semana.",r:[["Wednesday","Se dice [uénsdei]: la primera d no suena","v"],["TH","Thursday [zérsdei]: TH sin voz, lengua entre los dientes","a"]],f:[["-day","Monday"],["d muda","Wednesday"],["th","Thursday"],["o'clock","seven o'clock"],["half","half past eight"],["qu","quarter"]]},
+gt:"La hora y las preposiciones de tiempo in / on / at",gi:"<p><b>Paso 1 · La hora:</b> <i>What time is it?</i> → <i>It's seven o'clock</i> (7:00) · <i>It's half past seven</i> (7:30) · o simplemente <i>It's seven thirty</i>.</p><p><b>Paso 2 · AT</b> para horas exactas: <i>at 7:00, at night</i>. <b>ON</b> para días y fechas: <i>on Monday, on May 5</i>. <b>IN</b> para partes del día, meses y años: <i>in the morning, in July, in 2026</i>.</p><p><b>Paso 3 · Truco:</b> lo pequeño (la hora) = at; lo mediano (el día) = on; lo grande (mes, año) = in.</p>",
+tb:[{c:"in / on / at (tiempo)",h:["Preposición","Se usa con","Ejemplo"],r:[["at","horas","at 8 o'clock"],["at","la noche","at night"],["on","días","on Monday"],["on","fechas","on July 28"],["in","partes del día","in the morning"],["in","meses y años","in December"]],k:[2]}],
+gn:["<b>En EE. UU.</b> es muy común decir la hora con números: <i>It's eight fifteen</i>.","<b>Repaso del bloque:</b> presente simple, -s, do/does y frecuencia."],
+oj:"✗ in Monday → ✓ <i>on Monday</i>: los días van con on.",
+ej:[["I wake up at six.","Me despierto a las seis."],["My birthday is in May.","Mi cumpleaños es en mayo."],["We have class on Saturday.","Tenemos clase el sábado."]],
+p:[["Completa: ___ Friday (in / on / at)","on Friday"],["Completa: ___ 9 o'clock","at 9 o'clock"],["Completa: ___ the afternoon","in the afternoon"],["Di la hora: 8:30","It's half past eight."],["Di: «¿Qué hora es?»","What time is it?"]],
+tk:"Repaso: di tu horario de la semana (qué haces cada día y a qué hora) usando on, at e in."},
+
+{t:"There is / there are · la casa",g:"Describir tu casa y decir qué hay con there is / there are.",
+w:[["kitchen","cocina","kíchen"],["bedroom","dormitorio","bédrum"],["bathroom","baño","bázrum"],["living room","sala","lívin rum"],["garden","jardín","gárden"],["bed","cama","bed"],["sofa","sofá","sóufa"],["fridge","refrigeradora","frich"],["stairs","escaleras","stérs"],["floor","piso","flor"],["wall","pared","uól"],["roof","techo","ruf"],["key","llave","kíi"],["mirror","espejo","míror"]],
+f:[["There is a sofa in the living room.","Hay un sofá en la sala."],["There are three bedrooms.","Hay tres dormitorios."],["Is there a garden?","¿Hay jardín?"],["There isn't a garage.","No hay cochera."],["I can't find my keys.","No encuentro mis llaves."],["The bathroom is upstairs.","El baño está arriba."]],
+v:["find","encontrar","Presente",["find","find","finds","find","find","find"]],
+c:[["Is there a room for rent?","¿Hay un cuarto en alquiler?"],["Yes, there is. It is on the second floor.","Sí. Está en el segundo piso."],["Is there a bathroom in the room?","¿Hay baño en el cuarto?"],["Yes, and there are two windows.","Sí, y hay dos ventanas."],["How much is it?","¿Cuánto cuesta?"],["It is five hundred soles a month.","Quinientos soles al mes."]],
+n:"There is + singular, there are + plural. Es el «hay» del español.",
+s:{i:"Sonidos de la casa.",r:[["There is","Se une: [dérís]; there are [dérar]","v"],["TH sin voz","bathroom [bázrum]","a"]],f:[["there is","There is a sofa."],["there are","There are three bedrooms."],["th","bathroom"],["k","kitchen"],["st","stairs"],["r","mirror"]]},
+gt:"There is / there are (hay)",gi:"<p><b>Paso 1.</b> El «hay» del español se dice <b>there is</b> (una cosa) o <b>there are</b> (varias): <i>There is a bed · There are two beds</i>.</p><p><b>Paso 2 · Negar:</b> <i>There isn't a garage · There aren't any chairs</i>.</p><p><b>Paso 3 · Preguntar:</b> invierte el orden: <i>Is there a garden? — Yes, there is.</i> · <i>Are there any windows? — No, there aren't.</i></p>",
+tb:[{c:"There is / there are",h:["","Singular","Plural"],r:[["Afirmativo","There is a bed.","There are two beds."],["Negativo","There isn't a bed.","There aren't any beds."],["Pregunta","Is there a bed?","Are there any beds?"]],k:[1,2]}],
+gn:["<b>Forma corta:</b> <i>there's</i> = there is.","<b>Any:</b> en negativo y preguntas con plurales: <i>Are there any chairs?</i>"],
+oj:"✗ Have a sofa in the house → ✓ <i>There is a sofa in the house</i>: «hay» no es have.",
+ej:[["There is a key on the table.","Hay una llave en la mesa."],["There are four chairs.","Hay cuatro sillas."],["Is there a mirror?","¿Hay un espejo?"]],
+p:[["Completa: There ___ two bathrooms.","are"],["Completa: There ___ a garden.","is"],["Pregunta: There is a fridge.","Is there a fridge?"],["Corrige: Have a bank near here.","There is a bank near here."],["Completa: I can't ___ my phone. (find)","find"]],
+tk:"Describe tu casa en 1 minuto: cuántos cuartos hay y qué hay en cada uno con there is / there are."},
+
+{t:"La ciudad · indicaciones",g:"Preguntar y dar indicaciones en la ciudad con preposiciones de lugar e imperativo.",
+w:[["street","calle","stríit"],["avenue","avenida","áveniu"],["corner","esquina","kórner"],["block","cuadra","blok"],["turn left","voltea a la izquierda","tern left"],["turn right","voltea a la derecha","tern ráit"],["go straight","sigue derecho","góu stréit"],["next to","al lado de","nekst tu"],["in front of","frente a","in front ov"],["between","entre","bituíin"],["near","cerca","níer"],["far","lejos","far"],["square","plaza","skuér"],["drugstore","farmacia","drágstor"]],
+f:[["Excuse me, where is the square?","Disculpe, ¿dónde está la plaza?"],["Go straight two blocks.","Siga derecho dos cuadras."],["Turn left at the corner.","Voltee a la izquierda en la esquina."],["It is next to the bank.","Está al lado del banco."],["Is it far?","¿Está lejos?"],["Give me a minute, please.","Dame un minuto, por favor."]],
+v:["give","dar","Presente",["give","give","gives","give","give","give"]],
+c:[["Excuse me, is there a drugstore near here?","Disculpe, ¿hay una farmacia cerca?"],["Yes. Go straight one block.","Sí. Siga derecho una cuadra."],["And then?","¿Y luego?"],["Turn right on Bolognesi Avenue.","Voltee a la derecha en la avenida Bolognesi."],["Is it far?","¿Está lejos?"],["No, it is next to the bank. Five minutes.","No, está al lado del banco. Cinco minutos."]],
+n:"El imperativo es el verbo solo, sin persona: Turn left. Go straight. Para que suene amable agrega please.",
+s:{i:"Grupos de consonantes sin «e» al inicio.",r:[["S inicial","street, straight, square: no digas «estreet»","v"],["GH muda","straight [stréit]: la gh no suena","a"]],f:[["str","street"],["str","go straight"],["sq","square"],["r","turn right"],["l","turn left"],["ee","between"]]},
+gt:"Preposiciones de lugar e imperativo",gi:"<p><b>Paso 1 · Dónde está:</b> <i>next to</i> (al lado), <i>in front of</i> (frente a), <i>between</i> (entre), <i>near</i> (cerca), <i>on the corner</i> (en la esquina).</p><p><b>Paso 2 · Imperativo:</b> para dar indicaciones se usa el verbo solo: <i>Go straight · Turn left · Take the bus</i>.</p><p><b>Paso 3 · Negativo:</b> <b>Don't</b> + verbo: <i>Don't turn here</i>.</p>",
+tb:[{c:"Lugar",h:["Inglés","Español"],r:[["next to the bank","al lado del banco"],["in front of the church","frente a la iglesia"],["between the bank and the store","entre el banco y la tienda"],["on the corner","en la esquina"],["across from the park","al frente del parque"]],k:[0]},{c:"Indicaciones",h:["Inglés","Español"],r:[["Go straight.","Siga derecho."],["Turn left.","Voltee a la izquierda."],["Turn right.","Voltee a la derecha."],["Take the second street.","Tome la segunda calle."]],k:[0]}],
+gn:["<b>Calles:</b> <i>on Pardo Avenue</i> (on con el nombre de la calle).","<b>Give:</b> <i>Give me…</i> = dame. Con please es amable."],
+oj:"✗ In the corner → ✓ <i>On the corner</i>: la esquina de la calle va con on.",
+ej:[["The bank is next to the church.","El banco está al lado de la iglesia."],["Don't turn left.","No voltees a la izquierda."],["Give me your address, please.","Dame tu dirección, por favor."]],
+p:[["Di: «Siga derecho dos cuadras».","Go straight two blocks."],["Di: «Está al lado del banco».","It is next to the bank."],["Niega: Turn here.","Don't turn here."],["¿Cómo se dice «esquina»?","corner"],["Pregunta si está lejos.","Is it far?"]],
+tk:"Explica en voz alta cómo llegar de tu casa a la plaza de armas o al mercado más cercano."},
+
+{t:"Can / can't · habilidades",g:"Decir lo que sabes y puedes hacer, pedir permiso y pedir ayuda con can.",
+w:[["can","poder / saber","kan"],["can't","no poder","kant"],["swim","nadar","suím"],["dance","bailar","dans"],["sing","cantar","sing"],["ride a bike","montar bicicleta","ráid a báik"],["help","ayudar","jelp"],["open","abrir","óupen"],["close","cerrar","klóus"],["call","llamar","kol"],["borrow","pedir prestado","bórou"],["hear","oír","jíer"],["well","bien","uél"],["a little","un poco","a lírel"]],
+f:[["Can you help me?","¿Me puedes ayudar?"],["I can swim.","Sé nadar."],["She can't dance.","Ella no sabe bailar."],["Can I open the window?","¿Puedo abrir la ventana?"],["Can you tell me the time?","¿Me puedes decir la hora?"],["Sorry, I can't hear you.","Perdón, no te escucho."]],
+v:["tell","decir / contar","Presente",["tell","tell","tells","tell","tell","tell"]],
+c:[["Can you speak English?","¿Puedes hablar inglés?"],["Yes, a little. I can read well.","Sí, un poco. Leo bien."],["Can you help me with this email?","¿Me ayudas con este correo?"],["Sure, I can.","Claro."],["Can I call you later?","¿Te puedo llamar luego?"],["Yes, but I can't talk after six.","Sí, pero no puedo hablar después de las seis."]],
+n:"Can sirve para habilidad (I can swim = sé nadar), permiso (Can I…? = ¿puedo?) y pedidos (Can you…? = ¿puedes?).",
+s:{i:"Can y can't suenan parecido: escucha la diferencia.",r:[["Can","En la frase suena corto y débil: I can swim [ái kn suím]","v"],["Can't","Suena fuerte y largo: [kánt]; la t casi no se oye","a"]],f:[["can","I can swim."],["can't","She can't dance."],["sw","swim"],["h","help"],["ll","call"],["ea","hear"]]},
+gt:"Can / can't (poder, saber)",gi:"<p><b>Paso 1.</b> <b>Can</b> es igual para todas las personas: <i>I can, she can, they can</i> (sin -s).</p><p><b>Paso 2.</b> Después de can va el verbo <b>base, sin to</b>: <i>I can swim</i> (no «can to swim»).</p><p><b>Paso 3.</b> Negar: <b>can't</b> (cannot). Preguntar: <b>Can</b> + persona + verbo: <i>Can you help me?</i></p>",
+tb:[{c:"Can",h:["Uso","Ejemplo","Español"],r:[["Habilidad","I can swim.","Sé nadar."],["No puedo","I can't drive.","No sé manejar."],["Permiso","Can I come in?","¿Puedo pasar?"],["Pedido","Can you help me?","¿Me ayudas?"]],k:[1]}],
+gn:["<b>Saber hacer algo:</b> en español «sé nadar» → en inglés <i>I can swim</i>.","<b>Tell vs say:</b> <i>tell</i> = decir A alguien (<i>tell me</i>); <i>say</i> = decir algo (<i>say hello</i>)."],
+oj:"✗ I can to swim → ✓ <i>I can swim</i>: sin to.",
+ej:[["Can you open the door?","¿Puedes abrir la puerta?"],["He can sing very well.","Él canta muy bien."],["Tell me your name.","Dime tu nombre."]],
+p:[["Corrige: She cans dance.","She can dance."],["Corrige: I can to swim.","I can swim."],["Di: «¿Me puedes ayudar?»","Can you help me?"],["Di: «No sé manejar».","I can't drive."],["Completa: Please ___ me the truth. (tell)","tell"]],
+tk:"Di 5 cosas que sabes hacer y 5 que no sabes hacer con can / can't."},
+
+{t:"La comida · contables e incontables",g:"Hablar de comida y distinguir lo que se cuenta (eggs) de lo que no (water, rice).",
+w:[["rice","arroz","ráis"],["chicken","pollo","chíken"],["bread","pan","bred"],["water","agua","uárer"],["milk","leche","milk"],["juice","jugo","yus"],["sugar","azúcar","shúgar"],["salt","sal","solt"],["potato","papa","potéiro"],["tomato","tomate","toméiro"],["onion","cebolla","ánion"],["lemon","limón","lémon"],["breakfast","desayuno","brékfast"],["lunch","almuerzo","lanch"]],
+f:[["I eat rice every day.","Como arroz todos los días."],["Can I have some water?","¿Me da un poco de agua?"],["We need two onions.","Necesitamos dos cebollas."],["There is no sugar.","No hay azúcar."],["I love chicken.","Me encanta el pollo."],["What's for lunch?","¿Qué hay de almuerzo?"]],
+v:["work","trabajar","Presente",["work","work","works","work","work","work"]],
+c:[["What do you want for lunch?","¿Qué quieres de almuerzo?"],["Chicken with rice, please.","Pollo con arroz, por favor."],["Do we have tomatoes?","¿Tenemos tomates?"],["Yes, but we need onions and lemons.","Sí, pero necesitamos cebollas y limones."],["OK, I go to the market.","Bueno, voy al mercado."],["Buy some bread too, please!","¡Compra pan también, por favor!"]],
+n:"Contables tienen plural (an apple, two apples). Incontables no: water, rice, bread, milk.",
+s:{i:"La T americana.",r:[["T suave","Entre vocales la t suena casi como «r»: water [uárer], potato [potéiro]","v"],["J","juice [yus]: la J suena «y» fuerte","a"]],f:[["t → r","water"],["t → r","potato"],["t → r","tomato"],["j","juice"],["ch","chicken"],["ea","bread"]]},
+gt:"Sustantivos contables e incontables",gi:"<p><b>Paso 1 · Contables:</b> se pueden contar, tienen plural y usan a/an: <i>an egg, two eggs</i>.</p><p><b>Paso 2 · Incontables:</b> no se cuentan, NO tienen plural ni usan a/an: <i>water, rice, milk, money, information</i>.</p><p><b>Paso 3.</b> Para contarlos se usa una medida: <i>a glass of water</i>, <i>a kilo of rice</i>, <i>a piece of bread</i>.</p>",
+tb:[{c:"Contable vs incontable",h:["Contable","Incontable"],r:[["an apple / apples","water"],["an egg / eggs","rice"],["a potato / potatoes","bread"],["an onion / onions","milk"],["a lemon / lemons","sugar"]],k:[0,1]},{c:"Medidas",h:["Inglés","Español"],r:[["a glass of water","un vaso de agua"],["a cup of coffee","una taza de café"],["a kilo of rice","un kilo de arroz"],["a piece of bread","un pedazo de pan"]],k:[0]}],
+gn:["<b>Incontables en inglés:</b> <i>information</i>, <i>advice</i> y <i>news</i>.","<b>Con -es:</b> <i>potato → potatoes</i>, <i>tomato → tomatoes</i>."],
+oj:"✗ informations → ✓ <i>information</i>: no tiene plural.",
+ej:[["I drink a glass of milk.","Tomo un vaso de leche."],["We need some potatoes.","Necesitamos papas."],["She works in a restaurant.","Ella trabaja en un restaurante."]],
+p:[["¿«rice» es contable o incontable?","~Incontable."],["Plural de «tomato».","tomatoes"],["Di: «un vaso de agua».","a glass of water"],["Corrige: I need an information.","I need some information."],["Di: «Me encanta el pollo».","I love chicken."]],
+tk:"Di qué comes en un día normal (desayuno, almuerzo y cena) usando a/an para contables y some para incontables."},
+
+{t:"En el restaurante · some / any",g:"Pedir en un restaurante y usar some, any, how much y how many. Repaso de los días 16-19.",
+w:[["some","algo de / unos","sam"],["any","algún / nada de","éni"],["menu","carta","méniu"],["waiter","mozo","uéirer"],["check","cuenta","chek"],["order","pedir / orden","órder"],["dish","plato","dish"],["dessert","postre","disért"],["drink","bebida","drink"],["glass","vaso","glas"],["fork","tenedor","fork"],["knife","cuchillo","náif"],["spoon","cuchara","spun"],["delicious","delicioso","delíshos"]],
+f:[["Can I see the menu, please?","¿Me muestra la carta, por favor?"],["I would like a ceviche.","Quisiera un ceviche."],["Do you have any dessert?","¿Tienen algún postre?"],["How much is the check?","¿Cuánto es la cuenta?"],["The check, please.","La cuenta, por favor."],["It is delicious!","¡Está delicioso!"]],
+v:["call","llamar","Presente",["call","call","calls","call","call","call"]],
+c:[["Good afternoon. Are you ready to order?","Buenas tardes. ¿Listos para pedir?"],["Yes. I would like a ceviche and some rice.","Sí. Quisiera un ceviche y arroz."],["Any drinks?","¿Algo para tomar?"],["A glass of chicha morada, please.","Un vaso de chicha morada, por favor."],["Do you want any dessert?","¿Desea algún postre?"],["No, thanks. Just the check, please.","No, gracias. Solo la cuenta, por favor."]],
+n:"«I would like» (I'd like) es la forma cortés de pedir: más educado que «I want».",
+s:{i:"Palabras de restaurante que engañan.",r:[["K muda","knife [náif]: la k no suena","v"],["Dessert ≠ desert","dessert [disért] = postre; desert [dézert] = desierto","a"]],f:[["k muda","knife"],["ss","dessert"],["t → r","waiter"],["ch","check"],["sh","delicious"],["oo","spoon"]]},
+gt:"Some / any · How much / how many",gi:"<p><b>Paso 1 · Some:</b> en frases afirmativas = «unos, algo de»: <i>I want some water</i>.</p><p><b>Paso 2 · Any:</b> en negativas y preguntas: <i>Do you have any dessert? · We don't have any bread</i>.</p><p><b>Paso 3 · ¿Cuánto?:</b> <b>How many</b> + contables plurales (<i>How many eggs?</i>) · <b>How much</b> + incontables o precio (<i>How much water? How much is it?</i>).</p>",
+tb:[{c:"Some / any",h:["Tipo","Ejemplo"],r:[["Afirmativo","I have some money."],["Negativo","I don't have any money."],["Pregunta","Do you have any money?"],["Ofrecer (some)","Would you like some coffee?"]],k:[1]},{c:"How much / how many",h:["Pregunta","Con"],r:[["How many chairs?","contables"],["How much rice?","incontables"],["How much is it?","precio"]],k:[0]}],
+gn:["<b>Al ofrecer</b> se usa <i>some</i> aunque sea pregunta: <i>Would you like some tea?</i>","<b>Repaso del bloque:</b> there is/are, lugares, can y comida."],
+oj:"✗ How many money? → ✓ <i>How much money?</i>: money es incontable.",
+ej:[["We don't have any eggs.","No tenemos huevos."],["How many people are there?","¿Cuántas personas hay?"],["Call the waiter, please.","Llama al mozo, por favor."]],
+p:[["Completa: Do you have ___ questions? (some / any)","any"],["Completa: I want ___ water. (some / any)","some"],["Completa: How ___ people? (much / many)","many"],["Di: «La cuenta, por favor».","The check, please."],["Pide de forma cortés un ceviche.","I would like a ceviche, please."]],
+tk:"Repaso: simula que pides en un restaurante: saludo, pedido completo (plato, bebida y postre) y la cuenta. Haz los dos papeles."}
+);
+
+B.push(
+{t:"Like / love / hate + -ing",g:"Decir lo que te gusta y lo que no, con like, love y hate + verbo -ing.",
+w:[["like","gustar","láik"],["love","encantar / amar","lav"],["hate","odiar","jéit"],["enjoy","disfrutar","enyói"],["prefer","preferir","prifér"],["cooking","cocinar","kúkin"],["reading","leer","rídin"],["dancing","bailar","dánsin"],["running","correr","ránin"],["shopping","ir de compras","shópin"],["music","música","miúsik"],["movies","películas","múvis"],["beach","playa","bíich"],["free time","tiempo libre","frí táim"]],
+f:[["I like music.","Me gusta la música."],["She loves dancing.","A ella le encanta bailar."],["I hate waking up early.","Odio levantarme temprano."],["Do you like reading?","¿Te gusta leer?"],["What do you do in your free time?","¿Qué haces en tu tiempo libre?"],["Try the ceviche!","¡Prueba el ceviche!"]],
+v:["try","intentar / probar","Presente",["try","try","tries","try","try","try"]],
+c:[["What do you do in your free time?","¿Qué haces en tu tiempo libre?"],["I love going to the beach.","Me encanta ir a la playa."],["Do you like swimming?","¿Te gusta nadar?"],["Yes, but I hate cold water!","Sí, ¡pero odio el agua fría!"],["I enjoy cooking. Try my ceviche!","Disfruto cocinar. ¡Prueba mi ceviche!"],["I would love to!","¡Me encantaría!"]],
+n:"En inglés no se dice «me gusta» al revés: la persona hace la acción. I like = me gusta. She likes = le gusta a ella.",
+s:{i:"La terminación -ing.",r:[["-ing","Suena [in] con la ng nasal y suave, sin «g» fuerte: cooking [kúkin]","v"],["Ojo","beach [bíich] (playa) se dice con i larga","a"]],f:[["-ing","cooking"],["-ing","reading"],["-ing","dancing"],["ea","beach"],["v","love"],["h","hate"]]},
+gt:"Like, love, hate + -ing",gi:"<p><b>Paso 1.</b> «Me gusta» en inglés es <b>I like</b>: la persona va primero. <i>A ella le gusta</i> = <i>She likes</i> (con -s).</p><p><b>Paso 2.</b> Después de like, love, hate y enjoy, el verbo va con <b>-ing</b>: <i>I like cooking</i>.</p><p><b>Paso 3 · Cómo formar -ing:</b> casi siempre + ing (<i>read → reading</i>). Si termina en -e se quita (<i>dance → dancing</i>). Consonante-vocal-consonante corta: se dobla (<i>run → running, shop → shopping</i>).</p>",
+tb:[{c:"Gustos",h:["Inglés","Español"],r:[["I love","me encanta"],["I like","me gusta"],["I don't mind","no me molesta"],["I don't like","no me gusta"],["I hate","odio"]],k:[0]},{c:"Formar -ing",h:["Regla","Ejemplo"],r:[["+ing","read → reading"],["-e → -ing","dance → dancing"],["doblar","run → running"],["doblar","swim → swimming"]],k:[1]}],
+gn:["<b>Would like ≠ like:</b> <i>I like coffee</i> (siempre) · <i>I would like a coffee</i> (ahora, pedido).","<b>Try:</b> con he/she → <i>tries</i>."],
+oj:"✗ Me like music → ✓ <i>I like music</i>.",
+ej:[["We love traveling.","Nos encanta viajar."],["He doesn't like running.","A él no le gusta correr."],["She tries a new dish every week.","Ella prueba un plato nuevo cada semana."]],
+p:[["Completa: I love ___ (cook).","cooking"],["Completa: She enjoys ___ (swim).","swimming"],["Di: «A ella le gusta leer».","She likes reading."],["Corrige: I like dance.","I like dancing."],["Completa: He ___ his best. (try)","tries"]],
+tk:"Di 4 cosas que te encantan, 3 que te gustan y 3 que odias, todas con -ing."},
+
+{t:"Ropa, colores y adjetivos",g:"Describir ropa y personas: colores, tamaños y el orden adjetivo + sustantivo.",
+w:[["shirt","camisa","shert"],["T-shirt","polo","tí shert"],["pants","pantalón","pants"],["dress","vestido","dres"],["shoes","zapatos","shus"],["jacket","casaca","yáket"],["black","negro","blak"],["white","blanco","uáit"],["red","rojo","red"],["blue","azul","blu"],["green","verde","gríin"],["yellow","amarillo","iélou"],["big","grande","big"],["small","pequeño","smol"]],
+f:[["I like your blue shirt.","Me gusta tu camisa azul."],["She has a red dress.","Ella tiene un vestido rojo."],["These shoes are too small.","Estos zapatos son muy pequeños."],["What color is it?","¿De qué color es?"],["Can I ask a question?","¿Puedo hacer una pregunta?"],["He is tall and thin.","Él es alto y delgado."]],
+v:["ask","preguntar / pedir","Presente",["ask","ask","asks","ask","ask","ask"]],
+c:[["I like your jacket! Is it new?","¡Me gusta tu casaca! ¿Es nueva?"],["Yes, it is. I love black jackets.","Sí. Me encantan las casacas negras."],["Where do you buy your clothes?","¿Dónde compras tu ropa?"],["At Real Plaza. They have nice clothes.","En Real Plaza. Tienen ropa bonita."],["Can I ask the price?","¿Puedo preguntar el precio?"],["It was on sale: eighty soles!","Estaba en oferta: ¡ochenta soles!"]],
+n:"El adjetivo va ANTES del sustantivo y no tiene plural: a red car, two red cars.",
+s:{i:"La J y la Y inicial.",r:[["J","jacket [yáket]: J inglesa como «ch» suave con voz, nunca como la j española","v"],["Y inicial","yellow [iélou]: como «i» rápida","a"]],f:[["j","jacket"],["y","yellow"],["wh","white"],["sh","shirt"],["oe","shoes"],["ee","green"]]},
+gt:"Adjetivos: dónde van",gi:"<p><b>Paso 1.</b> En inglés el adjetivo va <b>antes</b> del sustantivo: <i>a blue shirt</i> (una camisa azul).</p><p><b>Paso 2.</b> Los adjetivos <b>no cambian</b> ni por plural ni por género: <i>a tall man, a tall woman, tall people</i>.</p><p><b>Paso 3.</b> También van después de to be: <i>The shirt is blue</i>. Para más intensidad: <i>very</i> (muy) o <i>too</i> (demasiado, algo negativo).</p>",
+tb:[{c:"Orden",h:["Español","Inglés"],r:[["una camisa azul","a blue shirt"],["zapatos negros","black shoes"],["una casa grande","a big house"],["un hombre alto","a tall man"]],k:[1]},{c:"Opuestos",h:["Adjetivo","Opuesto"],r:[["big","small"],["tall","short"],["new","old"],["cheap","expensive"],["long","short"]],k:[0,1]}],
+gn:["<b>Pants</b> siempre es plural: <i>My pants are new</i>.","<b>Too ≠ very:</b> <i>too small</i> = demasiado pequeño (no me sirve)."],
+oj:"✗ A shirt blue → ✓ <i>A blue shirt</i>.",
+ej:[["I need black shoes.","Necesito zapatos negros."],["My pants are too big.","Mi pantalón es muy grande."],["She asks a lot of questions.","Ella hace muchas preguntas."]],
+p:[["Ordena: car / red / a","a red car"],["Corrige: two blues shirts","two blue shirts"],["Di: «¿De qué color es?»","What color is it?"],["Completa: He ___ the price. (ask)","asks"],["Opuesto de «expensive».","cheap"]],
+tk:"Describe en voz alta lo que llevas puesto hoy (prenda + color) y a una persona de tu familia (alto, bajo…)."},
+
+{t:"Trabajo y profesiones",g:"Hablar de tu trabajo: qué haces, dónde trabajas y tu horario.",
+w:[["job","trabajo","yob"],["boss","jefe","bos"],["coworker","compañero de trabajo","kóuuérker"],["economist","economista","ikónomist"],["engineer","ingeniero","enyiníer"],["nurse","enfermera","ners"],["lawyer","abogado","lóier"],["accountant","contador","akáuntant"],["fisherman","pescador","físherman"],["salesperson","vendedor","séilsperson"],["salary","sueldo","sálari"],["meeting","reunión","mírin"],["report","informe","ripórt"],["company","empresa","kámpani"]],
+f:[["What do you do?","¿A qué te dedicas?"],["I am an economist.","Soy economista."],["I work for a public institution.","Trabajo en una institución pública."],["I need to finish a report.","Necesito terminar un informe."],["I have a meeting at ten.","Tengo una reunión a las diez."],["My boss is very nice.","Mi jefe es muy amable."]],
+v:["need","necesitar","Presente",["need","need","needs","need","need","need"]],
+c:[["What do you do?","¿A qué te dedicas?"],["I am an economist. I work with prices.","Soy economista. Trabajo con precios."],["Interesting! Do you like your job?","¡Interesante! ¿Te gusta tu trabajo?"],["Yes, but I have a lot of reports.","Sí, pero tengo muchos informes."],["Do you work on weekends?","¿Trabajas los fines de semana?"],["No, I don't. I work Monday to Friday.","No. Trabajo de lunes a viernes."]],
+n:"«What do you do?» NO pregunta qué estás haciendo: pregunta tu profesión.",
+s:{i:"El acento de las palabras largas.",r:[["Acento","economist [ikónomist], engineer [enyiníer]: la fuerza cambia de sílaba","v"],["T americana","meeting [mírin]: la t suena casi «r»","a"]],f:[["stress","economist"],["stress","engineer"],["t → r","meeting"],["aw","lawyer"],["sh","fisherman"],["ur","nurse"]]},
+gt:"Hablar del trabajo",gi:"<p><b>Paso 1.</b> Para preguntar la profesión: <i>What do you do?</i> o <i>What's your job?</i> Respuesta: <i>I'm <b>a / an</b> + profesión</i>.</p><p><b>Paso 2.</b> Dónde: <i>I work <b>for</b> a company</i> (para una empresa) · <i>I work <b>in</b> an office / <b>at</b> a bank</i>.</p><p><b>Paso 3 · Need:</b> <i>need</i> + cosa (<i>I need a pen</i>) o <i>need to</i> + verbo (<i>I need to work</i>).</p>",
+tb:[{c:"Frases de trabajo",h:["Inglés","Español"],r:[["I work for the government.","Trabajo para el Estado."],["I work in an office.","Trabajo en una oficina."],["I work from 8 to 5.","Trabajo de 8 a 5."],["I'm in charge of…","Estoy a cargo de…"],["I'm retired.","Estoy jubilado."]],k:[0]}],
+gn:["<b>Job vs work:</b> <i>job</i> es contable (<i>a good job</i>); <i>work</i> normalmente no (<i>I have a lot of work</i>).","<b>Needs:</b> con he/she: <i>She needs help</i>."],
+oj:"✗ I work in the government → ✓ <i>I work for the government</i>.",
+ej:[["She is an accountant.","Ella es contadora."],["We need to talk.","Necesitamos hablar."],["He works for a fishing company.","Él trabaja para una empresa pesquera."]],
+p:[["Di: «¿A qué te dedicas?»","What do you do?"],["Completa: I am ___ engineer.","an"],["Completa: She ___ a new phone. (need)","needs"],["Corrige: I have a lot of works.","I have a lot of work."],["Di: «Tengo una reunión a las diez».","I have a meeting at ten."]],
+tk:"Explica tu trabajo en 1 minuto: profesión, dónde trabajas, horario, qué haces y qué te gusta de él."},
+
+{t:"El clima",g:"Hablar del clima y de cómo te sientes, con it is y feel.",
+w:[["weather","clima / tiempo","uéder"],["sunny","soleado","sáni"],["cloudy","nublado","kláudi"],["rainy","lluvioso","réini"],["windy","con viento","uíndi"],["hot","caluroso","jot"],["cold","frío","kóuld"],["warm","templado","uórm"],["cool","fresco","kul"],["summer","verano","sámer"],["winter","invierno","uínter"],["rain","lluvia","réin"],["fog","neblina","fog"],["degrees","grados","digríis"]],
+f:[["What's the weather like today?","¿Cómo está el clima hoy?"],["It is sunny and hot.","Está soleado y hace calor."],["It is cloudy in the morning.","Está nublado en la mañana."],["I feel cold.","Tengo frío."],["It is twenty-five degrees.","Hace veinticinco grados."],["It never rains in Chimbote.","Nunca llueve en Chimbote."]],
+v:["feel","sentir(se)","Presente",["feel","feel","feels","feel","feel","feel"]],
+c:[["What's the weather like in Chimbote?","¿Cómo es el clima en Chimbote?"],["In summer it is very hot and sunny.","En verano hace mucho calor y sol."],["And in winter?","¿Y en invierno?"],["It is cloudy and a little cold. There is fog.","Está nublado y algo frío. Hay neblina."],["Does it rain?","¿Llueve?"],["Almost never! I feel lucky.","¡Casi nunca! Me siento afortunado."]],
+n:"Para el clima siempre se usa IT: It is cold (hace frío). En español no hay sujeto; en inglés sí.",
+s:{i:"Vocales del clima.",r:[["OU","cloudy [kláudi]: «au»","v"],["Ojo","cold [kóuld] (frío) ≠ called [kold]","a"]],f:[["th","weather"],["ou","cloudy"],["ai","rainy"],["w","windy"],["ar","warm"],["oo","cool"]]},
+gt:"Hablar del clima con it",gi:"<p><b>Paso 1.</b> El clima siempre empieza con <b>It is</b>: <i>It is hot · It is raining</i>. «Hace frío» = <i>It is cold</i>.</p><p><b>Paso 2.</b> Para preguntar: <i>What's the weather like?</i> (¿cómo está el clima?).</p><p><b>Paso 3 · Feel:</b> cómo te sientes TÚ: <i>I feel cold</i> = tengo frío · <i>I am hot</i> = tengo calor. ¡No uses have!</p>",
+tb:[{c:"Sustantivo → adjetivo",h:["Sustantivo","Adjetivo","Frase"],r:[["sun","sunny","It's sunny."],["cloud","cloudy","It's cloudy."],["rain","rainy","It's rainy."],["wind","windy","It's windy."],["fog","foggy","It's foggy."]],k:[1,2]}],
+gn:["<b>Tener frío / calor</b> = <i>I am cold / I am hot</i> o <i>I feel cold</i>.","<b>Grados:</b> en EE. UU. usan Fahrenheit; 25 °C ≈ 77 °F."],
+oj:"✗ I have cold → ✓ <i>I am cold</i> / <i>I feel cold</i>.",
+ej:[["It is windy today.","Hoy hace viento."],["She feels tired.","Ella se siente cansada."],["It is cool at night.","En la noche está fresco."]],
+p:[["Di: «Hace calor».","It is hot."],["Corrige: I have cold.","I am cold."],["Adjetivo de «cloud».","cloudy"],["Di: «¿Cómo está el clima?»","What's the weather like?"],["Completa: He ___ sick. (feel)","feels"]],
+tk:"Di cómo está el clima hoy en tu ciudad y cómo es en verano y en invierno. Termina diciendo cómo te sientes."},
+
+{t:"Pronombres de objeto · repaso",g:"Usar me, you, him, her, us, them después del verbo. Repaso de los días 21-24.",
+w:[["me","me / a mí","mi"],["you","te / a ti","iú"],["him","lo / a él","jim"],["her","la / a ella","jer"],["it","lo / la (cosa)","it"],["us","nos","as"],["them","los / a ellos","dem"],["with","con","uíd"],["for","para","for"],["about","sobre / acerca de","abáut"],["leave","salir / dejar","líiv"],["visit","visitar","vísit"],["miss","extrañar","mis"],["wait","esperar","uéit"]],
+f:[["Call me later.","Llámame luego."],["I love her.","La amo."],["Wait for us!","¡Espéranos!"],["I miss them.","Los extraño."],["Can you help him?","¿Puedes ayudarlo?"],["I leave home at seven.","Salgo de casa a las siete."]],
+v:["leave","salir / dejar","Presente",["leave","leave","leaves","leave","leave","leave"]],
+c:[["Do you know Carla?","¿Conoces a Carla?"],["Yes, I know her. She works with me.","Sí, la conozco. Trabaja conmigo."],["Can you give her this letter?","¿Puedes darle esta carta?"],["Sure. I see her every day.","Claro. La veo todos los días."],["Thanks! And tell her to call me.","¡Gracias! Y dile que me llame."],["OK. I leave at five, I give it to her then.","Bueno. Salgo a las cinco, se la doy entonces."]],
+n:"El pronombre de objeto va DESPUÉS del verbo: I love her (la amo). En español va antes.",
+s:{i:"Leave vs live: vocal larga y corta.",r:[["Larga","leave [líiv] = salir: alarga la i","v"],["Corta","live [liv] = vivir: i corta. Si las confundes cambia el sentido","a"]],f:[["ea","leave"],["i","live"],["th","them"],["h","him"],["s","us"],["ai","wait"]]},
+gt:"Pronombres de objeto",gi:"<p><b>Paso 1.</b> Los pronombres de sujeto hacen la acción (<i>I, he, she</i>). Los de objeto la <b>reciben</b>: <i>me, him, her, us, them</i>.</p><p><b>Paso 2.</b> Van <b>después del verbo</b>: <i>She calls <b>me</b></i> (ella me llama).</p><p><b>Paso 3.</b> También van después de preposiciones: <i>with me, for him, about them</i>.</p>",
+tb:[{c:"Sujeto → objeto",h:["Sujeto","Objeto","Ejemplo"],r:[["I","me","Help me."],["you","you","I see you."],["he","him","Call him."],["she","her","I know her."],["it","it","Take it."],["we","us","Wait for us."],["they","them","I miss them."]],k:[0,1]}],
+gn:["<b>Con me:</b> <i>with me</i> = conmigo; <i>with you</i> = contigo.","<b>Repaso del bloque:</b> gustos -ing, adjetivos, trabajo y clima."],
+oj:"✗ I her love → ✓ <i>I love her</i>.",
+ej:[["Tell them the truth.","Diles la verdad."],["This gift is for you.","Este regalo es para ti."],["She leaves the keys here.","Ella deja las llaves aquí."]],
+p:[["Completa: I know Pedro. I see ___ every day.","him"],["Completa: Ana is my friend. I love ___.","her"],["Completa: Come with ___! (nosotros)","us"],["Di: «Los extraño».","I miss them."],["¿Diferencia entre leave y live?","~leave [líiv] = salir/dejar; live [liv] = vivir."]],
+tk:"Repaso: di 6 frases sobre tu familia y amigos usando him, her y them (I call her every day…)."},
+
+{t:"Salud y el cuerpo",g:"Decir qué te duele y hablar con el médico: I have a headache, my back hurts.",
+w:[["head","cabeza","jed"],["eye","ojo","ái"],["ear","oreja / oído","íer"],["nose","nariz","nóus"],["mouth","boca","máuz"],["tooth","diente","tuz"],["back","espalda","bak"],["stomach","estómago","stámak"],["arm","brazo","arm"],["leg","pierna","leg"],["hand","mano","jand"],["sick","enfermo","sik"],["doctor","doctor","dóktor"],["medicine","medicina","médisin"]],
+f:[["I have a headache.","Me duele la cabeza."],["My back hurts.","Me duele la espalda."],["I feel sick.","Me siento mal."],["You need to see a doctor.","Necesitas ir al doctor."],["Take this medicine.","Toma esta medicina."],["I live near the hospital.","Vivo cerca del hospital."]],
+v:["live","vivir","Presente",["live","live","lives","live","live","live"]],
+c:[["What's the matter?","¿Qué te pasa?"],["I feel sick. I have a headache.","Me siento mal. Me duele la cabeza."],["Do you have a fever?","¿Tienes fiebre?"],["Yes, a little. And my throat hurts.","Sí, un poco. Y me duele la garganta."],["You need to rest and drink water.","Necesitas descansar y tomar agua."],["Thank you, doctor.","Gracias, doctor."]],
+n:"«Me duele» se dice con hurt: My back hurts. O con -ache: headache, stomachache, toothache.",
+s:{i:"Letras que no suenan.",r:[["CH = K","stomach [stámak], ache [éik]","v"],["TH sin voz","mouth [máuz], tooth [tuz]","a"]],f:[["ch=k","stomach"],["ache","headache"],["th","mouth"],["th","tooth"],["ea","head"],["s","sick"]]},
+gt:"Hablar de dolor y salud",gi:"<p><b>Paso 1 · -ache:</b> <i>I have a headache</i> (cabeza), <i>a stomachache</i> (estómago), <i>a toothache</i> (muela), <i>a backache</i> (espalda).</p><p><b>Paso 2 · hurt:</b> <i>My + parte + hurts</i>: <i>My arm hurts</i>. Si es plural: <i>My eyes hurt</i>.</p><p><b>Paso 3.</b> Con partes del cuerpo se usa el posesivo (my, your), no «the»: <i>My leg hurts</i> (no «the leg»).</p>",
+tb:[{c:"En el médico",h:["Inglés","Español"],r:[["What's the matter?","¿Qué le pasa?"],["I have a fever.","Tengo fiebre."],["I have a cold.","Estoy resfriado."],["I have a cough.","Tengo tos."],["My throat hurts.","Me duele la garganta."],["Take it twice a day.","Tómelo dos veces al día."]],k:[0]}],
+gn:["<b>Cold:</b> <i>I am cold</i> = tengo frío; <i>I have a cold</i> = estoy resfriado.","<b>Plurales:</b> <i>tooth → teeth</i>, <i>foot → feet</i>."],
+oj:"✗ Me hurts the head → ✓ <i>My head hurts</i> / <i>I have a headache</i>.",
+ej:[["My eyes hurt.","Me duelen los ojos."],["She has a cold.","Ella está resfriada."],["He lives with his parents.","Él vive con sus padres."]],
+p:[["Di: «Me duele la cabeza».","I have a headache."],["Corrige: Me hurts the back.","My back hurts."],["Di: «Estoy resfriado».","I have a cold."],["Completa: She ___ in Lima. (live)","lives"],["Plural de «tooth».","teeth"]],
+tk:"Simula una cita con el médico: di qué te duele, desde cuándo y cómo te sientes."},
+
+{t:"Presente continuo",g:"Decir lo que está pasando AHORA con am / is / are + -ing.",
+w:[["now","ahora","náu"],["right now","ahora mismo","ráit náu"],["at the moment","en este momento","at da móument"],["today","hoy","tudéi"],["eating","comiendo","íirin"],["sleeping","durmiendo","slípin"],["waiting","esperando","uéirin"],["driving","manejando","dráivin"],["talking","hablando","tókin"],["listening","escuchando","lísenin"],["doing","haciendo","dúin"],["raining","lloviendo","réinin"],["look","mira","luk"],["busy","ocupado","bísi"]],
+f:[["What are you doing?","¿Qué estás haciendo?"],["I am eating lunch.","Estoy almorzando."],["She is talking on the phone.","Ella está hablando por teléfono."],["It is raining right now.","Está lloviendo ahora mismo."],["We aren't working today.","Hoy no estamos trabajando."],["Look! The bus is coming.","¡Mira! Ya viene el bus."]],
+v:["eat","comer","Presente continuo",["am eating","are eating","is eating","are eating","are eating","are eating"]],
+c:[["Hi! What are you doing?","¡Hola! ¿Qué estás haciendo?"],["I am eating lunch. And you?","Estoy almorzando. ¿Y tú?"],["I am waiting for the bus.","Estoy esperando el bus."],["Where are you going?","¿Adónde vas?"],["I am going to the market. My wife is cooking today.","Voy al mercado. Mi esposa cocina hoy."],["Nice! Enjoy your lunch!","¡Qué bien! ¡Buen provecho!"]],
+n:"Presente simple = siempre (I work). Presente continuo = ahora (I am working).",
+s:{i:"-ing unido a la palabra anterior.",r:[["Une","I am eating [aim íirin]: se dice como una sola palabra","v"],["T americana","eating, waiting: la t entre vocales suena «r»","a"]],f:[["-ing","eating"],["-ing","sleeping"],["t → r","waiting"],["-ing","talking"],["t muda","listening"],["ow","now"]]},
+gt:"Presente continuo (estar + -ando / -iendo)",gi:"<p><b>Paso 1.</b> Se forma con <b>am / is / are + verbo-ing</b>: <i>I am eating</i> (estoy comiendo).</p><p><b>Paso 2.</b> Se usa para lo que pasa <b>ahora mismo</b>: <i>now, right now, at the moment, look!</i></p><p><b>Paso 3 · Negar y preguntar</b> como con to be: <i>She isn't sleeping · Are you working?</i></p>",
+tb:[{c:"Presente continuo",h:["Afirmativo","Negativo","Pregunta"],r:[["I am working","I'm not working","Am I working?"],["you are working","you aren't working","Are you working?"],["he is working","he isn't working","Is he working?"],["they are working","they aren't working","Are they working?"]],k:[0]},{c:"Simple vs continuo",h:["Simple (siempre)","Continuo (ahora)"],r:[["I work every day.","I am working now."],["She cooks on Sundays.","She is cooking right now."]],k:[0,1]}],
+gn:["<b>Verbos que no van en -ing:</b> <i>like, love, know, want, need</i>: <i>I know</i> (no «I am knowing»).","<b>Reglas -ing:</b> igual que el día 21 (dance → dancing, run → running)."],
+oj:"✗ I eating now → ✓ <i>I am eating now</i>: no olvides am/is/are.",
+ej:[["They are sleeping.","Ellos están durmiendo."],["Is it raining?","¿Está lloviendo?"],["I'm not driving.","No estoy manejando."]],
+p:[["Completa: She ___ (cook) now.","is cooking"],["Corrige: I working now.","I am working now."],["Pregunta: You are sleeping.","Are you sleeping?"],["Di: «¿Qué estás haciendo?»","What are you doing?"],["Corrige: I am knowing the answer.","I know the answer."]],
+tk:"Mira a tu alrededor y di 6 cosas que están pasando ahora mismo (I am studying, my son is playing…)."},
+
+{t:"De compras",g:"Comprar en una tienda: probarse ropa, preguntar tallas, precios y pagar.",
+w:[["store","tienda","stor"],["market","mercado","márket"],["size","talla","sáis"],["try on","probarse","trái on"],["fitting room","probador","fírin rum"],["cash","efectivo","kash"],["credit card","tarjeta de crédito","krédit kard"],["change","vuelto","chéinch"],["receipt","boleta / recibo","risíit"],["discount","descuento","dískaunt"],["on sale","en oferta","on séil"],["bag","bolsa","bag"],["customer","cliente","kástomer"],["cashier","cajero","kashíer"]],
+f:[["Can I help you?","¿En qué le puedo ayudar?"],["I'm just looking, thanks.","Solo estoy mirando, gracias."],["Can I try it on?","¿Me lo puedo probar?"],["Do you have it in medium?","¿Lo tiene en talla M?"],["I'll buy it.","Me lo llevo."],["Can I have the receipt, please?","¿Me da la boleta, por favor?"]],
+v:["buy","comprar","Presente",["buy","buy","buys","buy","buy","buy"]],
+c:[["Hello! Can I help you?","¡Hola! ¿En qué le ayudo?"],["Yes, I am looking for a shirt.","Sí, busco una camisa."],["What size are you?","¿Qué talla es usted?"],["Medium. Can I try this one on?","M. ¿Me puedo probar esta?"],["Sure. The fitting room is there.","Claro. El probador está allí."],["It fits! I'll buy it. Can I pay by card?","¡Me queda! Me la llevo. ¿Puedo pagar con tarjeta?"]],
+n:"«I'll buy it» o «I'll take it» = me lo llevo. Es la frase clave para cerrar una compra.",
+s:{i:"Letras mudas al comprar.",r:[["P muda","receipt [risíit]: la p no suena","v"],["Ojo","buy [bái] suena igual que bye","a"]],f:[["p muda","receipt"],["uy","buy"],["sh","cashier"],["ch","change"],["s","size"],["st","store"]]},
+gt:"Frases para comprar",gi:"<p><b>Paso 1 · El vendedor:</b> <i>Can I help you?</i> → tú: <i>I'm looking for…</i> (busco…) o <i>I'm just looking</i>.</p><p><b>Paso 2 · Probar:</b> <i>Can I try it on?</i> · <i>It fits</i> (me queda) · <i>It's too big / small</i>.</p><p><b>Paso 3 · Pagar:</b> <i>How much is it?</i> · <i>I'll take it</i> · <i>Can I pay by card / in cash?</i></p>",
+tb:[{c:"En la tienda",h:["Inglés","Español"],r:[["I'm looking for…","Busco…"],["What size?","¿Qué talla?"],["Small / Medium / Large","S / M / L"],["It fits.","Me queda."],["It doesn't fit.","No me queda."],["I'll take it.","Me lo llevo."],["pay by card / in cash","con tarjeta / en efectivo"]],k:[0]}],
+gn:["<b>Try on</b> = probarse ropa; <i>try</i> solo = probar comida o intentar.","<b>Buy</b> con he/she: <i>buys</i>."],
+oj:"✗ Can I prove it? → ✓ <i>Can I try it on?</i>: prove es demostrar.",
+ej:[["She buys fruit at the market.","Ella compra fruta en el mercado."],["This jacket is on sale.","Esta casaca está en oferta."],["Do you have it in large?","¿La tiene en L?"]],
+p:[["Di: «Solo estoy mirando».","I'm just looking."],["Di: «¿Me lo puedo probar?»","Can I try it on?"],["Di: «Me lo llevo».","I'll take it."],["Completa: He ___ bread every day. (buy)","buys"],["¿Cómo se dice «boleta»?","receipt"]],
+tk:"Haz los dos papeles: vendedor y cliente comprando una casaca, desde el saludo hasta el pago."},
+
+{t:"Pedir con cortesía: Can / Could / Would",g:"Pedir favores y ofrecer cosas con educación: Could you…?, Would you like…?",
+w:[["could","podría","kud"],["would","-ría (cortesía)","wud"],["would like","quisiera","wud láik"],["of course","por supuesto","ov kórs"],["sure","claro","shur"],["favor","favor","féivor"],["pass","pasar","pas"],["bring","traer","bring"],["send","enviar","send"],["borrow","prestarse","bórou"],["lend","prestar","lend"],["bill","recibo / cuenta","bil"],["no problem","no hay problema","nóu próblem"],["anything else","algo más","énizin els"]],
+f:[["Could you help me, please?","¿Podría ayudarme, por favor?"],["Would you like some coffee?","¿Le gustaría un café?"],["Yes, please.","Sí, por favor."],["I would like to pay.","Quisiera pagar."],["Could you send me the report?","¿Podría enviarme el informe?"],["Can I pay by card?","¿Puedo pagar con tarjeta?"]],
+v:["pay","pagar","Presente",["pay","pay","pays","pay","pay","pay"]],
+c:[["Good evening. Would you like a table?","Buenas noches. ¿Desea una mesa?"],["Yes, for two, please.","Sí, para dos, por favor."],["Would you like something to drink?","¿Desean algo de tomar?"],["Could we have two lemonades?","¿Nos podría traer dos limonadas?"],["Of course. Anything else?","Por supuesto. ¿Algo más?"],["No, thanks. Could you bring the bill later?","No, gracias. ¿Podría traer la cuenta luego?"]],
+n:"Can you…? = normal. Could you…? = más educado. Úsalo con desconocidos y en el trabajo.",
+s:{i:"Could, would, should: la L no suena.",r:[["L muda","could [kud], would [wud]","v"],["Une","Would you [wúyu]: la d y la y se unen","a"]],f:[["l muda","could"],["l muda","would"],["would you","Would you like some coffee?"],["sh","sure"],["br","bring"],["c","of course"]]},
+gt:"Pedidos y ofrecimientos corteses",gi:"<p><b>Paso 1 · Pedir:</b> <i>Can you…?</i> (normal) → <i>Could you…?</i> (más amable): <i>Could you open the door?</i></p><p><b>Paso 2 · Ofrecer:</b> <i>Would you like…?</i> = ¿Le gustaría…? Respuesta: <i>Yes, please / No, thank you</i>.</p><p><b>Paso 3 · Querer con educación:</b> <i>I would like (I'd like)</i> en vez de <i>I want</i>: <i>I'd like a coffee</i>.</p>",
+tb:[{c:"Cortesía",h:["Directo","Cortés"],r:[["I want water.","I'd like some water."],["Give me the bill.","Could you bring the bill?"],["Help me.","Could you help me?"],["Do you want tea?","Would you like some tea?"]],k:[1]}],
+gn:["<b>Responder:</b> <i>Sure / Of course / No problem</i>.","<b>Lend vs borrow:</b> <i>lend</i> = prestar a otro; <i>borrow</i> = pedir prestado."],
+oj:"✗ I want a coffee (puede sonar brusco) → ✓ <i>I'd like a coffee, please</i>.",
+ej:[["Could you lend me a pen?","¿Me podrías prestar un lapicero?"],["Would you like to dance?","¿Te gustaría bailar?"],["She pays the bills.","Ella paga las cuentas."]],
+p:[["Haz cortés: Help me.","Could you help me?"],["Haz cortés: I want water.","I'd like some water."],["Ofrece té con would.","Would you like some tea?"],["Di: «Por supuesto».","Of course."],["Completa: He ___ in cash. (pay)","pays"]],
+tk:"Pide 5 favores con Could you…? y ofrece 3 cosas con Would you like…? en voz alta."},
+
+{t:"Prueba final del nivel Básico",g:"Repasar todo el Básico: to be, presente simple, continuo, can, there is y preguntas.",
+w:[["review","repaso","riviú"],["test","prueba","test"],["level","nivel","lével"],["practice","practicar","práktis"],["mistake","error","mistéik"],["correct","correcto","korékt"],["wrong","incorrecto","rong"],["easy","fácil","íisi"],["difficult","difícil","dífikolt"],["learn","aprender","lern"],["goal","meta","góul"],["proud","orgulloso","práud"],["next","siguiente","nekst"],["congratulations","felicitaciones","kongrachuléishons"]],
+f:[["I speak a little English.","Hablo un poco de inglés."],["I am learning English every day.","Estoy aprendiendo inglés todos los días."],["I can introduce myself.","Puedo presentarme."],["Practice makes perfect.","La práctica hace al maestro."],["I am proud of you!","¡Estoy orgulloso de ti!"],["Congratulations!","¡Felicitaciones!"]],
+v:["speak","hablar","Presente",["speak","speak","speaks","speak","speak","speak"]],
+c:[["Hi! Do you speak English?","¡Hola! ¿Hablas inglés?"],["Yes, a little. I am learning.","Sí, un poco. Estoy aprendiendo."],["Your English is good! Where do you study?","¡Tu inglés es bueno! ¿Dónde estudias?"],["I study online, every night.","Estudio en línea, todas las noches."],["Is it difficult?","¿Es difícil?"],["Sometimes, but I like it. My goal is to travel!","A veces, pero me gusta. ¡Mi meta es viajar!"]],
+n:"¡Terminaste el Básico (A1)! Ya puedes presentarte, hablar de tu rutina, comprar, pedir y describir.",
+s:{i:"Repaso de los sonidos más difíciles del nivel.",r:[["TH","think [zink] sin voz · this [dis] con voz","v"],["Vocales largas","leave/live, sheep/ship: alarga cuando hay ee o ea","a"]],f:[["th","think"],["th","this"],["ea","speak"],["-ed","practiced"],["w","wrong"],["v","level"]]},
+gt:"Repaso general del Básico",gi:"<p><b>Paso 1 · To be:</b> <i>I am / you are / he is</i> — negar con not, preguntar invirtiendo: <i>Are you…?</i></p><p><b>Paso 2 · Presente simple:</b> hábitos; -s con he/she/it; do/does para negar y preguntar.</p><p><b>Paso 3 · Presente continuo:</b> am/is/are + -ing para ahora. <b>Can</b> para habilidad y permiso. <b>There is/are</b> para «hay».</p>",
+tb:[{c:"Resumen del nivel",h:["Tema","Ejemplo"],r:[["to be","She is a teacher."],["presente simple","He works in Lima."],["do / does","Do you like fish?"],["presente continuo","I am studying now."],["can","I can swim."],["there is / are","There are two banks."],["posesivos","Her name is Ana."],["in / on / at","on Monday at 8"]],k:[0,1]}],
+gn:["<b>Errores típicos:</b> olvidar la -s (she work ✗), «I have 30 years» ✗, «people is» ✗.","<b>Siguiente nivel:</b> Intermedio (A2): pasado, futuro y comparativos."],
+oj:"✗ She don't speak English → ✓ <i>She doesn't speak English</i>.",
+ej:[["My sister speaks three languages.","Mi hermana habla tres idiomas."],["There is a bank on the corner.","Hay un banco en la esquina."],["We are learning a lot.","Estamos aprendiendo mucho."]],
+p:[["Corrige: She don't like coffee.","She doesn't like coffee."],["Corrige: I have 30 years.","I am 30 years old."],["Completa: Look! It ___ (rain).","is raining"],["Completa: ___ there a bank near here?","Is"],["Di: «Hablo un poco de inglés».","I speak a little English."]],
+tk:"Prueba final oral: habla 2 minutos sin parar: preséntate, tu familia, tu trabajo, tu rutina, tus gustos y qué estás haciendo ahora."}
+);
+
+const P=["I","you","he/she/it","we","you (pl.)","they"];
+const pp=s=>s.split("/")[0].replace(/\s*\(.*\)/,"");
+const D=B.map(b=>({t:b.t,w:b.w,v:b.v,f:b.f,c:b.c,n:b.n}));
+const G=B.map(b=>({t:b.gt,ej:b.ej}));
+const GR=B.map(b=>({i:b.gi,t:b.tb,n:b.gn}));
+const E=B.map(b=>({g:b.g,s:["",[]],p:b.p,t:b.tk}));
+const S2=B.map(b=>b.s);
+const OJ=B.map(b=>b.oj);
+const GX={};
+const PRD={};
+B.forEach(b=>b.w.forEach(([e,s,p])=>{if(p)PRD[e.toLowerCase()]=p}));
+Object.assign(PRD,{"i":"ái","am":"am","is":"is","are":"ar","be":"bi","you":"iú","he":"ji","she":"shi","it":"it","we":"uí","they":"déi","the":"da","a":"a","an":"an","my":"mái","your":"iór","name":"néim","what":"uát","to":"tu","of":"ov","and":"and","in":"in","on":"on","at":"at","do":"du","does":"das","have":"jav","has":"jas","go":"góu","goes":"góus","get":"get","make":"méik","say":"séi","says":"ses","know":"nóu","think":"zink","take":"téik","see":"síi","come":"kam","want":"uánt","use":"iús","find":"fáind","give":"guiv","tell":"tel","call":"kol","try":"trái","ask":"ask","need":"níid","feel":"fíil","leave":"líiv","live":"liv","eat":"íit","buy":"bái","pay":"péi","speak":"spíik","good":"gud","day":"déi","we're":"uír","i'm":"áim","it's":"its","this":"dis","that":"dat","there":"dér","three":"zrí","thank":"zenk","thanks":"zenks","g":"yi","j":"yéi","yes":"iés","no":"nóu","please":"plíis","how":"jáu","old":"óuld","much":"mach","many":"méni","very":"véri","with":"uíd","for":"for","me":"mi","from":"from","can":"kan","not":"not","here":"jíer","practiced":"práktist","coffee":"kófi","some":"sam","like":"láik","would":"wud","could":"kud","shower":"sháuer","bus":"bas","work":"uérk","job":"yob","one":"uán","two":"tu","five":"fáiv","six":"siks","seven":"séven","eight":"éit","nine":"náin","ten":"ten","half":"jaf","past":"past","o'clock":"oklók","sofa":"sóufa","bedrooms":"bédrums","eating":"íirin","meat":"míit","fine":"fáin","happy":"jápi","hungry":"jángri","tired":"táierd","student":"stiúdent","sun":"san","moon":"mun","book":"buk","apple":"ápol","hour":"áuer","umbrella":"ambréla","these":"díis","those":"dóus","children":"chíldren","woman":"úman","mother":"máder","father":"fáder","brother":"bráder","daughter":"dóter","sister":"síster","husband":"jásband","fifteen":"fiftín","fifty":"fífti","thirty":"zéri","forty":"fóri","cheap":"chíip","why":"uái","who":"ju","when":"uén","where":"uér","weekend":"uíkend","study":"stádi","works":"uérks","watches":"uáches","washes":"uáshis","reads":"ríids","understand":"anderstánd","smoke":"smóuk","drive":"dráiv","really":"ríli","wake":"uéik","up":"ap","usually":"iúshuali","always":"ólueis","never":"néver","monday":"mándei","wednesday":"uénsdei","thursday":"zérsdei","quarter":"kuórer","bathroom":"bázrum","kitchen":"kíchen","stairs":"stérs","mirror":"míror","street":"stríit","straight":"stréit","square":"skuér","right":"ráit","left":"left","turn":"tern","between":"bituíin","swim":"suím","dance":"dans","help":"jelp","hear":"jíer","water":"uárer","potato":"potéiro","tomato":"tomáto","juice":"yus","chicken":"chíken","bread":"bred","knife":"náif","dessert":"disért","waiter":"uéirer","check":"chek","delicious":"delíshos","spoon":"spun","cooking":"kúkin","reading":"rídin","dancing":"dánsin","beach":"bíich","love":"lav","hate":"jéit","jacket":"yáket","yellow":"iélou","white":"uáit","shirt":"shert","shoes":"shus","green":"gríin","economist":"ikónomist","engineer":"enyiníer","meeting":"mírin","lawyer":"lóier","fisherman":"físherman","nurse":"ners","weather":"uéder","cloudy":"kláudi","rainy":"réini","windy":"uíndi","warm":"uórm","cool":"kul","them":"dem","him":"jim","us":"as","wait":"uéit","stomach":"stámak","headache":"jédeik","mouth":"máuz","tooth":"tuz","head":"jed","sick":"sik","sleeping":"slípin","waiting":"uéirin","talking":"tókin","listening":"lísenin","now":"náu","receipt":"risíit","cashier":"kashíer","change":"chéinch","size":"sáis","store":"stor","sure":"shur","bring":"bring","course":"kórs","this":"dis","level":"lével","wrong":"rong"});
+function pron(w){const k=w.toLowerCase().replace(/[’`]/g,"'").replace(/[.,!?¿¡:;]/g,"").replace(/\s+/g," ").trim();if(PRD[k])return PRD[k];
+  const ws=k.split(" ");if(ws.length>1&&ws.every(x=>PRD[x]))return ws.map(x=>PRD[x]).join(" ");return ""}
+const EXP=[[/\bi'm\b/g,"i am"],[/\byou're\b/g,"you are"],[/\bwe're\b/g,"we are"],[/\bthey're\b/g,"they are"],[/\b(he|she|it|what|where|who|that|there|how)'s\b/g,"$1 is"],[/\b(i|you|we|they|he|she|it)'ll\b/g,"$1 will"],[/\b(i|you|we|they|he|she)'d\b/g,"$1 would"],[/\b(i|you|we|they)'ve\b/g,"$1 have"],[/\bwon't\b/g,"will not"],[/\bcan't\b/g,"can not"],[/\bcannot\b/g,"can not"],[/\b(is|are|do|does|was|were|have|has|did|could|would|should)n't\b/g,"$1 not"],[/\bok\b/g,"okay"]];
+const expand=s=>EXP.reduce((a,[r,x])=>a.replace(r,x),s);
+function enNum(n){const U=["zero","one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen"],T=["","","twenty","thirty","forty","fifty","sixty","seventy","eighty","ninety"];
+  if(n<20)return U[n];if(n<100)return T[Math.floor(n/10)]+(n%10?" "+U[n%10]:"");
+  if(n<1000)return U[Math.floor(n/100)]+" hundred"+(n%100?" "+enNum(n%100):"");
+  if(n<1000000)return enNum(Math.floor(n/1000))+" thousand"+(n%1000?" "+enNum(n%1000):"");return String(n)}
+function numWords(s){return s.replace(/\b(\d{1,2}):00\b/g,(m,h)=>enNum(+h)+" o'clock").replace(/\b(\d{1,2}):(\d{2})\b/g,(m,h,mi)=>enNum(+h)+" "+(+mi<10?"oh "+enNum(+mi):enNum(+mi))).replace(/(\d),(\d{3})/g,"$1$2").replace(/%/g," percent").replace(/\bS\/\s?/g,"").replace(/\d+/g,m=>enNum(+m))}
+const norm=s=>expand(numWords(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[’`]/g,"'").replace(/-/g," ")).replace(/[^a-z' ]/g,"").replace(/\s+/g," ").trim();
+const clean=s=>expand(numWords(s).toLowerCase().replace(/[’`]/g,"'").replace(/-/g," ")).replace(/[.,!?¿¡:;"]/g,"").replace(/\s+/g," ").trim();
+function enTip(w){w=w.toLowerCase().replace(/[^a-z']/g,"");const t=[];
+  if(/th/.test(w))t.push("<b>TH:</b> pon la punta de la lengua entre los dientes y sopla. No digas «t» ni «d».");
+  if(/^y/.test(w))t.push("<b>Y inicial:</b> suena como una «i» rápida: yes = [iés].");
+  if(/^j|dge|ge$/.test(w))t.push("<b>J:</b> como «ch» pero con voz (dj). Nunca como la j española.");
+  if(/v/.test(w))t.push("<b>V:</b> los dientes de arriba tocan el labio de abajo y vibra. No es «b».");
+  if(/^h/.test(w)&&!/^(hour|honest)/.test(w))t.push("<b>H:</b> solo aire, como una j muy suave: hello = [jeló].");
+  if(/^s[cklmnpqtw]/.test(w))t.push("<b>S + consonante:</b> empieza directo con la s, sin «e» delante: «stop», no «estop».");
+  if(/ed$/.test(w))t.push("<b>-ed:</b> suena [t] o [d], casi nunca [ed]: worked = [uérkt].");
+  if(/^w|wh/.test(w))t.push("<b>W:</b> labios redondos como para decir «u» rápida: water = [uárer].");
+  if(/sh|tion/.test(w))t.push("<b>SH:</b> como cuando pides silencio: «shh».");
+  if(/ch/.test(w)&&!/^ch(r|e[fm])/.test(w))t.push("<b>CH:</b> igual que la ch española, bien marcada: much = [mach].");if(/ee|ea/.test(w))t.push("<b>EE / EA:</b> «i» larga y sonriendo: see = [síi].");
+  if(/ing$/.test(w))t.push("<b>-ING:</b> la ng suena nasal, sin una g fuerte al final.");
+  if(/[^aeiou][^aeiou]?[bcdfgkptsz]$/.test(w)&&!t.length)t.push("<b>Final:</b> pronuncia la última consonante; en inglés no se pierde.");
+  return t[0]||"<b>Consejo:</b> escúchala en 🐢 lento, separa por sílabas y repítela 3 veces imitando la melodía."}
+function howCards(miss){return miss.length?`<div class="how">${miss.slice(0,3).map(w=>{const p=pron(w);return `<div class="hw"><div class="row" style="justify-content:space-between"><b>🗣️ Cómo decir «${w}»</b><span>${spk(w)} ${spkS(w)}</span></div>${p?`<div>Así se lee: <span class="pr" style="font-size:.95rem">[${p}]</span></div>`:""}<div class="mut" style="margin-top:4px">${enTip(w)}</div></div>`}).join("")}</div>`:""}
+const LV=[["Básico · A1","var(--b)",0,30]];
+const V100=[["be","was / were","been","ser / estar"],["have","had","had","tener / haber"],["do","did","done","hacer"],["say","said","said","decir"],["go","went","gone","ir"],["get","got","gotten","conseguir / obtener"],["make","made","made","hacer / fabricar"],["know","knew","known","saber / conocer"],["think","thought","thought","pensar / creer"],["take","took","taken","tomar / llevar"],["see","saw","seen","ver"],["come","came","come","venir"],["want","wanted","wanted","querer"],["use","used","used","usar"],["find","found","found","encontrar"],["give","gave","given","dar"],["tell","told","told","decir / contar"],["work","worked","worked","trabajar"],["call","called","called","llamar"],["try","tried","tried","intentar / probar"],["ask","asked","asked","preguntar / pedir"],["need","needed","needed","necesitar"],["feel","felt","felt","sentir(se)"],["become","became","become","llegar a ser"],["leave","left","left","salir / dejar"],["put","put","put","poner"],["mean","meant","meant","significar"],["keep","kept","kept","mantener / guardar"],["let","let","let","dejar / permitir"],["begin","began","begun","empezar"],["seem","seemed","seemed","parecer"],["help","helped","helped","ayudar"],["talk","talked","talked","hablar / conversar"],["turn","turned","turned","voltear / girar"],["start","started","started","empezar"],["show","showed","shown","mostrar"],["hear","heard","heard","oír"],["play","played","played","jugar / tocar"],["run","ran","run","correr"],["move","moved","moved","mover / mudarse"],["like","liked","liked","gustar"],["live","lived","lived","vivir"],["believe","believed","believed","creer"],["hold","held","held","sostener"],["bring","brought","brought","traer"],["happen","happened","happened","pasar / suceder"],["write","wrote","written","escribir"],["provide","provided","provided","proveer"],["sit","sat","sat","sentarse"],["stand","stood","stood","estar de pie"],["lose","lost","lost","perder"],["pay","paid","paid","pagar"],["meet","met","met","conocer / reunirse"],["include","included","included","incluir"],["continue","continued","continued","continuar"],["set","set","set","fijar / poner"],["learn","learned","learned","aprender"],["change","changed","changed","cambiar"],["lead","led","led","dirigir"],["understand","understood","understood","entender"],["watch","watched","watched","mirar / ver"],["follow","followed","followed","seguir"],["stop","stopped","stopped","parar"],["create","created","created","crear"],["speak","spoke","spoken","hablar"],["read","read","read","leer"],["spend","spent","spent","gastar / pasar tiempo"],["grow","grew","grown","crecer"],["open","opened","opened","abrir"],["walk","walked","walked","caminar"],["win","won","won","ganar"],["offer","offered","offered","ofrecer"],["remember","remembered","remembered","recordar"],["love","loved","loved","amar / encantar"],["consider","considered","considered","considerar"],["appear","appeared","appeared","aparecer"],["buy","bought","bought","comprar"],["wait","waited","waited","esperar"],["serve","served","served","servir"],["die","died","died","morir"],["send","sent","sent","enviar"],["expect","expected","expected","esperar (algo)"],["build","built","built","construir"],["stay","stayed","stayed","quedarse"],["fall","fell","fallen","caer"],["cut","cut","cut","cortar"],["reach","reached","reached","alcanzar"],["remain","remained","remained","permanecer"],["suggest","suggested","suggested","sugerir"],["raise","raised","raised","levantar / subir"],["pass","passed","passed","pasar / aprobar"],["sell","sold","sold","vender"],["require","required","required","requerir"],["report","reported","reported","informar"],["decide","decided","decided","decidir"],["pull","pulled","pulled","jalar"],["eat","ate","eaten","comer"],["drink","drank","drunk","beber"],["drive","drove","driven","manejar"],["sleep","slept","slept","dormir"],["swim","swam","swum","nadar"],["teach","taught","taught","enseñar"],["forget","forgot","forgotten","olvidar"],["choose","chose","chosen","elegir"],["break","broke","broken","romper"],["wear","wore","worn","llevar puesto"],["travel","traveled","traveled","viajar"],["study","studied","studied","estudiar"],["close","closed","closed","cerrar"],["finish","finished","finished","terminar"],["cook","cooked","cooked","cocinar"],["listen","listened","listened","escuchar"],["answer","answered","answered","responder"],["clean","cleaned","cleaned","limpiar"],["arrive","arrived","arrived","llegar"]];
+const isReg=v=>v[1]!=="was / were"&&v[1].endsWith("ed")&&v[2].endsWith("ed")&&!["read"].includes(v[0]);
+let VF="todos",VQ="";
+function verbs(){view="verbs";
+  const L=i=>i<35?"Básico":i<70?"Intermedio":"Avanzado";
+  const list=V100.map((v,i)=>[v,i]).filter(([v,i])=>(VF==="todos"||(VF==="reg"?isReg(v):VF==="irr"?!isReg(v):L(i)===VF))&&(!VQ||(v[0]+" "+v[3]).toLowerCase().includes(VQ)));
+  app.innerHTML=`<button class="btn sm" onclick="home()">← Plan</button><h1>📚 Los ${V100.length} verbos más usados</h1><p class="sub">Presente · Pasado · Participio. Los <b>regulares</b> terminan en -ed; los <b>irregulares</b> hay que memorizarlos. Toca 🔊 para escuchar las tres formas.</p>
+  <input type="text" placeholder="🔎 Buscar verbo o significado…" value="${VQ}" oninput="VQ=this.value.toLowerCase();verbs();const e=document.querySelector('#app input');e.focus();e.setSelectionRange(99,99)">
+  <div class="row" style="margin:10px 0">${[["todos","Todos"],["Básico","Básico"],["Intermedio","Intermedio"],["Avanzado","Avanzado"],["reg","Regulares"],["irr","Irregulares"]].map(([k,l])=>`<button class="tab${VF===k?" on":""}" onclick="VF='${k}';verbs()">${l}</button>`).join("")}</div>
+  <div class="card" style="padding:0;overflow-x:auto"><table><tr><th class="th">#</th><th class="th">Presente</th><th class="th">Pasado</th><th class="th">Participio</th><th class="th">Significado</th><th></th></tr>
+  ${list.map(([v,i])=>`<tr><td class="mut">${i+1}</td><td><b>${v[0]}</b>${PRD[v[0]]?` <span class="pr">[${PRD[v[0]]}]</span>`:""}</td><td style="color:${isReg(v)?"var(--ink)":"var(--rojo)"}">${v[1]}</td><td style="color:${isReg(v)?"var(--ink)":"var(--rojo)"}">${v[2]}</td><td class="mut">${v[3]}</td><td>${spk(v[0]+", "+v[1].replace(" / ",", ")+", "+v[2])}</td></tr>`).join("")}</table></div>
+  <p class="mut">En <span style="color:var(--rojo)">rojo</span>: formas irregulares. Formas de inglés americano: <i>gotten, learned, traveled</i>.</p>
+  <h2 style="margin-top:24px">🔤 Verbos de cada día</h2>${D.map((d,i)=>`<div class="card"><div class="row" style="justify-content:space-between"><h2>${d.v[0]} <span class="mut" style="font-size:1rem">· ${d.v[1]} · ${d.v[2]}</span></h2><button class="btn sm" onclick="openDay(${i},'verbo')">Día ${i+1} →</button></div>${conjTable(d.v)}</div>`).join("")}`;scrollTo(0,0)}
+
+
+const lvlOf=i=>LV.find(l=>i>=l[2]&&i<l[3]);
+
+// ---------- estado ----------
+let done={},rate=0.9,USER=null,TOKEN=null;
+const API="PEGA_AQUI_TU_URL_EXEC";
+const GAS=!!(window.google&&google.script&&google.script.run);
+const GS=GAS||API.startsWith("https://");
+
+// ---------- voz ----------
+let voice=null;
+function pickVoice(){try{const vs=speechSynthesis.getVoices();voice=vs.find(v=>v.lang==="en-US")||vs.find(v=>v.lang&&v.lang.startsWith("en"))||null}catch(e){}}
+try{pickVoice();speechSynthesis.onvoiceschanged=pickVoice}catch(e){}
+function say(t,slow,pitch){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="en-US";if(voice)u.voice=voice;u.rate=slow?0.55:rate;if(pitch)u.pitch=pitch;speechSynthesis.speak(u)}catch(e){toast("Tu navegador no permite audio aquí.")}}
+const esc=s=>s.replace(/'/g,"\\'");
+const spk=(t,ic="🔊")=>`<button class="spk" title="Escuchar" onclick="say('${esc(t)}')">${ic}</button>`;
+const spkS=t=>`<button class="spk" title="Lento" onclick="say('${esc(t)}',1)">🐢</button>`;
+const shuf=a=>a.map(x=>[Math.random(),x]).sort((a,b)=>a[0]-b[0]).map(x=>x[1]);
+function toast(m){const d=document.createElement("div");d.className="modal";d.innerHTML=`<div class="card"><p>${m}</p><button class="btn p" onclick="this.closest('.modal').remove()">OK</button></div>`;document.body.append(d)}
+
+const app=document.getElementById("app");
+let cur=0,mode="aprender",view="home";
+
+// ---------- inicio ----------
+function home(){
+  view="home";const n=Object.keys(done).length;
+  let h=`<div class="row" style="justify-content:space-between"><span class="mut">Hi, <b style="color:var(--ink)">${USER?USER.n:""}</b> 👋</span><button class="btn sm" onclick="logout()">⎋ Cerrar sesión</button></div><h1>🇺🇸 Inglés en 90 días</h1><p class="sub">Desde cero hasta el avanzado, como en el ICPNA: Básico (A1), Intermedio (A2) y Avanzado (B1). Inglés americano con gramática paso a paso, audio, escritura y corrección de pronunciación.</p>
+  <div class="card"><div class="row" style="justify-content:space-between"><span class="score">Progreso: ${n}/${ND} días</span>
+  <span class="row"><label class="mut">Velocidad voz</label><input type="range" min="0.5" max="1.2" step="0.1" value="${rate}" oninput="rate=+this.value"><button class="btn sm" onclick="say('Welcome! Let\\'s start learning English.')">🔊 Probar</button></span></div>
+  <div class="bar" style="margin-top:10px"><i style="width:${n/ND*100}%"></i></div>
+  <div class="row" style="margin-top:12px"><button class="btn p" onclick="openDay(${nextDay()})">▶ Continuar: Día ${nextDay()+1}</button><button class="btn" onclick="verbs()">📚 Los 100 verbos</button><button class="btn" onclick="repaso()">🧠 Repaso</button><button class="btn" onclick="tips()">💡 Tips y trucos</button></div></div>`;
+  LV.forEach(([nm,c,a,b])=>{h+=`<div class="lvl"><span class="dot" style="background:${c}"></span>${nm} · Días ${a+1}-${b}</div><div class="grid">`;
+    for(let i=a;i<b;i++)h+=`<div class="day${i+1>MAXD?" locked":""}" style="--c:${c}" onclick="openDay(${i})">${done[i]?'<span class="ok">✓</span>':i+1>MAXD?'<span class="ok">🔒</span>':""}<b>Día ${i+1}</b><small>${D[i].t}</small><small>🔤 ${D[i].v[0]} · ${D[i].v[2].split(" ")[0]}</small></div>`;
+    h+=`</div>`});
+  h+=`<details class="card" style="margin-top:22px" ${Object.keys(done).length?"":"open"}><summary style="cursor:pointer;font-weight:600">🧭 Cómo estudiar cada día (60 a 90 minutos) y qué esperar</summary>
+  <ol style="line-height:1.7">
+  <li><b>🔉 Sonido (5 min):</b> escucha los ejemplos y repítelos 3 veces, primero en lento.</li>
+  <li><b>📖 Aprender (15 min):</b> escucha, repite y escribe cada palabra. Repasa las de los dos días anteriores.</li>
+  <li><b>📘 Gramática y 🔤 Verbo (15 min):</b> lee la explicación y recita las tablas en voz alta hasta decirlas sin mirar.</li>
+  <li><b>🎧 ✍️ 🗣️ Práctica (15 min):</b> Escuchar, Escribir y Pronunciar.</li>
+  <li><b>💬 Conversación (10 min):</b> escucha el diálogo, oculta la traducción y repite al mismo tiempo que el audio (<i>shadowing</i>). Luego usa el juego de roles.</li>
+  <li><b>❓ Practice y 🎙️ Speak! (10 min):</b> responde en voz alta y grábate.</li>
+  <li><b>🏁 Ejercicio final:</b> con 70% o más el día queda aprobado.</li></ol>
+  <p class="mut" style="margin-bottom:0">Meta: con 30 días por nivel llegas a A1 (Básico), A2 (Intermedio) y una base sólida de B1 (Avanzado), el mismo camino del ICPNA. La clave en inglés es el oído y la pronunciación: escucha cada palabra, mira su [así se lee] y usa el 🎤 para que la página te corrija.</p></details>
+  <div class="card note" style="margin-top:12px"><b>Rutina rápida:</b> 1) Aprender: escucha cada palabra 3 veces. 2) Gramática y Verbo: repite la conjugación en voz alta. 3) Escuchar, Escribir y Pronunciar. 4) Conversación con juego de roles. 5) Ejercicio final: con 70% o más el día queda aprobado. 6) Usa Repaso cada 3 días.</div>`;
+  app.innerHTML=h;scrollTo(0,0);
+}
+let MAXD=90;
+function lockMsg(i){const d=document.createElement("div");d.className="modal";d.innerHTML=`<div class="card" style="text-align:center"><div style="font-size:2.2rem">🔒</div><h2 style="margin:6px 0">No tienes acceso al Día ${i+1}</h2><p class="mut">Comunícate con el administrador para que habilite la siguiente clase.</p><button class="btn p" style="width:100%" onclick="this.closest('.modal').remove()">Entendido</button></div>`;document.body.append(d)}
+const ND=D.length;const nextDay=()=>{for(let i=0;i<ND;i++)if(!done[i])return i;return ND-1};
+
+// ---------- día ----------
+const SECS=[["s-sonido","The sound of the day","Pronunciación",()=>sonido()],["s-aprender","Vocabulary","Vocabulario",()=>aprender()],["s-gram","Grammar","Gramática",()=>gramatica()],["s-verbo","Verb of the day","Verbo",()=>verbo()],["s-conv","Dialogue","Diálogo",()=>conversacion()],["s-prac","Practice","Práctica",()=>practica()]];
+const EXS=[["escuchar","🎧 Escuchar"],["escribir","✍️ Escribir"],["pronunciar","🗣️ Pronunciar"],["final","🏁 Ejercicio final"]];
+const sec=id=>document.getElementById(id);
+const goTo=id=>{const el=sec(id);if(el&&el.scrollIntoView)el.scrollIntoView({behavior:"smooth",block:"start"})};
+function openDay(i,m){if(i+1>MAXD){lockMsg(i);return}const same=view==="day"&&cur===i;cur=i;view="day";if(!same)renderDay();
+  const ex={escuchar,escribir,pronunciar,final}[m];
+  if(ex){ex();document.querySelectorAll("[data-ex]").forEach(b=>b.classList.toggle("on",b.dataset.ex===m));goTo("s-ex")}
+  else if(m){const id={sonido:"s-sonido",aprender:"s-aprender",gramatica:"s-gram",verbo:"s-verbo",conversacion:"s-conv",practica:"s-prac"}[m];if(id)goTo(id)}
+  else scrollTo(0,0)}
+function idxToggle(f){const m=sec("idx"),b=sec("fab");if(!m)return;const open=f===undefined?m.hidden:f;m.hidden=!open;b.textContent=open?"✕":"☰";if(open)idxMark()}
+function idxGo(id){idxToggle(false);if(id)goTo(id);else scrollTo({top:0,behavior:"smooth"})}
+function idxMark(){const ids=[...SECS.map(s=>s[0]),"s-ex"];let act=ids[0];ids.forEach(id=>{const e=sec(id);if(e&&e.getBoundingClientRect&&e.getBoundingClientRect().top<200)act=id});document.querySelectorAll("#idx [data-s]").forEach(b=>b.classList.toggle("on",b.dataset.s===act))}
+function renderDay(){
+  const d=D[cur],L=lvlOf(cur);
+  app.innerHTML=`<div class="row" style="justify-content:space-between"><button class="btn sm" onclick="home()">← Plan</button>
+   <span class="row">${cur>0?`<button class="btn sm" onclick="openDay(${cur-1})">‹ Día ${cur}</button>`:""}${cur<ND-1?`<button class="btn sm" onclick="openDay(${cur+1})">Día ${cur+2} ›</button>`:""}</span></div>
+   <p class="eyebrow"><span class="dot" style="display:inline-block;background:${L[1]}"></span> Día ${cur+1} de 90 · ${L[0]}</p>
+   <h1 style="margin-top:4px">${d.t}</h1><p class="sub">🎯 <b>Objetivo:</b> ${E[cur].g}</p>
+   <div id="idx" class="idx" hidden>${SECS.map((s,i)=>`<button data-s="${s[0]}" onclick="idxGo('${s[0]}')">${i+1} · ${s[2]}</button>`).join("")}<button data-s="s-ex" onclick="idxGo('s-ex')">7 · Ejercicios</button><button class="up" onclick="idxGo()">↑ Volver arriba</button></div>
+   <button id="fab" class="fab" aria-label="Índice" onclick="idxToggle()">☰</button>
+   ${SECS.map((s,i)=>`<section class="blk"><h3 class="sec" id="${s[0]}h">${i+1} · <i>${s[1]}</i> <small>${s[2]}</small></h3><div id="${s[0]}"></div></section>`).join("")}
+   <section class="blk" id="s-ex"><h3 class="sec">7 · <i>Test yourself</i> <small>Ejercicios con nota</small></h3>
+   <p class="mut" style="margin-top:0">Elige un ejercicio: se abre aquí mismo, debajo. Con 70% o más en el <b>Ejercicio final</b> el día queda aprobado.</p>
+   <div class="row">${EXS.map(([k,l])=>`<button class="tab" data-ex="${k}" onclick="openDay(${cur},'${k}')">${l}</button>`).join("")}</div>
+   <div id="pane" style="margin-top:10px"></div></section>
+   <div class="card row" style="justify-content:space-between;margin-top:20px"><span>${done[cur]?"✅ Día aprobado con "+done[cur]+"%":"Aprueba el ejercicio final (70% o más) para completar el día."}</span>
+   ${done[cur]?"":`<button class="btn g" onclick="openDay(${cur},'final')">🏁 Ir al ejercicio final</button>`}</div>
+   <div class="row" style="justify-content:space-between">${cur>0?`<button class="btn" onclick="openDay(${cur-1})">← Día ${cur}</button>`:"<span></span>"}${cur<ND-1?`<button class="btn p" onclick="openDay(${cur+1})">Día ${cur+2} →</button>`:""}</div>`;
+  SECS.forEach(s=>s[3]());
+}
+const pane=()=>document.getElementById("pane");
+
+function aprender(){
+  const d=D[cur];
+  sec("s-aprender").innerHTML=`<div class="card"><h2>Vocabulario (${d.w.length} palabras)</h2><p class="mut" style="margin-top:0">🔊 normal · 🐢 lento · <span class="pr">[así se lee]</span> para un hispanohablante</p><div class="vocab">${d.w.map(([it,es])=>`<div class="w"><div><div class="it">${it}${pron(it)?` <span class="pr">[${pron(it)}]</span>`:""}</div><div class="es">${es}</div></div><span>${spk(it)} ${spkS(it)}</span></div>`).join("")}</div>
+  <button class="btn" style="margin-top:12px" onclick="playAll()">▶ Escuchar todas</button></div>
+  <div class="card"><h2>Frases útiles (${d.f.length})</h2>${d.f.map(([it,es])=>`<div class="w" style="margin:6px 0"><div><div class="it">${it}</div><div class="es">${es}</div></div><span>${spk(it)} ${spkS(it)}</span></div>`).join("")}</div>
+  <div class="card note">💡 ${d.n}</div>`;
+}
+function playAll(){const ws=D[cur].w;let k=0;try{speechSynthesis.cancel()}catch(e){}
+  const nx=()=>{if(k>=ws.length)return;const u=new SpeechSynthesisUtterance(ws[k][0]);u.lang="en-US";if(voice)u.voice=voice;u.rate=rate;u.onend=()=>setTimeout(nx,700);k++;try{speechSynthesis.speak(u)}catch(e){}};nx()}
+
+function tbl(t){return `<div class="card" style="padding:0;overflow-x:auto"><table><caption class="cap">${t.c}</caption><tr><th></th>${t.h.map(x=>`<th class="th">${x}</th>`).join("")}</tr>${t.r.map(r=>{const s=t.k.map(j=>r[j]).join(". ").replace(/[→—·]/g,",").replace(/\//g,",");return `<tr><td style="width:40px">${spk(s)}</td>${r.map((c,j)=>`<td style="width:auto;${t.k.includes(j)?"color:var(--ink);font-weight:500":"color:var(--mut)"}">${c}</td>`).join("")}</tr>`}).join("")}</table></div>`}
+function claves(ns,oj){const ex=t=>{const m=t.match(/<i>(.*?)<\/i>/);return m?m[1].replace(/<[^>]+>/g,""):""};
+  const card=(cls,title,txt)=>{const e=ex(txt);return `<div class="clave ${cls}"><small>${title}</small><div>${txt}</div>${e?`<div class="cx">${spk(e)} <span>${e}</span></div>`:""}</div>`};
+  return `<p class="lbl">🔑 Claves del día</p>${ns.map((n,i)=>{const m=n.match(/^<b>([^<]+):<\/b>\s*/);return card(i?"b":"v","🔑 Clave"+(m?": "+m[1]:""),m?n.slice(m[0].length):n)}).join("")}${card("a","⚠️ Ojo: error típico",oj)}`}
+function gramatica(){
+  const g=G[cur],r=GR[cur],x=(cur===5||cur===10)?GX[cur]:null;
+  sec("s-gram").innerHTML=`<h2 style="margin:6px 0 8px">📘 ${g.t}</h2><div class="prose">${r.i}</div>
+  <div class="tblgrid">${r.t.map(tbl).join("")}${x?tbl({c:x.cap,h:x.head,r:x.rows,k:[1,2]}):""}</div>
+  ${claves(r.n,OJ[cur])}
+  <div class="card"><h2>Ejemplos</h2>${g.ej.map(([it,es])=>`<div class="w" style="margin:6px 0"><div><div class="it">${it}</div><div class="es">${es}</div></div><span>${spk(it)} ${spkS(it)}</span></div>`).join("")}</div>`;
+}
+function sonido(){
+  const s=S2[cur];let prev=null;
+  sec("s-sonido").innerHTML=`<div class="card"><p class="mut" style="margin-top:0">${s.i}</p>
+  ${s.r.map(([t,x,c])=>`<div class="rule ${c}"><small>${t}</small><div>${x}</div></div>`).join("")}
+  <p class="lbl">Así suena</p><div class="sndt"><div class="sr hd"><span>Se escribe</span><span>Ejemplo · se lee</span><span></span></div>
+  ${s.f.map(([w,ex])=>{const lab=w===prev?"":w;prev=w;const p=pron(ex);return `<div class="sr"><b>${lab}</b><span>${ex}${p?` <span class="pr">[${p}]</span>`:""}</span><span>${spk(ex)}</span></div>`}).join("")}</div>
+  <div class="row" style="margin-top:12px"><button class="btn sm" onclick="sayList(1)">🐢 Escuchar todos lento</button><button class="btn sm" onclick="sayList()">▶ Normal</button></div></div>
+  <div class="card note">Escucha cada ejemplo y <b>repítelo 3 veces en voz alta</b>, primero en lento.</div>`;
+}
+function sayList(slow){const ex=S2[cur].f.map(x=>x[1]);let k=0;try{speechSynthesis.cancel()}catch(e){}
+  const nx=()=>{if(k>=ex.length)return;const u=new SpeechSynthesisUtterance(ex[k++]);u.lang="en-US";if(voice)u.voice=voice;u.rate=slow?0.55:rate;u.onend=()=>setTimeout(nx,700);try{speechSynthesis.speak(u)}catch(e){}};nx()}
+function practica(){
+  const e=E[cur];
+  sec("s-prac").innerHTML=`<div class="card"><h2>❓ Practice</h2><p class="mut" style="margin-top:0">Responde <b>en voz alta</b> antes de abrir la respuesta.</p>
+  ${e.p.map(([qq,a],i)=>{const sp=a.startsWith("~"),ans=sp?a.slice(1):a;return `<details class="w" style="display:block;margin:8px 0"><summary style="cursor:pointer;font-weight:500">${i+1}. ${qq}</summary>
+   <div class="row" style="margin-top:8px;color:var(--verde);font-weight:600">${sp?"":spk(ans)} ${ans}</div></details>`}).join("")}</div>
+  <div class="card" style="background:#fbe5e2;border-color:#f3c9c4"><h2>🎙️ Speak! — Tarea oral</h2><p style="line-height:1.6;margin:0">${e.t}</p>
+  <p class="mut" style="margin-bottom:0">Consejo: grábate con el celular y escúchate al final del día.</p></div>`;
+}
+
+function conjTable(v){return `<table>${v[3].map((f,i)=>`<tr><td>${f.startsWith("che ")||f.startsWith("se ")?"":P[i]}</td><td><b>${f}</b></td><td style="text-align:right">${spk((f.startsWith("che ")||f.startsWith("se ")||f.startsWith("mi ")||f.startsWith("ti ")||f.startsWith("si ")||f.startsWith("ci ")||f.startsWith("vi ")?"":pp(P[i])+" ")+f.replace(/\/[ae]$/,""))}</td></tr>`).join("")}</table>`}
+function verbo(){
+  const v=D[cur].v;
+  sec("s-verbo").innerHTML=`<div class="card"><h2>${v[0]} <span class="mut" style="font-size:1rem">(${v[1]})</span> ${spk(v[0])}</h2><p class="mut" style="margin-top:0">Tiempo: <b>${v[2]}</b></p>${conjTable(v)}
+  <button class="btn" style="margin-top:10px" onclick="sayConj()">▶ Escuchar conjugación completa</button></div>
+  <div class="card"><h2>Practica</h2><div id="vq"></div></div>`;
+  vq();
+}
+function sayConj(){const v=D[cur].v;say(v[3].map((f,i)=>(/^(che|se|mi|ti|si|ci|vi) /.test(f)?"":pp(P[i])+" ")+f.replace(/\/[ae]$/,"")).join(", "))}
+function exVerb(v,i){const j=(i+3)%6,f=v[3][j],pr=f.match(/^(che \w+|se \w+)\s/);return `<p class="hint">Ejemplo: para <b>${pr?pr[1]:P[j]}</b> escribes <span class="ej">${pr?f.slice(pr[0].length):f}</span></p>`}
+function otherW(it){const o=D[cur].w.filter(w=>w[0]!==it);return o[Math.floor(Math.random()*o.length)]}
+function vq(){
+  const v=D[cur].v,i=Math.floor(Math.random()*6),ans=v[3][i];
+  const pref=ans.match(/^(che \w+|se \w+)\s/);const shown=pref?pref[1]:P[i];const target=pref?ans.slice(pref[0].length):ans;
+  document.getElementById("vq").innerHTML=`<p style="margin-bottom:4px">Conjuga <b>${v[0]}</b> (${v[2]}) para: <b style="font-size:1.2rem">${shown}</b></p>${exVerb(v,i)}
+  <input type="text" id="vin" placeholder="Escribe la forma…" autocomplete="off" onkeydown="if(event.key==='Enter')chkV()">${accBar("vin")}
+  <div class="row" style="margin-top:10px"><button class="btn p" onclick="chkV()">Comprobar</button><button class="btn" onclick="vq()">Otra</button></div><div class="fb" id="vfb"></div>`;
+  window.__vt=target;
+}
+function chkV(){const g=clean(document.getElementById("vin").value),t=window.__vt,fb=document.getElementById("vfb");
+  const ok=[t,...t.includes("/")?[t.replace(/\/[ae]$/,""),t.replace(/([oi])\/([ae])$/,"$2")]:[]].some(x=>clean(x)===g);
+  if(ok){fb.className="fb ok";fb.textContent="✓ Correct! ";say(t.replace(/\/[ae]$/,""));setTimeout(vq,1300)}
+  else if([t,t.replace(/\/[ae]$/,"")].some(x=>norm(x)===norm(g))){fb.className="fb ok";fb.textContent="≈ Casi: cuida el acento → "+t}
+  else{fb.className="fb bad";fb.textContent="✗ Era: "+t}}
+const accBar=id=>"";const _accOld=id=>`<div class="acc">${["à","è","é","ì","ò","ù"].map(c=>`<button class="btn sm" onclick="const e=document.getElementById('${id}');e.value+='${c}';e.focus()">${c}</button>`).join("")}</div>`;
+
+// ---------- escuchar ----------
+let q=null;
+function escuchar(){
+  const ws=[...shuf(D[cur].w).slice(0,7),...shuf(D[cur].f).slice(0,3)];q={items:shuf(ws),k:0,ok:0};nextL();
+}
+// ---------- errores ----------
+let ERR={};
+function errLoad(){try{ERR=JSON.parse(LS.get("en90err_"+(USER?USER.u:""))||"{}")}catch(e){ERR={}}}
+function errSave(){if(USER)LS.set("en90err_"+USER.u,JSON.stringify(ERR))}
+function addErr(t,it,es,ans){(ERR[cur]=ERR[cur]||{})[t+"|"+it]={t,it,es,ans:ans||""};errSave()}
+function delErr(t,it){if(ERR[cur]){delete ERR[cur][t+"|"+it];errSave()}}
+const errList=()=>Object.values(ERR[cur]||{});
+const TIPO={L:["🎧","Escuchar"],W:["✍️","Escribir"],P:["🗣️","Pronunciar"],R:["🎭","Juego de roles"]};
+function endCard(title,again,next,nextLbl){const n=errList().length;
+  return `<div class="card" style="text-align:center"><h2>${title}</h2>${n?`<p class="mut">Tienes <b>${n}</b> ${n===1?"error guardado":"errores guardados"} para reforzar antes del ejercicio final.</p>`:""}
+  <div class="row" style="justify-content:center"><button class="btn" onclick="${again}()">↺ Repetir</button>${next?`<button class="btn p" onclick="openDay(${cur},'${next}')">${nextLbl} →</button>`:""}</div></div>`}
+function nextL(){
+  if(q.k>=q.items.length){pane().innerHTML=endCard(`Resultado: ${q.ok}/${q.items.length}`,"escuchar","escribir","Siguiente: Escribir");return}
+  const it=q.items[q.k],pool=[...D[cur].w,...D[cur].f].filter(x=>x!==it);
+  const opts=shuf([it,...shuf(pool).slice(0,3)]);
+  pane().innerHTML=`<div class="card"><p class="mut" style="margin-bottom:4px">Pregunta ${q.k+1}/${q.items.length} · Escucha y elige el significado</p>${(o=>`<p class="hint">Ejemplo: si oyes <i>${o[0]}</i>, eliges <span class="ej">${o[1]}</span></p>`)(otherW(it[0]))}
+  <div style="text-align:center;margin:18px 0"><button class="btn p" style="font-size:1.4rem;padding:14px 26px" onclick="say('${esc(it[0])}')">🔊 Escuchar</button> <button class="btn" onclick="say('${esc(it[0])}',1)">🐢 Lento</button></div>
+  <div class="opts">${opts.map(o=>`<button class="opt" data-r="${o===it?1:0}" data-t="${esc(o[1]).replace(/"/g,"&quot;")}" onclick="ansL(this)">${o[1]}</button>`).join("")}</div><div class="fb" id="lfb"></div></div>`;
+  setTimeout(()=>say(it[0]),250);
+}
+function ansL(b){const it=q.items[q.k];document.querySelectorAll(".opt").forEach(o=>{o.disabled=true;if(o.dataset.r==="1")o.classList.add("ok")});
+  const fb=document.getElementById("lfb");if(b.dataset.r==="1"){q.ok++;fb.className="fb ok";fb.textContent="✓ "+it[0]}else{b.classList.add("bad");fb.className="fb bad";fb.textContent="✗ Era: "+it[0]+" = "+it[1];addErr("L",it[0],it[1],"elegiste «"+b.textContent+"»")}
+  q.k++;setTimeout(nextL,1500)}
+// ---------- escribir ----------
+function escribir(){
+  const w=shuf(D[cur].w);const items=shuf([...w.slice(0,6).map(x=>({m:"dict",it:x[0],es:x[1]})),...w.slice(6,8).map(x=>({m:"trad",it:x[0],es:x[1]})),...shuf(D[cur].f).slice(0,2).map(x=>({m:"dict",it:x[0],es:x[1]}))]);
+  q={items,k:0,ok:0};nextW();
+}
+function nextW(){
+  if(q.k>=q.items.length){pane().innerHTML=endCard(`Resultado: ${q.ok}/${q.items.length}`,"escribir","pronunciar","Siguiente: Pronunciar");return}
+  const x=q.items[q.k];
+  pane().innerHTML=`<div class="card"><p class="mut" style="margin-bottom:4px">Ejercicio ${q.k+1}/${q.items.length} · ${x.m==="dict"?"Dictado: escucha y escribe en inglés":"Traducción: escribe en inglés"}</p>${(o=>x.m==="dict"?`<p class="hint">Ejemplo: si oyes <i>${o[0]}</i>, escribes <span class="ej">${o[0]}</span></p>`:`<p class="hint">Ejemplo: <i>${o[1]}</i> → escribes <span class="ej">${o[0]}</span></p>`)(otherW(x.it))}
+  ${x.m==="dict"?`<div style="text-align:center;margin:14px 0"><button class="btn p" style="font-size:1.3rem;padding:12px 24px" onclick="say('${esc(x.it)}')">🔊 Escuchar</button> <button class="btn" onclick="say('${esc(x.it)}',1)">🐢 Lento</button></div>`:`<div class="big">${x.es}</div>`}
+  <input type="text" id="win" placeholder="Escribe en inglés…" autocomplete="off" onkeydown="if(event.key==='Enter')chkW()">${accBar("win")}
+  <div class="row" style="margin-top:10px"><button class="btn p" id="wb" onclick="chkW()">Comprobar</button><button class="btn" onclick="hint()">Pista</button></div><div class="fb" id="wfb"></div></div>`;
+  if(x.m==="dict")setTimeout(()=>say(x.it),250);
+}
+function hint(){const x=q.items[q.k];document.getElementById("wfb").className="fb mut";document.getElementById("wfb").textContent="Empieza con: "+x.it.slice(0,Math.ceil(x.it.length/3))+"…"}
+function chkW(){const x=q.items[q.k],g=document.getElementById("win").value,fb=document.getElementById("wfb"),b=document.getElementById("wb");
+  if(b.dataset.next){q.k++;nextW();return}
+  if(clean(g)===clean(x.it)){q.ok++;fb.className="fb ok";fb.textContent="✓ Perfect! "+x.it+" = "+x.es}
+  else if(norm(g)===norm(x.it)){q.ok++;fb.className="fb ok";fb.textContent="≈ Bien, pero cuida acentos/apóstrofos: "+x.it}
+  else{fb.className="fb bad";fb.textContent="✗ Correcto: "+x.it+" ("+x.es+")";addErr("W",x.it,x.es,"escribiste «"+(g.trim()||"(vacío)")+"»")}
+  say(x.it);b.textContent="Siguiente →";b.dataset.next=1}
+// ---------- micrófono ----------
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+let MIC=null,MICBLOCK=false,REC=null;
+function lev(a,b){const m=a.length,n=b.length,d=Array.from({length:m+1},(_,i)=>[i]);for(let j=1;j<=n;j++)d[0][j]=j;
+  for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));return d[m][n]}
+function sim(a,b){a=norm(a);b=norm(b);if(!a||!b)return 0;if(a===b||a.includes(b))return 1;return 1-lev(a,b)/Math.max(a.length,b.length)}
+const wsim=(a,b)=>!a||!b?0:1-lev(a,b)/Math.max(a.length,b.length);
+const wds=s=>norm(s).split(" ").filter(Boolean);
+const WT=0.85;
+function wscore(heard,target){const H=wds(heard),T=wds(target);if(!T.length||!H.length)return 0;
+  if(T.length===1)return Math.max(...H.map(h=>wsim(h,T[0])),sim(heard,target))>=WT?1:0;
+  return T.filter(t=>H.some(h=>wsim(h,t)>=WT)).length/T.length}
+function cmpHTML(heard,target){const H=wds(heard),T=wds(target);
+  const hh=heard.split(/\s+/).map(w=>{const n=norm(w);return !n||T.some(t=>wsim(n,t)>=WT)?w:`<u>${w}</u>`}).join(" ");
+  const tt=target.split(/\s+/).map(w=>{const n=norm(w);return !n||H.some(h=>wsim(h,n)>=WT)?w:`<b>${w}</b>`}).join(" ");
+  const miss=target.split(/\s+/).filter(w=>{const n=norm(w);return n&&!H.some(h=>wsim(h,n)>=WT)}).map(w=>w.replace(/[^A-Za-z'’-]/g,""));
+  return `<div class="cmp"><div class="cbx bad"><small>✗ Tú dijiste</small>${hh}</div><div class="cbx ok"><small>✓ Debió decirse ${spk(target)}</small>${tt}</div></div>${howCards(miss)}`}
+function micMsg(t,c){const s=sec("ms");if(s)s.innerHTML=t?`<p class="fb ${c||"mut"}" style="text-align:center">${t}</p>`:""}
+function micSet(st,txt){const b=sec("mb");if(!b)return;b.className="micb"+(st?" "+st:"");b.innerHTML=st==="on"?`<span class="wv"><i></i><i></i><i></i><i></i></span> ${txt}`:txt}
+function micUI(boxId,target,cb,lbl){if(REC){try{REC.abort()}catch(e){}REC=null}MIC={target,cb,box:boxId,lbl:lbl||"¡Habla ahora!"};const b=sec(boxId);if(!b)return;
+  b.innerHTML=`<button class="micb" id="mb" onclick="micToggle()">🎤 Toca y habla</button><p class="mut" id="mh" style="text-align:center;font-size:.85rem;margin:6px 0 0"></p><div id="ms"></div>
+  <div id="mk" style="display:${MICBLOCK?"block":"none"}"><p class="hint" style="margin:8px 0 4px">Toca el cuadro y usa el <b>🎤 de tu teclado</b> para dictar en inglés (en Gboard: mantén 🌐 y elige English):</p>
+  <input type="text" id="mki" autocomplete="off" placeholder="Dicta aquí…" onkeydown="if(event.key==='Enter')micEval([this.value])"><div class="row" style="margin-top:8px"><button class="btn p" onclick="micEval([sec('mki').value])">Comprobar</button></div></div>
+  ${MICBLOCK?"":`<button class="btn sm" style="margin-top:8px" onclick="micDict()">⌨️ Dictar con el teclado</button>`}`;}
+function micDict(msg){MICBLOCK=MICBLOCK||!!msg;const k=sec("mk");if(k)k.style.display="block";micMsg(msg||"")}
+function micToggle(){if(REC){try{REC.stop()}catch(e){}return}micStart()}
+function micStart(){if(!MIC)return;micMsg("");
+  if(!SR){micDict("Tu navegador no permite el micrófono. Usa Chrome o el dictado del teclado.");return}
+  let finals=[],interim="",timer=null,done=false,heardAny=false;
+  try{try{speechSynthesis.cancel()}catch(e){}const r=new SR();REC=r;r.lang="en-US";r.continuous=true;r.interimResults=true;r.maxAlternatives=1;
+    const arm=ms=>{clearTimeout(timer);timer=setTimeout(()=>{try{r.stop()}catch(e){}},ms)};
+    const finish=()=>{if(done)return;done=true;clearTimeout(timer);REC=null;const h=sec("mh");if(h)h.textContent="";const txt=(finals.join(" ")+" "+interim).replace(/\s+/g," ").trim();
+      if(!txt){micSet("","🎤 Toca y habla");micMsg("No te escuché. Toca y habla otra vez.");return}micEval([txt])};
+    r.onstart=()=>{micSet("on",MIC.lbl);const h=sec("mh");if(h)h.textContent="Te escucho… cuando calles 5 segundos termino solo · toca para terminar antes";arm(8000)};
+    r.onresult=e=>{finals=[];interim="";for(let i=0;i<e.results.length;i++){const rs=e.results[i];if(rs.isFinal)finals.push(rs[0].transcript);else interim+=rs[0].transcript}heardAny=true;arm(5000);
+      const h=sec("mh");if(h)h.textContent="🗣️ "+(finals.join(" ")+" "+interim).trim()};
+    r.onerror=e=>{if(["not-allowed","service-not-allowed","audio-capture"].includes(e.error)){done=true;REC=null;clearTimeout(timer);micSet("","🎤 Toca y habla");micDict("El micrófono está bloqueado aquí. Usa el 🎤 de tu teclado en el cuadro de abajo.")}};
+    r.onend=finish;r.start()}catch(e){REC=null;micDict("El micrófono está bloqueado aquí. Usa el 🎤 de tu teclado en el cuadro de abajo.")}}
+function micEval(alts){if(!MIC)return;alts=alts.filter(a=>a&&a.trim()).map(numWords);if(!alts.length)return;
+  const best=alts.reduce((b,a)=>wscore(a,MIC.target)>wscore(b,MIC.target)?a:b),sc=wscore(best,MIC.target),ok=sc>=0.75;
+  micSet(ok?"ok":"bad",ok?"✓ Great!":"✗ Intenta otra vez");if(!ok)setTimeout(()=>{if(!REC)micSet("","🎤 Toca y habla")},1600);
+  MIC.cb(ok,best,cmpHTML(best,MIC.target),sc)}
+// ---------- pronunciar ----------
+function pronunciar(){q={items:shuf([...shuf(D[cur].w).slice(0,8),...shuf(D[cur].f).slice(0,2)]),k:0,ok:0};nextP()}
+function nextP(){
+  if(q.k>=q.items.length){pane().innerHTML=endCard(`¡Práctica terminada! ${q.ok}/${q.items.length} bien pronunciadas`,"pronunciar","final","Ir al Ejercicio final");return}
+  const x=q.items[q.k],p=pron(x[0]);
+  pane().innerHTML=`<div class="card" style="text-align:center"><p class="mut" style="margin-bottom:4px">Palabra ${q.k+1}/${q.items.length} · 1) Escucha  2) Toca 🎤 y dila en voz alta</p>
+  <p class="hint">Ejemplo: escuchas <i>hello</i>, tocas 🎤 y dices <span class="ej">hello</span></p>
+  <div class="big">${x[0]}</div><p class="mut">${x[1]}${p?` · <span class="pr">[${p}]</span>`:""}</p>
+  <div class="row" style="justify-content:center;margin-bottom:12px"><button class="btn" onclick="say('${esc(x[0])}')">🔊 Escuchar</button><button class="btn" onclick="say('${esc(x[0])}',1)">🐢 Lento</button></div>
+  <div id="pmic"></div><div id="pact" class="row" style="justify-content:center;margin-top:10px"><button class="btn sm" onclick="pNext(false)">Saltar →</button></div></div>`;
+  micUI("pmic",x[0],(ok,heard,cmp,sc)=>{
+    if(ok){q.ok++;delErr("P",x[0]);micMsg(sc<1?"✓ Bien. Cuida lo marcado:":"✓ Se entendió: «"+heard+"»","ok");if(sc<1)sec("ms").innerHTML+=cmp;setTimeout(()=>{q.k++;nextP()},sc<1?2800:1300)}
+    else{addErr("P",x[0],x[1],"se entendió «"+heard+"»");sec("ms").innerHTML=cmp;sec("pact").innerHTML=`<button class="btn" onclick="micStart()">↺ Intentar otra vez</button><button class="btn p" onclick="pNext(true)">Siguiente →</button>`}},"¡Habla ahora!");
+  setTimeout(()=>say(x[0]),250);
+}
+function pNext(had){const x=q.items[q.k];if(!had)addErr("P",x[0],x[1],"no se practicó");q.k++;nextP()}
+function silabas(s){return s.replace(/([aeiouàèéìòù])(?=[bcdfglmnpqrstvz][aeiouàèéìòù])/gi,"$1·")}
+// ---------- antes del final: errores y reforzar ----------
+function preFinal(){const L=errList();
+  pane().innerHTML=`<div class="card"><h2>Antes del examen: corrige tus errores</h2><p class="mut" style="margin-top:0">En la práctica te equivocaste en <b>${L.length}</b>. Revísalos o refuérzalos:</p>
+  <div class="sndt">${L.map(e=>`<div class="er"><span>${TIPO[e.t][0]}</span><span><b>${e.it}</b> = ${e.es}<br><small class="bad">${e.ans}</small></span><span>${spk(e.it)}</span></div>`).join("")}</div>
+  <button class="btn g" style="width:100%;margin-top:12px" onclick="reforzar()">💪 Reforzar ${L.length===1?"este error":"estos "+L.length}</button>
+  <button class="btn p" style="width:100%;margin-top:8px" onclick="final(true)">Ir al Ejercicio final →</button></div>`}
+function reforzar(){q={items:shuf(errList()),k:0,ok:0,tries:{}};nextRf()}
+function nextRf(){
+  if(q.k>=q.items.length){const n=errList().length;pane().innerHTML=`<div class="card" style="text-align:center"><h2>💪 Refuerzo terminado</h2><p>${n?`Te quedan <b>${n}</b> por corregir.`:"¡Corregiste todos tus errores! 🎉"}</p>
+    <div class="row" style="justify-content:center">${n?`<button class="btn" onclick="preFinal()">Ver lista</button><button class="btn g" onclick="reforzar()">💪 Reforzar otra vez</button>`:""}<button class="btn p" onclick="final(true)">Ir al Ejercicio final →</button></div></div>`;return}
+  const e=q.items[q.k],oral=e.t==="P"||e.t==="R",hd=`<p class="mut" style="margin-bottom:4px">Refuerzo ${q.k+1}/${q.items.length} · ${TIPO[e.t][0]} ${TIPO[e.t][1]}</p>`;
+  if(oral){pane().innerHTML=`<div class="card" style="text-align:center">${hd}<p class="hint">Escucha y dilo en voz alta con el 🎤</p><div class="big" style="font-size:1.6rem">${e.it}</div><p class="mut">${e.es}</p>
+    <div class="row" style="justify-content:center;margin-bottom:12px"><button class="btn" onclick="say('${esc(e.it)}')">🔊 Escuchar</button><button class="btn" onclick="say('${esc(e.it)}',1)">🐢 Lento</button></div><div id="rmic"></div><div id="ract" class="row" style="justify-content:center;margin-top:10px"><button class="btn sm" onclick="q.k++;nextRf()">Saltar →</button></div></div>`;
+    micUI("rmic",e.it,(ok,hd,cmp)=>{
+      if(ok){micMsg("✓ Corregido: «"+hd+"»","ok");delErr(e.t,e.it);setTimeout(()=>{q.k++;nextRf()},1300)}else{sec("ms").innerHTML=cmp;sec("ract").innerHTML=`<button class="btn" onclick="micStart()">↺ Otra vez</button><button class="btn p" onclick="q.k++;nextRf()">Siguiente →</button>`}},"¡Habla ahora!");
+    setTimeout(()=>say(e.it),250);return}
+  pane().innerHTML=`<div class="card">${hd}<p class="hint">Escucha y escríbelo en inglés. Ejemplo: oyes <i>hello</i> → escribes <span class="ej">hello</span></p>
+   <div style="text-align:center;margin:12px 0"><button class="btn p" onclick="say('${esc(e.it)}')">🔊 Escuchar</button> <button class="btn" onclick="say('${esc(e.it)}',1)">🐢 Lento</button></div><p class="mut" style="text-align:center">Significa: ${e.es}</p>
+   <input type="text" id="rfi" autocomplete="off" placeholder="Escribe en inglés…" onkeydown="if(event.key==='Enter')chkRf()">${accBar("rfi")}
+   <div class="row" style="margin-top:10px"><button class="btn p" id="rfb" onclick="chkRf()">Comprobar</button></div><div class="fb" id="rff"></div></div>`;
+  setTimeout(()=>say(e.it),250);
+}
+function chkRf(){const e=q.items[q.k],b=sec("rfb"),f=sec("rff");if(b.dataset.next){q.k++;nextRf();return}
+  const ok=norm(sec("rfi").value)===norm(e.it);f.className="fb "+(ok?"ok":"bad");f.textContent=ok?"✓ Corregido: "+e.it:"✗ Correcto: "+e.it;if(ok)delErr(e.t,e.it);say(e.it);b.textContent="Siguiente →";b.dataset.next=1}
+// ---------- conversación ----------
+let roleMode=false,showTr=true;
+let RP=null;
+function conversacion(){
+  const c=D[cur].c;
+  sec("s-conv").innerHTML=`<div class="card"><h2>💬 Conversación</h2>
+  <p style="margin:0 0 2px"><b>1.</b> Escucha el diálogo completo.</p><p style="margin:0 0 12px"><b>2.</b> Luego practica en <b>Juego de roles</b>.</p>
+  <div class="row" style="margin-bottom:12px"><button class="btn p" onclick="playDialog()">▶ Reproducir diálogo</button><button class="btn" onclick="playDialog(1)">🐢 Lento</button>
+  <button class="btn" onclick="showTr=!showTr;document.querySelectorAll('#dlg .es').forEach(e=>e.style.display=showTr?'':'none');this.textContent=(showTr?'Ocultar':'Mostrar')+' traducción'">${showTr?"Ocultar":"Mostrar"} traducción</button></div>
+  <div id="dlg">${c.map(([it,es],i)=>{const B=i%2==1;return `<div class="w" id="cl${i}" style="margin:6px 0;${B?"margin-left:40px;background:#f3f8f5":"margin-right:40px"}">
+   <div><div class="mut" style="font-size:.75rem;font-weight:600">${B?"B":"A"}</div><div class="it">${it}</div><div class="es" style="${showTr?"":"display:none"}">${es}</div></div><span>${spk(it)}</span></div>`}).join("")}</div></div>
+  <div class="card" id="rp"></div>`;
+  rpIntro();
+}
+function rpIntro(){const r=sec("rp");if(!r)return;
+  r.innerHTML=`<h2>🎭 Juego de roles</h2><p style="margin:0">Se abre la conversación: la otra persona habla y, en tu turno, <b>tú hablas con el 🎤</b> para que la conversación siga.</p>
+  <p class="hint">Ejemplo: A dice «Hi! How are you?» → tú tocas 🎤 y dices <span class="ej">Fine, thanks. And you?</span></p>
+  <div class="row" style="margin-top:10px"><button class="btn g" onclick="rpStart('B')">▶ Empezar: yo soy B</button><button class="btn" onclick="rpStart('A')">Yo soy A</button></div>`}
+function rpStart(me){RP={me,k:0,ok:0,bad:0,tok:Date.now()};const r=sec("rp");
+  r.innerHTML=`<div class="row" style="justify-content:space-between;margin-bottom:8px"><b>🎭 Tú eres ${me}</b><button class="btn sm" onclick="RP=null;try{speechSynthesis.cancel()}catch(e){};rpIntro()">Salir</button></div>
+  <div id="chat" class="chat"></div><div id="rpt"></div>`;rpStep()}
+function rpVoice(u,other){u.lang="en-US";try{const vs=speechSynthesis.getVoices().filter(v=>v.lang&&v.lang.startsWith("en"));const f=vs.find(v=>/samantha|google us english|aria|jenny|zira|female/i.test(v.name));if(f)u.voice=f;else if(voice)u.voice=voice}catch(e){}u.pitch=other?1.2:0.9;u.rate=rate}
+function bubble(who,txt,cls){const ch=sec("chat");if(!ch)return;const d=document.createElement("div");d.className="bb "+cls;d.innerHTML=`<small>${who}</small>${txt}`;ch.appendChild(d)}
+function rpStep(){const c=D[cur].c,t=sec("rpt");if(!RP||!t)return;const tok=RP.tok,mine=i=>(RP.me==="B")===(i%2===1);
+  if(RP.k>=c.length){t.innerHTML=`<div style="text-align:center;margin-top:10px"><p><span style="color:var(--verde);font-weight:600">✓ ${RP.ok} bien</span> · <span style="color:var(--rojo);font-weight:600">✗ ${RP.bad} por mejorar</span></p>
+    <div class="row" style="justify-content:center"><button class="btn" onclick="rpStart('${RP.me}')">↺ Repetir</button><button class="btn p" onclick="rpStart('${RP.me==="B"?"A":"B"}')">Cambiar papel (yo soy ${RP.me==="B"?"A":"B"})</button></div></div>`;return}
+  const [it,es]=c[RP.k];
+  if(!mine(RP.k)){t.innerHTML=`<p class="mut" style="text-align:center">🔊 Escucha…</p>`;bubble((RP.me==="B"?"A":"B")+" 🔊",it+`<div class="es">${es}</div>`,"other");
+    let done=false;const go=()=>{if(done||!RP||RP.tok!==tok)return;done=true;RP.k++;rpStep()};
+    try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(it);rpVoice(u,true);u.onend=()=>setTimeout(go,400);speechSynthesis.speak(u)}catch(e){}
+    setTimeout(go,2500+it.length*120);return}
+  t.innerHTML=`<div class="bb turn"><small>🎤 TU TURNO · quieres decir «${es}»</small><div class="rd">${it}</div><div class="mut" style="font-size:.8rem">Léela en voz alta ${spk(it)}</div></div><div id="rmic2"></div><div id="ract2" class="row" style="justify-content:center;margin-top:8px"><button class="btn sm" onclick="rpSkip()">Saltar →</button></div>`;
+  micUI("rmic2",it,(ok,hd,cmp)=>{if(!RP||RP.tok!==tok)return;
+    if(ok){RP.ok++;delErr("R",it);bubble("Tú ✓",hd,"me ok");RP.k++;setTimeout(rpStep,700)}
+    else{addErr("R",it,es,"se entendió «"+hd+"»");sec("ms").innerHTML=cmp;
+      sec("ract2").innerHTML=`<button class="btn sm" onclick="micStart()">↺ Intentar otra vez</button><button class="btn sm" onclick="rpSkip()">Seguir →</button>`}},"¡Te toca! Habla ahora");
+}
+function rpShow(){const [it]=D[cur].c[RP.k],s=sec("ms");if(s){s.className="fb mut";s.innerHTML="Respuesta: <b>"+it+"</b>"}try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(it);rpVoice(u,false);speechSynthesis.speak(u)}catch(e){}}
+function rpSkip(){const [it,es]=D[cur].c[RP.k];RP.bad++;addErr("R",it,es,"no se logró");bubble("Tú ✗",it,"me bad");RP.k++;rpStep()}
+
+function playDialog(slow){const c=D[cur].c;let k=0;try{speechSynthesis.cancel()}catch(e){}
+  const nx=()=>{document.querySelectorAll('[id^="cl"]').forEach(e=>e.style.outline="");if(k>=c.length)return;
+    const el=document.getElementById("cl"+k);if(el)el.style.outline="2px solid var(--oro)";
+    const u=new SpeechSynthesisUtterance(c[k][0]);u.lang="en-US";if(voice)u.voice=voice;u.rate=slow?0.6:rate;u.pitch=k%2?0.8:1.25;u.onend=()=>setTimeout(nx,600);k++;
+    try{speechSynthesis.speak(u)}catch(e){}};nx()}
+
+// ---------- ejercicio final ----------
+function final(skip){
+  if(!skip&&errList().length){preFinal();return}
+  const d=D[cur],qs=[];
+  const fr=shuf(d.f.filter(x=>x[0].split(" ").length>=3));
+  fr.slice(0,3).forEach(x=>qs.push({t:"ord",it:x[0],es:x[1]}));
+  const allW=[...new Set(d.c.concat(d.f).flatMap(x=>x[0].replace(/[.,!?:]/g,"").split(" ")).filter(w=>w.length>3))];
+  const ci=shuf([0,1,2,3,4,5]),resp=ci.find(i=>i%2===1),rest=ci.filter(i=>i!==resp),dict=rest[0];
+  rest.slice(1,3).forEach(i=>{const x=d.c[i],ws=x[0].replace(/[.,!?:]/g,"").split(" ").filter(w=>w.length>2),w=ws.sort((a,b)=>b.length-a.length)[0];
+    qs.push({t:"gap",it:x[0],es:x[1],w,prev:i>0?d.c[i-1][0]:"",opts:shuf([w,...shuf(allW.filter(z=>z.toLowerCase()!==w.toLowerCase())).slice(0,3)])})});
+  qs.push({t:"verb",v:d.v,i:Math.floor(Math.random()*6)});
+  const wd=shuf(d.w)[0];qs.push({t:"trad",it:wd[0],es:wd[1]});
+  const tf=fr[3]||shuf(d.f.filter(x=>!fr.slice(0,3).includes(x)))[0]||d.f[0];
+  qs.push({t:"hard",m:"dict",it:d.c[dict][0],es:d.c[dict][1]});
+  qs.push({t:"hard",m:"trad",it:tf[0],es:tf[1]});
+  qs.push({t:"hard",m:"resp",it:d.c[resp][0],es:d.c[resp][1],prev:d.c[resp-1][0]});
+  q={items:qs,k:0,ok:0};nextF();
+}
+function nextF(){
+  if(q.k>=q.items.length){const pct=Math.round(q.ok/q.items.length*100);registrar(pct);
+    pane().innerHTML=`<div class="card" style="text-align:center"><h2>🏁 Puntaje final: ${q.ok*2}/${q.items.length*2}</h2><p class="mut" style="margin-top:0">${q.ok} de ${q.items.length} respuestas correctas · ${pct}% · se aprueba con ${Math.ceil(q.items.length*0.7)*2} puntos</p>
+    <p>${pct>=70?"Excellent! Aprobaste el día "+(cur+1)+" 🎉 Tu avance quedó guardado.":"Repasa el vocabulario y la conversación, y vuelve a intentarlo."}</p>
+    <div class="row" style="justify-content:center"><button class="btn" onclick="final(true)">Repetir</button>${pct>=70&&cur<ND-1?`<button class="btn p" onclick="openDay(${cur+1})">Día ${cur+2} →</button>`:""}</div></div>`;return}
+  const x=q.items[q.k],hd=`<div class="row" style="justify-content:space-between"><span class="mut">Pregunta ${q.k+1}/${q.items.length} · vale 2 puntos</span><span class="mut">Puntos: <b style="color:var(--ink)">${q.ok*2}</b>/${q.items.length*2}</span></div>${x.t==="hard"?`<p class="hard">⭐ Pregunta difícil</p>`:""}`;
+  if(x.t==="ord"){window.__lock=false;window.__built=[];window.__pool=shuf(x.it.split(" "));
+    pane().innerHTML=`<div class="card">${hd}<h2>Ordena la frase</h2><p class="hint">Ejemplo: toca las palabras en orden → <span class="ej">My name is Marco</span></p><p class="mut">“${x.es}”</p><div id="built" style="min-height:48px;border:2px dashed var(--line);border-radius:10px;padding:8px;margin:10px 0" class="row"></div><div id="pool" class="row"></div>
+    <div class="row" style="margin-top:12px"><button class="btn p" id="fb2" onclick="chkOrd()">Comprobar</button><button class="btn" onclick="window.__built=[];window.__pool=shuf(q.items[q.k].it.split(' '));drawOrd()">↺ Reiniciar</button></div><div class="fb" id="ffb"></div></div>`;drawOrd()}
+  else if(x.t==="gap"){const line=x.it.replace(new RegExp("\\b"+x.w.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"\\b"),"_____");
+    pane().innerHTML=`<div class="card">${hd}<h2>Completa el diálogo</h2><p class="hint">Ejemplo: en «My ____ is Marco» eliges <span class="ej">name</span></p>${x.prev?`<div class="w" style="margin:6px 40px 6px 0"><div class="it">A: ${x.prev}</div>${spk(x.prev)}</div>`:""}
+    <div class="w" style="margin:6px 0 12px 40px;background:#f3f8f5"><div class="it">B: ${line}</div></div><p class="mut">${x.es}</p>
+    <div class="opts">${x.opts.map(o=>`<button class="opt" data-r="${o===x.w?1:0}" onclick="ansF(this)">${o}</button>`).join("")}</div><div class="fb" id="ffb"></div></div>`}
+  else if(x.t==="verb"){const ans=x.v[3][x.i],pref=ans.match(/^(che \w+|se \w+)\s/);window.__vt=pref?ans.slice(pref[0].length):ans;
+    pane().innerHTML=`<div class="card">${hd}<h2>Verbo del día</h2><p style="margin-bottom:4px">Conjuga <b>${x.v[0]}</b> (${x.v[2]}) para <b>${pref?pref[1]:P[x.i]}</b></p>${exVerb(x.v,x.i)}
+    <input type="text" id="fin" autocomplete="off" onkeydown="if(event.key==='Enter')chkFT()">${accBar("fin")}<div class="row" style="margin-top:10px"><button class="btn p" id="fb2" onclick="chkFT()">Comprobar</button></div><div class="fb" id="ffb"></div></div>`}
+  else if(x.t==="hard"){window.__vt=x.it;const ttl={dict:"Dictado: escribe la frase completa",trad:"Traduce la frase completa",resp:"Responde en el diálogo"}[x.m];
+    const body=x.m==="dict"?`<p class="hint">Ejemplo: si oyes <i>Hi! How are you?</i>, escribes <span class="ej">Hi! How are you?</span></p><div style="text-align:center;margin:12px 0"><button class="btn p" onclick="say('${esc(x.it)}')">🔊 Escuchar</button> <button class="btn" onclick="say('${esc(x.it)}',1)">🐢 Lento</button></div>`
+     :x.m==="trad"?`<p class="hint">Ejemplo: <i>Estoy bien, gracias.</i> → escribes <span class="ej">I'm fine, thanks.</span></p><div class="big" style="font-size:1.5rem">${x.es}</div>`
+     :`<p class="hint">Ejemplo: A dice «How are you?» y te piden «Bien, ¿y tú?» → escribes <span class="ej">Fine, and you?</span></p><div class="w" style="margin:6px 40px 6px 0"><div><div class="mut" style="font-size:.75rem">A dice</div><div class="it">${x.prev}</div></div>${spk(x.prev)}</div><p>Tú (B) quieres decir: <b>«${x.es}»</b></p>`;
+    pane().innerHTML=`<div class="card">${hd}<h2>${ttl}</h2>${body}
+    <input type="text" id="fin" autocomplete="off" placeholder="Escribe en inglés…" onkeydown="if(event.key==='Enter')chkFT()">${accBar("fin")}<div class="row" style="margin-top:10px"><button class="btn p" id="fb2" onclick="chkFT()">Comprobar</button></div><div class="fb" id="ffb"></div></div>`;
+    if(x.m==="dict")setTimeout(()=>say(x.it),300)}
+  else{window.__vt=x.it;pane().innerHTML=`<div class="card">${hd}<h2>Traduce al inglés</h2>${(o=>`<p class="hint">Ejemplo: <i>${o[1]}</i> → escribes <span class="ej">${o[0]}</span></p>`)(otherW(x.it))}<div class="big">${x.es}</div>
+    <input type="text" id="fin" autocomplete="off" onkeydown="if(event.key==='Enter')chkFT()">${accBar("fin")}<div class="row" style="margin-top:10px"><button class="btn p" id="fb2" onclick="chkFT()">Comprobar</button></div><div class="fb" id="ffb"></div></div>`}
+}
+function drawOrd(){if(window.__lock)return;document.getElementById("built").innerHTML=window.__built.map((w,i)=>`<button class="btn sm" onclick="window.__pool.push(window.__built.splice(${i},1)[0]);drawOrd()">${w}</button>`).join("");
+  document.getElementById("pool").innerHTML=window.__pool.map((w,i)=>`<button class="btn sm" onclick="window.__built.push(window.__pool.splice(${i},1)[0]);drawOrd()">${w}</button>`).join("")}
+function fNext(ok,msg,it){const fb=document.getElementById("ffb");if(ok)q.ok++;fb.className="fb "+(ok?"ok":"bad");fb.textContent=msg;say(it);q.k++;
+  const b=document.getElementById("fb2");if(b){b.textContent="Siguiente →";b.onclick=nextF}else setTimeout(nextF,1800)}
+function chkOrd(){const x=q.items[q.k],ok=norm(window.__built.join(" "))===norm(x.it);window.__lock=true;const pl=document.getElementById("pool");if(pl)pl.innerHTML="";fNext(ok,(ok?"✓ Perfect! ":"✗ Correcto: ")+x.it,x.it)}
+function ansF(b){const x=q.items[q.k];document.querySelectorAll(".opt").forEach(o=>{o.disabled=true;if(o.dataset.r==="1")o.classList.add("ok")});if(b.dataset.r!=="1")b.classList.add("bad");
+  fNext(b.dataset.r==="1",(b.dataset.r==="1"?"✓ ":"✗ ")+x.it,x.it)}
+function chkFT(){const g=document.getElementById("fin").value,t=window.__vt,alts=[t,t.replace(/\/[ae]$/,""),t.replace(/([oi])\/([ae])$/,"$2")];
+  const ok=alts.some(a=>norm(a)===norm(g));fNext(ok,(ok?"✓ Correct! ":"✗ Correcto: ")+t,t.replace(/\/[ae]$/,""))}
+
+// ---------- sesión ----------
+const LS={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}},del:k=>{try{localStorage.removeItem(k)}catch(e){}}};
+const save=()=>{if(USER)LS.set("en90_"+USER.u,JSON.stringify(done))};
+const srv=(fn,...a)=>GAS?new Promise((res,rej)=>google.script.run.withSuccessHandler(res).withFailureHandler(rej)[fn](...a))
+  :fetch(API,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({fn,args:a})}).then(r=>r.json()).then(r=>{if(r&&r.error)throw new Error(r.error);return r.data});
+function showLogin(msg){
+  view="login";
+  app.innerHTML=`<div style="display:flex;justify-content:center;padding:30px 0"><div class="card" style="width:100%;max-width:360px;padding:0;overflow:hidden">
+  <div style="height:6px;background:linear-gradient(90deg,#185FA5 0 33.3%,#fff 33.3% 66.6%,var(--rojo) 66.6%)"></div>
+  <form style="padding:24px" onsubmit="event.preventDefault();doLogin()">
+   <div style="text-align:center;margin-bottom:18px"><div style="width:56px;height:56px;border-radius:50%;background:#e3f4ea;display:inline-flex;align-items:center;justify-content:center;font-size:28px">📘</div>
+   <h2 style="margin:8px 0 2px">Inglés en 90 días</h2><p class="mut" style="margin:0">Welcome! Ingresa para ver tu avance</p></div>
+   <label class="mut">Usuario</label><input type="text" id="lu" autocomplete="username" style="margin:4px 0 12px">
+   <label class="mut">Contraseña</label><div style="position:relative"><input type="password" id="lp" autocomplete="current-password" style="margin:4px 0 8px;padding-right:44px">
+   <button type="button" class="spk" style="position:absolute;right:6px;top:12px" onclick="const p=document.getElementById('lp');p.type=p.type==='password'?'text':'password'">👁️</button></div>
+   <label class="mut row" style="gap:6px;margin-bottom:14px"><input type="checkbox" id="lr" checked> Recordarme en este equipo</label>
+   <button class="btn p" id="lb" style="width:100%;padding:12px">Ingresar</button>
+   <div class="fb bad" id="lm" style="text-align:center">${msg||""}</div>
+   <p class="mut" style="text-align:center;font-size:.85rem;border-top:1px solid var(--line);padding-top:12px;margin-bottom:0">${GS?"¿Olvidaste tu contraseña? Pídela al administrador.":"Modo sin conexión: escribe cualquier usuario; el avance se guarda en este equipo."}</p>
+  </form></div></div>`;
+  setTimeout(()=>document.getElementById("lu").focus(),50);
+}
+async function doLogin(){
+  const u=document.getElementById("lu").value.trim(),p=document.getElementById("lp").value,r=document.getElementById("lr").checked,m=document.getElementById("lm"),b=document.getElementById("lb");
+  if(!u||(GS&&!p)){m.textContent="Escribe tu usuario y contraseña.";return}
+  if(!GS){if(r)LS.set("en90user",u);entrar({u,nombre:u,avance:null},null);return}
+  b.textContent="Verificando…";b.disabled=true;
+  try{const x=await srv("login",u,p);
+    if(x&&x.ok){if(r)LS.set("en90tk",x.token);entrar(x,x.token)}else{m.textContent=x.msg||"Usuario o contraseña incorrectos";b.textContent="Ingresar";b.disabled=false}}
+  catch(e){m.textContent="No hay conexión con el servidor. Intenta otra vez.";b.textContent="Ingresar";b.disabled=false}
+}
+function entrar(r,tk){USER={u:r.u,n:r.nombre};MAXD=GS?Math.max(1,Math.min(90,Number(r.maxDia)||1)):90;errLoad();TOKEN=tk;let loc={};try{loc=JSON.parse(LS.get("en90_"+r.u)||"{}")}catch(e){}done=r.avance||loc;save();home()}
+function logout(){if(GS&&TOKEN)srv("logout",TOKEN).catch(()=>{});LS.del("en90tk");LS.del("en90user");USER=null;TOKEN=null;done={};showLogin()}
+async function start(){
+  const tk=LS.get("en90tk");
+  if(GS&&tk){app.innerHTML=`<p class="mut" style="text-align:center;padding:60px">Cargando…</p>`;try{const r=await srv("sesion",tk);if(r&&r.ok){entrar(r,tk);return}}catch(e){}LS.del("en90tk")}
+  if(!GS){const u=LS.get("en90user");if(u){entrar({u,nombre:u,avance:null},null);return}}
+  showLogin();
+}
+function registrar(pct){
+  if(pct>=70&&(!done[cur]||pct>done[cur]))done[cur]=pct;save();
+  if(GS&&TOKEN)srv("guardarDia",TOKEN,cur+1,D[cur].t,q.ok,q.items.length).then(r=>{if(r&&r.ok&&r.avance){done=r.avance;save()}else if(r&&r.msg==="sesion"){toast("Tu sesión expiró. Ingresa de nuevo.");logout()}else if(r&&r.msg==="bloqueado"){toast("Este día no está habilitado. Comunícate con el administrador.")}}).catch(()=>toast("No se pudo guardar en el servidor. Revisa tu conexión."));
+}
+
+// ---------- tips y trucos ----------
+const TIPS=[
+{t:"🗣️ Pronunciación que sí importa",i:[
+["El inglés <b>no se lee como se escribe</b>. Aprende cada palabra con su audio y su [así se lee], no la leas «en español».","read, said, women, busy"],
+["<b>TH</b> tiene dos sonidos: sin voz en <i>think, three</i> (como la z de España) y con voz en <i>this, mother</i>. La lengua siempre asoma entre los dientes.","think, three, this, mother"],
+["<b>Vocal corta vs larga</b> cambia el sentido: <i>ship</i> (barco) ≠ <i>sheep</i> (oveja), <i>live</i> ≠ <i>leave</i>, <i>full</i> ≠ <i>fool</i>.","ship, sheep. live, leave. full, fool"],
+["<b>V ≠ B</b>: en <i>very</i> los dientes tocan el labio. <i>berry</i> (baya) y <i>very</i> (muy) son distintas.","berry, very"],
+["<b>-ed</b> casi nunca suena «ed»: <i>worked</i> [uérkt], <i>played</i> [pléid]. Solo suena [id] después de t o d: <i>wanted</i>, <i>needed</i>.","worked, played, wanted, needed"],
+["En inglés americano la <b>T entre vocales</b> suena como una r suave: <i>water</i> [uárer], <i>better</i> [bérer].","water, better, city"],
+["<b>S inicial</b> sin «e»: decimos <i>Spain, student, street</i>, no «Espain».","Spain, student, street"]]},
+{t:"⚠️ Falsos amigos (¡cuidado!)",i:[
+["<b>actually</b> = en realidad (no «actualmente» → currently)","actually, currently"],["<b>assist</b> = ayudar (asistir a clase → attend)","assist, attend"],["<b>carpet</b> = alfombra (carpeta → folder)","carpet, folder"],["<b>embarrassed</b> = avergonzado (embarazada → pregnant)","embarrassed, pregnant"],["<b>library</b> = biblioteca (librería → bookstore)","library, bookstore"],["<b>sensible</b> = sensato (sensible → sensitive)","sensible, sensitive"],["<b>exit</b> = salida (éxito → success)","exit, success"],["<b>realize</b> = darse cuenta (realizar → carry out)","realize"],["<b>career</b> = trayectoria profesional (carrera universitaria → major)","career, major"],["<b>pretend</b> = fingir (pretender → intend)","pretend, intend"]]},
+{t:"❌ Errores típicos de hispanohablantes",i:[
+["✗ I have 30 years → ✓ <b>I am 30 years old</b>.","I am 30 years old"],
+["✗ She work here → ✓ <b>She works here</b>: no olvides la -s con he/she/it.","She works here"],
+["✗ Is raining → ✓ <b>It is raining</b>: en inglés siempre hay sujeto.","It is raining"],
+["✗ The people is → ✓ <b>The people are</b>.","The people are nice"],
+["✗ I am agree → ✓ <b>I agree</b>.","I agree"],
+["✗ make homework → ✓ <b>do homework</b>. <i>Make</i> = fabricar/crear; <i>do</i> = tareas y actividades.","do homework, make a cake"],
+["✗ in Monday → ✓ <b>on Monday</b> · ✗ in the night → ✓ <b>at night</b>.","on Monday, at night"],
+["<b>home ≠ house</b>: <i>go home</i> (sin to) · <i>a big house</i>.","I go home"]]},
+{t:"💬 Expresiones para sonar natural",i:[
+["<b>How's it going?</b> = ¿qué tal?","How's it going?"],["<b>No worries!</b> = ¡no te preocupes! / de nada","No worries!"],["<b>Sounds good!</b> = ¡me parece bien!","Sounds good!"],["<b>I'm good</b> = estoy bien (muy americano)","I'm good, thanks"],["<b>Got it</b> = entendido","Got it"],["<b>Hang on</b> = espera un momento","Hang on a second"],["<b>Take care!</b> = ¡cuídate!","Take care!"],["<b>You're welcome</b> = de nada","You're welcome"]]},
+{t:"🇺🇸 Cultura que nadie te cuenta",i:[
+["«How are you?» muchas veces es solo un saludo: responde corto, <b>Good, thanks! And you?</b>","Good, thanks! And you?"],
+["Los estadounidenses dicen mucho <b>please</b>, <b>thank you</b> y <b>sorry</b>. Pedir con <i>Could you…?</i> suena más amable.","Could you help me, please?"],
+["En EE. UU. se deja <b>propina (tip)</b> de 15 a 20 % en restaurantes.","tip"],
+["Las fechas se escriben <b>mes/día/año</b>: 07/28/2026 = 28 de julio.","July twenty-eighth"],
+["Temperatura en <b>Fahrenheit</b>: 77 °F ≈ 25 °C.",""]]},
+{t:"🧠 Trucos de estudio que funcionan",i:[
+["<b>Shadowing</b>: pon el audio en 🐢 y repite al mismo tiempo, imitando ritmo y melodía.",""],
+["<b>Repaso espaciado</b>: usa Repaso al 1.º, 3.º y 7.º día de aprender algo.",""],
+["<b>15 minutos diarios</b> valen más que 2 horas el domingo.",""],
+["Habla solo en voz alta y describe lo que haces: <b>Now I am cooking</b>.","Now I am cooking"],
+["Pon tu celular en inglés y mira series con subtítulos en inglés.",""],
+["Aprende <b>frases completas</b>, no palabras sueltas.",""]]}
+];
+function tips(){view="tips";
+  app.innerHTML=`<button class="btn sm" onclick="home()">← Plan</button><h1>💡 Tips y trucos reales</h1><p class="sub">Lo que de verdad marca la diferencia al aprender inglés siendo hispanohablante.</p>
+  ${TIPS.map(s=>`<div class="card"><h2>${s.t}</h2>${s.i.map(([tx,au])=>`<div class="w" style="margin:6px 0;align-items:flex-start"><div style="line-height:1.55">${tx}</div>${au?`<span>${spk(au)}</span>`:""}</div>`).join("")}</div>`).join("")}`;scrollTo(0,0)}
+
+// ---------- repaso ----------
+function repaso(){view="repaso";
+  const dias=Object.keys(done).map(Number);const src=dias.length?dias:[...Array(nextDay()+1).keys()];
+  const pool=shuf(src.flatMap(i=>D[i].w.concat(D[i].f.slice(0,2)))).slice(0,15);
+  q={items:pool,k:0,ok:0,again:[]};nextR();
+}
+function nextR(){
+  if(q.k>=q.items.length&&q.again.length){q.items=q.items.concat(q.again);q.again=[]}
+  if(q.k>=q.items.length){app.innerHTML=`<button class="btn sm" onclick="home()">← Plan</button><div class="card" style="text-align:center"><h2>🧠 Repaso terminado</h2><p>Recordaste ${q.ok} tarjetas a la primera.</p><button class="btn p" onclick="repaso()">Otro repaso</button></div>`;return}
+  const x=q.items[q.k];
+  app.innerHTML=`<button class="btn sm" onclick="home()">← Plan</button><h1>🧠 Repaso rápido</h1><p class="sub">Tarjetas de los días que ya aprobaste. Tarjeta ${q.k+1}/${q.items.length}</p>
+  <div class="card" style="text-align:center;min-height:240px"><div class="big">${x[0]}</div><div>${spk(x[0])} ${spkS(x[0])}</div>
+  <div style="margin-top:16px"><button class="btn p" id="vb" onclick="this.style.display='none';document.getElementById('back').style.display='block'">Ver significado</button>
+  <div id="back" style="display:none"><p style="font-size:1.3rem">${x[1]}</p><div class="row" style="justify-content:center"><button class="btn" onclick="q.again.push(q.items[q.k]);q.k++;nextR()">🔁 Repasar otra vez</button><button class="btn g" onclick="q.ok++;q.k++;nextR()">✓ Lo sabía</button></div></div></div></div>`;
+  setTimeout(()=>say(x[0]),200);
+}
+
+document.addEventListener("focusin",e=>{if(e.target.matches&&e.target.matches('input[type=text]')){document.body.classList.add("typing");const c=e.target.closest(".card")||e.target.parentElement;setTimeout(()=>{if(c&&c.scrollIntoView)c.scrollIntoView({block:"start",behavior:"smooth"})},380)}});
+document.addEventListener("focusout",e=>{if(e.target.matches&&e.target.matches('input[type=text]'))setTimeout(()=>{if(!(document.activeElement&&document.activeElement.matches&&document.activeElement.matches('input[type=text]')))document.body.classList.remove("typing")},150)});
+let LEAVING=false;
+function exitAsk(){if(document.querySelector(".modal.exit"))return;const d=document.createElement("div");d.className="modal exit";
+  d.innerHTML=`<div class="card" style="text-align:center"><div style="font-size:2rem">🚪</div><h2 style="margin:6px 0">¿Deseas salir del aplicativo?</h2><p class="mut">Tu avance aprobado ya está guardado.</p><div class="row" style="justify-content:center"><button class="btn" onclick="this.closest('.modal').remove()">No, quedarme</button><button class="btn p" onclick="exitYes()">Sí, salir</button></div></div>`;document.body.append(d)}
+function exitYes(){LEAVING=true;document.querySelectorAll(".modal.exit").forEach(m=>m.remove());history.back();setTimeout(()=>{if(document.visibilityState==="visible"){LEAVING=false;try{history.pushState({it:1},"")}catch(e){}toast("Ya puedes cerrar esta pestaña.")}},700)}
+try{history.pushState({it:1},"")}catch(e){}
+window.addEventListener("popstate",()=>{if(LEAVING)return;try{history.pushState({it:1},"")}catch(e){}
+  document.querySelectorAll(".modal:not(.exit)").forEach(m=>m.remove());
+  if(view==="day"||view==="tips"||view==="repaso"||view==="verbs"){try{speechSynthesis.cancel()}catch(e){}home()}else exitAsk()});
+window.addEventListener("beforeunload",e=>{if(USER&&!LEAVING){e.preventDefault();e.returnValue=""}});
+start();
+</script>
+</body>
+</html>

@@ -112,6 +112,7 @@ body.typing .fab,body.typing .idx{display:none!important}
 .cbx{border-radius:12px;padding:8px 10px;line-height:1.45}.cbx small{display:flex;align-items:center;gap:6px;font-size:.72rem;font-weight:600;margin-bottom:2px}
 .cbx.bad{background:#fbe5e2;color:#9b2a22}.cbx.bad u{text-decoration-thickness:2px;font-weight:600}
 .cbx.ok{background:#e3f4ea;color:#0f5c3b}.cbx.ok b{text-decoration:underline;text-decoration-thickness:2px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}.chip{padding:5px 10px;border-radius:9px;font-weight:600;font-size:.95rem}.chip.ok{background:#e3f4ea;color:#0f5c3b}.chip.bad{background:#fbe5e2;color:#9b2a22}.wres{margin-top:10px;text-align:left}.wres small{font-size:.72rem;letter-spacing:.06em;color:var(--mut);font-weight:600}.micb{position:relative;overflow:hidden}.micb .fl{position:absolute;left:0;top:0;bottom:0;width:0;background:#e24b4a;transition:width .3s}.micb .tx{position:relative}
 .cbx .spk{padding:2px 5px;font-size:.85rem}
 .rd{font-size:1.35rem;font-weight:600;color:var(--ink);margin:4px 0}
 .day.locked{opacity:.55;background:#f4f1ea}
@@ -600,7 +601,7 @@ function enNum(n){const U=["zero","one","two","three","four","five","six","seven
   if(n<20)return U[n];if(n<100)return T[Math.floor(n/10)]+(n%10?" "+U[n%10]:"");
   if(n<1000)return U[Math.floor(n/100)]+" hundred"+(n%100?" "+enNum(n%100):"");
   if(n<1000000)return enNum(Math.floor(n/1000))+" thousand"+(n%1000?" "+enNum(n%1000):"");return String(n)}
-function numWords(s){return s.replace(/\b(\d{1,2}):00\b/g,(m,h)=>enNum(+h)+" o'clock").replace(/\b(\d{1,2}):(\d{2})\b/g,(m,h,mi)=>enNum(+h)+" "+(+mi<10?"oh "+enNum(+mi):enNum(+mi))).replace(/(\d),(\d{3})/g,"$1$2").replace(/%/g," percent").replace(/\bS\/\s?/g,"").replace(/\d+/g,m=>enNum(+m))}
+function numWords(s){return s.replace(/\b(\d{1,2}):00\b/g,(m,h)=>enNum(+h)+" o'clock").replace(/\b(\d{1,2}):(\d{2})\b/g,(m,h,mi)=>enNum(+h)+" "+(+mi<10?"oh "+enNum(+mi):enNum(+mi))).replace(/(\d),(\d{3})/g,"$1$2").replace(/%/g," percent").replace(/\bS\/\s?/g,"").replace(/\d{5,}/g,m=>m.split("").map(d=>enNum(+d)).join(" ")).replace(/\d+/g,m=>enNum(+m))}
 const norm=s=>expand(numWords(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[’`]/g,"'").replace(/-/g," ")).replace(/[^a-z' ]/g,"").replace(/\s+/g," ").trim();
 const clean=s=>expand(numWords(s).toLowerCase().replace(/[’`]/g,"'").replace(/-/g," ")).replace(/[.,!?¿¡:;"]/g,"").replace(/\s+/g," ").trim();
 function enTip(w){w=w.toLowerCase().replace(/[^a-z']/g,"");const t=[];
@@ -638,7 +639,7 @@ const lvlOf=i=>LV.find(l=>i>=l[2]&&i<l[3]);
 
 // ---------- estado ----------
 let done={},rate=0.9,USER=null,TOKEN=null;
-const API="PEGA_AQUI_TU_URL_EXEC";
+const API="https://script.google.com/macros/s/AKfycbxpQ8QLz_7JpFnn9dpQAbflphQnS2oDoKQ4XpKsM21NfZwfi6XmPArY6IX9-s-Eq8bL/exec";
 const GAS=!!(window.google&&google.script&&google.script.run);
 const GS=GAS||API.startsWith("https://");
 
@@ -664,6 +665,7 @@ function home(){
   <span class="row"><label class="mut">Velocidad voz</label><input type="range" min="0.5" max="1.2" step="0.1" value="${rate}" oninput="rate=+this.value"><button class="btn sm" onclick="say('Welcome! Let\\'s start learning English.')">🔊 Probar</button></span></div>
   <div class="bar" style="margin-top:10px"><i style="width:${n/ND*100}%"></i></div>
   <div class="row" style="margin-top:12px"><button class="btn p" onclick="openDay(${nextDay()})">▶ Continuar: Día ${nextDay()+1}</button><button class="btn" onclick="verbs()">📚 Los 100 verbos</button><button class="btn" onclick="repaso()">🧠 Repaso</button><button class="btn" onclick="tips()">💡 Tips y trucos</button></div></div>`;
+  h+=`<div class="card" style="border:2px solid #b9d3ee;background:#eef5fc;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><div><b>🧭 Día 0 · Introducción</b><div class="mut">Cómo suena el inglés: 12 claves de pronunciación</div></div><button class="btn p" onclick="intro()">Ver introducción →</button></div>`;
   LV.forEach(([nm,c,a,b])=>{h+=`<div class="lvl"><span class="dot" style="background:${c}"></span>${nm} · Días ${a+1}-${b}</div><div class="grid">`;
     for(let i=a;i<b;i++)h+=`<div class="day${i+1>MAXD?" locked":""}" style="--c:${c}" onclick="openDay(${i})">${done[i]?'<span class="ok">✓</span>':i+1>MAXD?'<span class="ok">🔒</span>':""}<b>Día ${i+1}</b><small>${D[i].t}</small><small>🔤 ${D[i].v[0]} · ${D[i].v[2].split(" ")[0]}</small></div>`;
     h+=`</div>`});
@@ -845,13 +847,11 @@ const WT=0.85;
 function wscore(heard,target){const H=wds(heard),T=wds(target);if(!T.length||!H.length)return 0;
   if(T.length===1)return Math.max(...H.map(h=>wsim(h,T[0])),sim(heard,target))>=WT?1:0;
   return T.filter(t=>H.some(h=>wsim(h,t)>=WT)).length/T.length}
-function cmpHTML(heard,target){const H=wds(heard),T=wds(target);
-  const hh=heard.split(/\s+/).map(w=>{const n=norm(w);return !n||T.some(t=>wsim(n,t)>=WT)?w:`<u>${w}</u>`}).join(" ");
-  const tt=target.split(/\s+/).map(w=>{const n=norm(w);return !n||H.some(h=>wsim(h,n)>=WT)?w:`<b>${w}</b>`}).join(" ");
-  const miss=target.split(/\s+/).filter(w=>{const n=norm(w);return n&&!H.some(h=>wsim(h,n)>=WT)}).map(w=>w.replace(/[^A-Za-z'’-]/g,""));
-  return `<div class="cmp"><div class="cbx bad"><small>✗ Tú dijiste</small>${hh}</div><div class="cbx ok"><small>✓ Debió decirse ${spk(target)}</small>${tt}</div></div>${howCards(miss)}`}
+function cmpHTML(heard,target){const c=wordChips(heard,target),H=wds(heard);
+  const miss=target.split(/\s+/).filter(w=>norm(w)&&!wds(w).every(p=>H.some(h=>wsim(h,p)>=WT))).map(w=>w.replace(/[^A-Za-z'’-]/g,""));
+  return c.html.replace("TU RESPUESTA","TU PRONUNCIACIÓN")+`<p class="mut" style="font-size:.85rem;margin:4px 0">Te escuché: «${heard}» ${spk(target)}</p>`+howCards(miss)}
 function micMsg(t,c){const s=sec("ms");if(s)s.innerHTML=t?`<p class="fb ${c||"mut"}" style="text-align:center">${t}</p>`:""}
-function micSet(st,txt){const b=sec("mb");if(!b)return;b.className="micb"+(st?" "+st:"");b.innerHTML=st==="on"?`<span class="wv"><i></i><i></i><i></i><i></i></span> ${txt}`:txt}
+function micSet(st,txt){const b=sec("mb");if(!b)return;b.className="micb"+(st?" "+st:"");b.innerHTML=st==="on"?`<span class="fl" id="mfl"></span><span class="tx"><span class="wv"><i></i><i></i><i></i><i></i></span> <span id="mtx">${txt}</span></span>`:txt}
 function micUI(boxId,target,cb,lbl){if(REC){try{REC.abort()}catch(e){}REC=null}MIC={target,cb,box:boxId,lbl:lbl||"¡Habla ahora!"};const b=sec(boxId);if(!b)return;
   b.innerHTML=`<button class="micb" id="mb" onclick="micToggle()">🎤 Toca y habla</button><p class="mut" id="mh" style="text-align:center;font-size:.85rem;margin:6px 0 0"></p><div id="ms"></div>
   <div id="mk" style="display:${MICBLOCK?"block":"none"}"><p class="hint" style="margin:8px 0 4px">Toca el cuadro y usa el <b>🎤 de tu teclado</b> para dictar en inglés (en Gboard: mantén 🌐 y elige English):</p>
@@ -866,9 +866,12 @@ function micStart(){if(!MIC)return;micMsg("");
     const arm=ms=>{clearTimeout(timer);timer=setTimeout(()=>{try{r.stop()}catch(e){}},ms)};
     const finish=()=>{if(done)return;done=true;clearTimeout(timer);REC=null;const h=sec("mh");if(h)h.textContent="";const txt=(finals.join(" ")+" "+interim).replace(/\s+/g," ").trim();
       if(!txt){micSet("","🎤 Toca y habla");micMsg("No te escuché. Toca y habla otra vez.");return}micEval([txt])};
-    r.onstart=()=>{micSet("on",MIC.lbl);const h=sec("mh");if(h)h.textContent="Te escucho… cuando calles 5 segundos termino solo · toca para terminar antes";arm(8000)};
-    r.onresult=e=>{finals=[];interim="";for(let i=0;i<e.results.length;i++){const rs=e.results[i];if(rs.isFinal)finals.push(rs[0].transcript);else interim+=rs[0].transcript}heardAny=true;arm(5000);
-      const h=sec("mh");if(h)h.textContent="🗣️ "+(finals.join(" ")+" "+interim).trim()};
+    r.onstart=()=>{micSet("on",MIC.lbl);const h=sec("mh");if(h)h.textContent="Te escucho… al llenarse el botón termino solo";arm(8000)};
+    r.onresult=e=>{finals=[];interim="";for(let i=0;i<e.results.length;i++){const rs=e.results[i];if(rs.isFinal)finals.push(rs[0].transcript);else interim+=rs[0].transcript}heardAny=true;arm(2500);
+      const all=(finals.join(" ")+" "+interim).trim(),h=sec("mh");if(h)h.textContent="🗣️ "+all;
+      const T=wds(MIC.target),Hh=wds(numWords(all)),m=T.filter(t=>Hh.some(x=>wsim(x,t)>=WT)).length,f=sec("mfl"),tx=sec("mtx");
+      if(f)f.style.width=Math.round(m/Math.max(1,T.length)*100)+"%";if(tx)tx.textContent=`Escuchando… ${m} de ${T.length}`;
+      if(T.length&&m>=T.length){clearTimeout(timer);timer=setTimeout(()=>{try{r.stop()}catch(e){}},350)}};
     r.onerror=e=>{if(["not-allowed","service-not-allowed","audio-capture"].includes(e.error)){done=true;REC=null;clearTimeout(timer);micSet("","🎤 Toca y habla");micDict("El micrófono está bloqueado aquí. Usa el 🎤 de tu teclado en el cuadro de abajo.")}};
     r.onend=finish;r.start()}catch(e){REC=null;micDict("El micrófono está bloqueado aquí. Usa el 🎤 de tu teclado en el cuadro de abajo.")}}
 function micEval(alts){if(!MIC)return;alts=alts.filter(a=>a&&a.trim()).map(numWords);if(!alts.length)return;
@@ -1013,7 +1016,8 @@ function fNext(ok,msg,it){const fb=document.getElementById("ffb");if(ok)q.ok++;f
 function chkOrd(){const x=q.items[q.k],ok=norm(window.__built.join(" "))===norm(x.it);window.__lock=true;const pl=document.getElementById("pool");if(pl)pl.innerHTML="";fNext(ok,(ok?"✓ Perfect! ":"✗ Correcto: ")+x.it,x.it)}
 function ansF(b){const x=q.items[q.k];document.querySelectorAll(".opt").forEach(o=>{o.disabled=true;if(o.dataset.r==="1")o.classList.add("ok")});if(b.dataset.r!=="1")b.classList.add("bad");
   fNext(b.dataset.r==="1",(b.dataset.r==="1"?"✓ ":"✗ ")+x.it,x.it)}
-function chkFT(){const g=document.getElementById("fin").value,t=window.__vt,alts=[t,t.replace(/\/[ae]$/,""),t.replace(/([oi])\/([ae])$/,"$2")];
+function chkFT(){const g=document.getElementById("fin").value,t=window.__vt,x=q.items[q.k],alts=[t,t.replace(/\/[ae]$/,""),t.replace(/([oi])\/([ae])$/,"$2")];
+  if(x&&x.t==="hard"){if(!g.trim())return;const c=wordChips(g,t),ok=c.n/c.t>=0.8;fNext(ok,(ok?(c.n===c.t?"✓ Perfect! ":`✓ ¡Bien! ${c.n} de ${c.t} palabras. `):"✗ Correcto: ")+t,t);const fb=sec("ffb");if(fb)fb.innerHTML+=c.html;return}
   const ok=alts.some(a=>norm(a)===norm(g));fNext(ok,(ok?"✓ Correct! ":"✗ Correcto: ")+t,t.replace(/\/[ae]$/,""))}
 
 // ---------- sesión ----------
@@ -1047,7 +1051,7 @@ async function doLogin(){
     if(x&&x.ok){if(r)LS.set("en90tk",x.token);entrar(x,x.token)}else{m.textContent=x.msg||"Usuario o contraseña incorrectos";b.textContent="Ingresar";b.disabled=false}}
   catch(e){m.textContent="No hay conexión con el servidor. Intenta otra vez.";b.textContent="Ingresar";b.disabled=false}
 }
-function entrar(r,tk){USER={u:r.u,n:r.nombre};MAXD=GS?Math.max(1,Math.min(90,Number(r.maxDia)||1)):90;errLoad();TOKEN=tk;let loc={};try{loc=JSON.parse(LS.get("en90_"+r.u)||"{}")}catch(e){}done=r.avance||loc;save();home()}
+function entrar(r,tk){USER={u:r.u,n:r.nombre};MAXD=GS?Math.max(1,Math.min(90,Number(r.maxDia)||1)):90;errLoad();TOKEN=tk;let loc={};try{loc=JSON.parse(LS.get("en90_"+r.u)||"{}")}catch(e){}done=r.avance||loc;save();if(!Object.keys(done).length&&!LS.get("en90intro_"+r.u))intro();else home()}
 function logout(){if(GS&&TOKEN)srv("logout",TOKEN).catch(()=>{});LS.del("en90tk");LS.del("en90user");USER=null;TOKEN=null;done={};showLogin()}
 async function start(){
   const tk=LS.get("en90tk");
@@ -1061,6 +1065,29 @@ function registrar(pct){
 }
 
 // ---------- tips y trucos ----------
+const INTRO=[
+["📖 Cómo leer el [así se lee]","Lo que está entre corchetes se lee <b>como en español</b>. La tilde marca dónde va la fuerza y la vocal doble (<b>ii</b>) significa que se alarga.",[["hello","jeló"],["please","plíis"],["water","uárer"]]],
+["👅 TH sin voz","Saca un poquito la lengua entre los dientes y <b>sopla</b>. Suena parecido a la z de España. Nunca digas «t».",[["think","zink"],["three","zrí"],["thank you","zenk iú"]]],
+["👅 TH con voz","Misma posición, pero ahora <b>vibra</b> la garganta. Suena entre «d» y «z» suave.",[["this","dis"],["the","da"],["mother","máder"]]],
+["🦷 V no es B","En la V los dientes de arriba tocan el labio de abajo y vibra. En la B se juntan los labios.",[["very","véri"],["berry","béri"],["seven","séven"]]],
+["⏱️ Vocal corta y vocal larga","Si alargas o no la vocal, cambia la palabra. EE y EA se dicen largas y sonriendo.",[["ship","ship"],["sheep","shíip"],["live","liv"],["leave","líiv"]]],
+["💨 La H","No es muda como en español: es <b>solo aire</b>, como una j muy suave.",[["hello","jeló"],["house","jáus"],["happy","jápi"]]],
+["🔤 J, Y y W","<b>J</b> = «ch» con voz (dj). <b>Y</b> al inicio = «i» rápida. <b>W</b> = «u» rápida con labios redondos.",[["job","yob"],["yes","iés"],["work","uérk"]]],
+["🐍 S + consonante al inicio","Empieza directo con la S, sin poner una «e» delante.",[["Spanish","spánish"],["student","stiúdent"],["street","stríit"]]],
+["🔚 Terminaciones -S y -ED","La -s final sí se pronuncia. La -ed casi nunca suena «ed»: suena [t] o [d]. Solo suena [id] después de t o d.",[["works","uérks"],["worked","uérkt"],["wanted","uánted"]]],
+["🇺🇸 La T americana","Entre vocales la T suena como una r suave. Es típico del inglés de Estados Unidos.",[["water","uárer"],["thirty","zéri"],["meeting","mírin"]]],
+["🤫 Letras mudas","Muchas letras no suenan: la k de knife, la gh de daughter, la l de could y la p de receipt.",[["knife","náif"],["daughter","dóter"],["could","kud"]]],
+["🎵 El ritmo","En inglés las palabras pequeñas (a, the, to, of) se dicen débiles y rápidas, y las importantes con fuerza. Une las palabras: «What is your name?» suena casi como una sola.",[["What is your name?","uát is iór néim"],["Nice to meet you.","náis tu mít iú"]]]];
+function intro(){view="tips";try{if(USER)LS.set("en90intro_"+USER.u,"1")}catch(e){}
+  app.innerHTML=`<button class="btn sm" onclick="home()">← Plan</button><p class="eyebrow">Día 0 · Antes de empezar</p><h1 style="margin-top:4px">🧭 Introducción: cómo suena el inglés</h1>
+  <p class="sub">El inglés no se lee como se escribe. Estas 12 claves te ahorrarán la mayoría de errores. Escucha cada ejemplo 🔊, repítelo 3 veces y fíjate en su [así se lee].</p>
+  <div class="card note"><b>Cómo funciona cada día:</b> 1) Sonido del día · 2) Vocabulario · 3) Gramática paso a paso · 4) Verbo del día · 5) Diálogo y juego de roles · 6) Práctica · 7) Ejercicios con nota. En <b>Pronunciar</b> y en el juego de roles toca 🎤 y habla: la página te dice palabra por palabra qué dijiste bien ✓ y qué debes corregir ✗. Usa <b>Google Chrome</b>.</div>
+  ${INTRO.map(([t,x,ej])=>`<div class="card"><h2>${t}</h2><p style="line-height:1.6;margin-top:0">${x}</p><div class="vocab">${ej.map(([w,p])=>`<div class="w"><div><div class="it">${w}</div><div class="pr">[${p}]</div></div><span>${spk(w)} ${spkS(w)}</span></div>`).join("")}</div></div>`).join("")}
+  <div class="row" style="justify-content:center;margin:20px 0"><button class="btn p" onclick="openDay(0)">▶ Empezar el Día 1</button></div>`;scrollTo(0,0)}
+function wordChips(heard,target){const H=wds(heard),ws=target.split(/\s+/).filter(w=>norm(w));let n=0;
+  const ch=ws.map(w=>{const ok=wds(w).every(p=>H.some(h=>wsim(h,p)>=WT));if(ok)n++;return `<span class="chip ${ok?"ok":"bad"}">${w.replace(/[.,!?;:¿¡]/g,"")} ${ok?"✓":"✗"}</span>`}).join("");
+  return {n,t:ws.length,html:`<div class="wres"><small>TU RESPUESTA, PALABRA POR PALABRA · ${n} de ${ws.length} bien</small><div class="chips">${ch}</div></div>`}}
+
 const TIPS=[
 {t:"🗣️ Pronunciación que sí importa",i:[
 ["El inglés <b>no se lee como se escribe</b>. Aprende cada palabra con su audio y su [así se lee], no la leas «en español».","read, said, women, busy"],

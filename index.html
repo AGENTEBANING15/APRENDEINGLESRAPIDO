@@ -1315,16 +1315,17 @@ function micUI(boxId,target,cb,lbl){if(REC){try{REC.abort()}catch(e){}REC=null}M
   ${MICBLOCK?"":`<button class="btn sm" style="margin-top:8px" onclick="micDict()">⌨️ Dictar con el teclado</button>`}`;}
 function micDict(msg){MICBLOCK=MICBLOCK||!!msg;const k=sec("mk");if(k)k.style.display="block";micMsg(msg||"")}
 function micToggle(){if(REC){try{REC.stop()}catch(e){}return}micStart()}
+const joinRes=arr=>arr.reduce((a,t)=>{t=(t||"").replace(/\s+/g," ").trim();if(!t)return a;const la=a.toLowerCase(),lt=t.toLowerCase();if(!a||lt.startsWith(la))return t;if(la.endsWith(lt)||la.startsWith(lt))return a;return a+" "+t},"");
 function micStart(){if(!MIC)return;micMsg("");
   if(!SR){micDict("Tu navegador no permite el micrófono. Usa Chrome o el dictado del teclado.");return}
   let finals=[],interim="",timer=null,done=false,heardAny=false;
   try{try{speechSynthesis.cancel()}catch(e){}const r=new SR();REC=r;r.lang="en-US";r.continuous=true;r.interimResults=true;r.maxAlternatives=1;
     const arm=ms=>{clearTimeout(timer);timer=setTimeout(()=>{try{r.stop()}catch(e){}},ms)};
-    const finish=()=>{if(done)return;done=true;clearTimeout(timer);REC=null;const h=sec("mh");if(h)h.textContent="";const txt=(finals.join(" ")+" "+interim).replace(/\s+/g," ").trim();
+    const finish=()=>{if(done)return;done=true;clearTimeout(timer);REC=null;const h=sec("mh");if(h)h.textContent="";const txt=joinRes([...finals,interim]);
       if(!txt){micSet("","🎤 Toca y habla");micMsg("No te escuché. Toca y habla otra vez.");return}micEval([txt])};
     r.onstart=()=>{micSet("on",MIC.lbl);const h=sec("mh");if(h)h.textContent="Te escucho… al llenarse el botón termino solo";arm(8000)};
     r.onresult=e=>{finals=[];interim="";for(let i=0;i<e.results.length;i++){const rs=e.results[i];if(rs.isFinal)finals.push(rs[0].transcript);else interim+=rs[0].transcript}heardAny=true;arm(2500);
-      const all=(finals.join(" ")+" "+interim).trim(),h=sec("mh");if(h)h.textContent="🗣️ "+all;
+      const all=joinRes([...finals,interim]),h=sec("mh");if(h)h.textContent="🗣️ "+all;
       const T=wds(MIC.target),Hh=wds(numWords(all)),m=T.filter(t=>Hh.some(x=>wsim(x,t)>=WT)).length,f=sec("mfl"),tx=sec("mtx");
       if(f)f.style.width=Math.round(m/Math.max(1,T.length)*100)+"%";if(tx)tx.textContent=`Escuchando… ${m} de ${T.length}`;
       if(T.length&&m>=T.length){clearTimeout(timer);timer=setTimeout(()=>{try{r.stop()}catch(e){}},350)}};

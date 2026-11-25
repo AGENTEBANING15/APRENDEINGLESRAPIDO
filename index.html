@@ -1110,7 +1110,7 @@ const nom=()=>USER&&USER.n&&!/^\d+$/.test(USER.n)?USER.n.split(" ")[0]:"";
 const MOT_OK=["¡Excelente! La disciplina te lleva al éxito.","¡Bien hecho! Sigue así, vas muy bien.","Un día más cerca de hablar inglés.","Lo que haces cada día te lleva a tu meta.","¡Felicitaciones! Tu esfuerzo está dando frutos.","La constancia vence al talento. ¡Sigue adelante!","Paso a paso se llega lejos. ¡Hoy diste uno más!","¡Muy bien! Estudiar todos los días marca la diferencia.","Cada clase que terminas es una victoria.","¡Lo estás logrando! No te detengas.","El éxito es la suma de pequeños esfuerzos de cada día.","¡Qué orgullo! Mañana, otra clase más.","Tu inglés mejora con cada día que estudias.","¡Gran trabajo! La práctica hace al maestro.","Hoy hiciste lo que muchos dejan para mañana. ¡Bravo!"];
 const MOT_NO=["No te rindas, cada error te enseña algo.","Sigue adelante, lo vas a lograr.","Practicar es el camino: inténtalo otra vez.","Equivocarse es parte de aprender. ¡Vamos de nuevo!","Respira, repasa y vuelve a intentarlo. Tú puedes.","Los grandes logros toman tiempo. ¡No te detengas!","Cada intento te hace más fuerte.","Un tropiezo no es una caída. ¡Otra vez!"];
 function motiv(ok){const L=ok?MOT_OK:MOT_NO,t=L[Math.floor(Math.random()*L.length)],n=nom();return n?t.replace(/^(¡?)([^,.!]+)([,.!])/,(m,a,b,c)=>a+b+", "+n+c).replace(", "+n+",",", "+n+","):t}
-function welcome(){try{if(sessionStorage.getItem("en90w"))return;sessionStorage.setItem("en90w","1")}catch(e){}const t="Welcome back"+(nom()?", "+nom():"")+"!";
+function welcome(){try{if(sessionStorage.getItem("en90w"))return;sessionStorage.setItem("en90w","1")}catch(e){}const t="Welcome back, my friend"+(nom()?" "+nom():"")+"!";
   if(navigator.userActivation&&!navigator.userActivation.hasBeenActive)document.addEventListener("pointerdown",()=>setTimeout(()=>say(t),200),{once:true});else setTimeout(()=>say(t),500)}
 const esc=s=>s.replace(/'/g,"\\'");
 const spk=(t,ic="🔊")=>`<button class="spk" title="Escuchar" onclick="say('${esc(t)}')">${ic}</button>`;
@@ -1124,7 +1124,7 @@ let cur=0,mode="aprender",view="home";
 // ---------- inicio ----------
 function home(){
   view="home";const n=Object.keys(done).length;
-  let h=`<div class="row" style="justify-content:space-between"><span class="mut">Hi, <b style="color:var(--ink)">${USER?USER.n:""}</b> 👋</span><button class="btn sm" onclick="logout()">⎋ Cerrar sesión</button></div><h1>🇺🇸 Inglés en 90 días</h1><p class="sub">Desde cero hasta el avanzado, como en el ICPNA: Básico (A1), Intermedio (A2) y Avanzado (B1). Inglés americano con gramática paso a paso, audio, escritura y corrección de pronunciación.</p>
+  let h=`<div class="row" style="justify-content:space-between"><span class="mut">Welcome back, my friend <b style="color:var(--ink)">${nom()||(USER?USER.n:"")}</b>! 👋</span><button class="btn sm" onclick="logout()">⎋ Cerrar sesión</button></div><h1>🇺🇸 Inglés en 90 días</h1><p class="sub">Desde cero hasta el avanzado, como en el ICPNA: Básico (A1), Intermedio (A2) y Avanzado (B1). Inglés americano con gramática paso a paso, audio, escritura y corrección de pronunciación.</p>
   <div class="card"><div class="row" style="justify-content:space-between"><span class="score">Progreso: ${n}/${ND} días</span>
   <span class="mut">🗣️ Voz del profesor</span></div>
   <div class="bar" style="margin-top:10px"><i style="width:${n/ND*100}%"></i></div>
